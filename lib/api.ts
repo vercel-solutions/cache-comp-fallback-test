@@ -1,4 +1,5 @@
 import { cacheLife, cacheTag } from "next/cache";
+import { connection } from "next/server";
 
 async function api(path: string, options?: RequestInit): Promise<Response> {
   const env = process.env.VERCEL_ENV || "development";
@@ -36,6 +37,14 @@ export async function fetchPost(id: string) {
   cacheTag("posts", `post-${id}`);
 
   return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then((res) =>
+    res.json(),
+  );
+}
+
+export async function fetchAuthor(id: string) {
+  await connection();
+
+  return fetch(`https://jsonplaceholder.typicode.com/users/${id}`).then((res) =>
     res.json(),
   );
 }
