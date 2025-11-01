@@ -6,13 +6,13 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
-  const { id } = await params;
+  // const { id } = await params;
 
   return (
     <article className="flex flex-col gap-4">
-      {/* <Suspense fallback={<PostFallback />}> */}
-      <Post id={id} />
-      {/* </Suspense> */}
+      <Suspense fallback={<PostFallback />}>
+        <Post params={params} />
+      </Suspense>
     </article>
   );
 }
