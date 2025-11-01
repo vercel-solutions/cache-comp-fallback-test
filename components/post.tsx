@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { fetchPost } from "@/lib/api";
 
 export function PostFallback() {
@@ -10,6 +11,7 @@ export async function Post({
   params: PageProps<"/[lang]/post/[id]">["params"];
 }) {
   "use cache";
+  cacheLife("days");
 
   const { id } = await params;
 
@@ -18,8 +20,6 @@ export async function Post({
   return (
     <div>
       <h1>{post.title}</h1>
-      <p>id: {post.id}</p>
-      <p>{post.body}</p>
     </div>
   );
 }
