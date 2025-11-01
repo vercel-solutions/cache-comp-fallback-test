@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { fetchAuthorDynamic } from "@/lib/api";
 
 export async function AuthorDynamic({
@@ -5,8 +6,10 @@ export async function AuthorDynamic({
 }: {
   idPromise: Promise<string>;
 }) {
+  await connection();
+
   const id = await idPromise;
   const author = await fetchAuthorDynamic(id);
 
-  return <div>{author.name}</div>;
+  return <div>{author.name} (dynamic)</div>;
 }

@@ -7,14 +7,14 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ gen: "gsp" }];
+  return [{ lang: "en" }];
 }
 
 export default async function RootLayout({
   children,
   params,
-}: Readonly<LayoutProps<"/[gen]">>) {
-  const { gen } = await params;
+}: Readonly<LayoutProps<"/[lang]">>) {
+  const { lang } = await params;
 
   return (
     <html lang="en">
@@ -23,13 +23,13 @@ export default async function RootLayout({
           <div className="flex gap-6 mb-4">
             <Link
               href="/gsp/post/1"
-              className={`text-sm text-yellow-500 hover:underline ${gen === "gsp" ? "underline" : ""}`}
+              className={`text-sm text-yellow-500 hover:underline ${lang === "en" ? "underline" : ""}`}
             >
               path in gsp at build time
             </Link>
             <Link
               href="/foo/post/1"
-              className={`text-sm text-yellow-500 hover:underline ${gen !== "gsp" ? "underline" : ""}`}
+              className={`text-sm text-yellow-500 hover:underline ${lang !== "en" ? "underline" : ""}`}
             >
               path not in gsp at build time
             </Link>

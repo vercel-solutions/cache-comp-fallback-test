@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { AuthorDynamic } from "@/components/author-dynamic";
 import { Post } from "@/components/post";
 
-export default async function Page({ params }: PageProps<"/[gen]/post/[id]">) {
+export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
   return (
     <article className="flex flex-col gap-4">
       <p className="text-sm text-gray-400">
