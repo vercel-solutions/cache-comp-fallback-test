@@ -4,7 +4,7 @@ import { Post } from "@/components/post";
 
 export default async function Page({ params }: PageProps<"/[gen]/post/[id]">) {
   return (
-    <article className="flex flex-col gap-4 max-w-lg mx-auto pt-10">
+    <article className="flex flex-col gap-4">
       <p className="text-sm text-gray-400">
         This page renders{" "}
         <strong>one uncached component and one cached component</strong>, both

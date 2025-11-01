@@ -18,7 +18,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main>{children}</main>
+        <div className="flex flex-col gap-4 max-w-lg mx-auto pt-10">
+          {gen === "gsp" && (
+            <div className="text-sm text-gray-400">This is the gSP Layout</div>
+          )}
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );
