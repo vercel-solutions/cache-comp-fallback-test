@@ -5,15 +5,9 @@ export function PostFallback() {
   return <div>Loading...</div>;
 }
 
-export async function Post({
-  params,
-}: {
-  params: PageProps<"/[lang]/post/[id]">["params"];
-}) {
+export async function Post({ id }: { id: string }) {
   "use cache";
   cacheLife("days");
-
-  const { id } = await params;
 
   const post = await fetchPost(id);
 
