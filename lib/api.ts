@@ -50,3 +50,12 @@ export async function fetchAuthor(id: string) {
     res.json(),
   );
 }
+
+export async function fetchAuthorDynamic(id: string) {
+  // force dynamic
+  await connection();
+
+  return fetch(`https://jsonplaceholder.typicode.com/users/${id}`).then((res) =>
+    res.json(),
+  );
+}

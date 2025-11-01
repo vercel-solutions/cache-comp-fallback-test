@@ -1,10 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 import { fetchPost } from "@/lib/api";
 
-export function PostFallback() {
-  return <div>Loading...</div>;
-}
-
 export async function Post({
   params,
 }: {
@@ -20,7 +16,7 @@ export async function Post({
   const post = await fetchPost(id);
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <h1>{post.title}</h1>
       <p>{post.body}</p>
     </div>

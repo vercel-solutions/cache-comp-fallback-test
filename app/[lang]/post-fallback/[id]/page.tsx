@@ -1,21 +1,18 @@
 import { Suspense } from "react";
-import { AuthorCached } from "@/components/author-cached";
 import { Post } from "@/components/post";
 
 export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
   return (
     <article className="flex flex-col gap-4 max-w-md mx-auto pt-10">
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-gray-300 mb-6">
         This page renders <strong>two cached components</strong> wrapped in
         suspense that read from params. In this case, we don't see the suspense
         fallbacks. This is expected behavior.
       </p>
 
-      <Suspense fallback={<Fallback />}>
-        <Content>
-          <AuthorCached idPromise={params.then((p) => p.id)} />
-        </Content>
-      </Suspense>
+      <div className="border border-dashed border-gray-300 p-2 rounded-sm">
+        Hardcoded content
+      </div>
 
       <Suspense fallback={<Fallback />}>
         <Content>
