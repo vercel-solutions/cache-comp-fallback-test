@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Post, PostFallback } from "@/components/post";
 
-export async function generateMetadata() {
+export async function generateStaticParams() {
   return [{ lang: "en", id: "1" }];
 }
 
