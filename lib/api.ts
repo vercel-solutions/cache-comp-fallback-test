@@ -16,16 +16,26 @@ async function api(path: string, options?: RequestInit): Promise<Response> {
   });
 }
 
+// export async function fetchPost(id: string) {
+//   "use cache";
+//   cacheLife("days");
+//   cacheTag("posts", `post-${id}`);
+
+//   const result = await api(`/api/post/${id}`);
+
+//   if (!result.ok) {
+//     throw new Error("Failed to fetch post");
+//   }
+
+//   return result.json();
+// }
+
 export async function fetchPost(id: string) {
-  "use cache: remote";
+  "use cache";
   cacheLife("days");
   cacheTag("posts", `post-${id}`);
 
-  const result = await api(`/api/post/${id}`);
-
-  if (!result.ok) {
-    throw new Error("Failed to fetch post");
-  }
-
-  return result.json();
+  return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then((res) =>
+    res.json(),
+  );
 }

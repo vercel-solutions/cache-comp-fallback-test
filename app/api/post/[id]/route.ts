@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -6,9 +7,17 @@ export async function GET(
 ) {
   const { id } = await ctx.params;
 
-  const post = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${id}`,
-  ).then((res) => res.json());
+  const post = await fetchPost(id);
 
   return NextResponse.json(post);
+}
+
+async function fetchPost(id: string) {
+  "use cache";
+  cacheLife("days");
+  cacheTag("posts", `post-${id}`);
+
+  return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then((res) =>
+    res.json(),
+  );
 }

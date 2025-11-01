@@ -6,9 +6,6 @@ export function PostFallback() {
 }
 
 export async function Post({ id }: { id: string }) {
-  "use cache";
-  cacheLife("days");
-
   const post = await fetchPost(id);
 
   return (
