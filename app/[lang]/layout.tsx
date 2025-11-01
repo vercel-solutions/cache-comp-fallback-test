@@ -25,6 +25,7 @@ export default async function RootLayout({
   params,
 }: Readonly<LayoutProps<"/[lang]">>) {
   const { lang } = await params;
+
   return (
     <html lang={lang}>
       <body
