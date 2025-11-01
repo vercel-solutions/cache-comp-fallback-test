@@ -5,6 +5,8 @@ export function AuthorFallback() {
 }
 
 export async function Author({ idPromise }: { idPromise: Promise<string> }) {
+  "use cache";
+
   const id = await idPromise;
   const author = await fetchAuthor(id);
 

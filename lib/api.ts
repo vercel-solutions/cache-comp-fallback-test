@@ -42,7 +42,9 @@ export async function fetchPost(id: string) {
 }
 
 export async function fetchAuthor(id: string) {
-  await connection();
+  "use cache";
+  cacheLife("days");
+  cacheTag("authors", `author-${id}`);
 
   return fetch(`https://jsonplaceholder.typicode.com/users/${id}`).then((res) =>
     res.json(),
