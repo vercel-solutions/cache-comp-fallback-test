@@ -17,18 +17,18 @@ export default async function RootLayout({
   const { lang } = await params;
 
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body>
         <div className="flex flex-col gap-4 max-w-lg mx-auto pt-10">
           <div className="flex gap-6 mb-4">
             <Link
-              href="/gsp/post/1"
+              href="/en/post/1"
               className={`text-sm text-yellow-500 hover:underline ${lang === "en" ? "underline" : ""}`}
             >
               path in gsp at build time
             </Link>
             <Link
-              href="/foo/post/1"
+              href="/fr/post/1"
               className={`text-sm text-yellow-500 hover:underline ${lang !== "en" ? "underline" : ""}`}
             >
               path not in gsp at build time
