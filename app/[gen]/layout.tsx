@@ -19,9 +19,11 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <div className="flex flex-col gap-4 max-w-lg mx-auto pt-10">
-          {gen === "gsp" && (
-            <div className="text-sm text-gray-400">This is the gSP Layout</div>
-          )}
+          <p className="text-sm text-gray-600">
+            current layout params:{" "}
+            <code className="text-pink-300 text-xs">{`{gen: "${gen}"}`}</code>.
+          </p>
+
           <main>{children}</main>
         </div>
       </body>
