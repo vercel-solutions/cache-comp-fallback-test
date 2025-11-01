@@ -1,4 +1,4 @@
-export default async function Blog({
+export default async function Post({
   params,
 }: {
   params: PageProps<"/[lang]/post/[id]">["params"];
