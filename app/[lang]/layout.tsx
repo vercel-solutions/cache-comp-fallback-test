@@ -12,9 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Cache Component Suspense Fallbacks",
-};
+// export const metadata: Metadata = {
+//   title: "Cache Component Suspense Fallbacks",
+// };
 
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "fr" }];
