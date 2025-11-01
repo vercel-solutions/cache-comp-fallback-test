@@ -1,3 +1,5 @@
+import { cacheLife } from "next/cache";
+
 async function api(path: string, options?: RequestInit): Promise<Response> {
   const env = process.env.VERCEL_ENV || "development";
   const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || "localhost:3000";
@@ -16,6 +18,7 @@ async function api(path: string, options?: RequestInit): Promise<Response> {
 
 export async function fetchPost(id: string) {
   "use cache: remote";
+  cacheLife("days");
 
   return api(`/api/post/${id}`).then((res) => res.json());
 }

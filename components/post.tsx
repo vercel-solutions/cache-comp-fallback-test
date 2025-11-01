@@ -1,6 +1,10 @@
 import { fetchPost } from "@/lib/api";
 
-export default async function Post({
+export function PostFallback() {
+  return <div>Loading...</div>;
+}
+
+export async function Post({
   params,
 }: {
   params: PageProps<"/[lang]/post/[id]">["params"];
