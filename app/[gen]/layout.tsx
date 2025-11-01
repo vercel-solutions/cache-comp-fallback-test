@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -19,10 +20,20 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <div className="flex flex-col gap-4 max-w-lg mx-auto pt-10">
-          <p className="text-sm text-gray-600">
-            current layout params:{" "}
-            <code className="text-pink-300 text-xs">{`{gen: "${gen}"}`}</code>.
-          </p>
+          <div className="flex gap-6 mb-4">
+            <Link
+              href="/gsp/post/1"
+              className={`text-sm text-yellow-500 hover:underline ${gen === "gsp" ? "underline" : ""}`}
+            >
+              path in gsp at build time
+            </Link>
+            <Link
+              href="/foo/post/1"
+              className={`text-sm text-yellow-500 hover:underline ${gen !== "gsp" ? "underline" : ""}`}
+            >
+              path not in gsp at build time
+            </Link>
+          </div>
 
           <main>{children}</main>
         </div>
