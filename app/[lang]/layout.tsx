@@ -5,10 +5,6 @@ export const metadata: Metadata = {
   title: "Cache Component Suspense Fallbacks",
 };
 
-export async function generateStaticParams() {
-  return [{ lang: "en" }];
-}
-
 export default async function RootLayout({
   children,
   params,
