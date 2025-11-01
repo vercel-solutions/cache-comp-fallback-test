@@ -8,9 +8,9 @@ export async function generateMetadata() {
 export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
   return (
     <article className="flex flex-col gap-4">
-      {/* <Suspense fallback={<PostFallback />}> */}
-      <Post params={params} />
-      {/* </Suspense> */}
+      <Suspense fallback={<PostFallback />}>
+        <Post params={params} />
+      </Suspense>
     </article>
   );
 }
