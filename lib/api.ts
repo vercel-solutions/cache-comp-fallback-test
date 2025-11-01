@@ -1,4 +1,4 @@
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 
 async function api(path: string, options?: RequestInit): Promise<Response> {
   const env = process.env.VERCEL_ENV || "development";
@@ -19,6 +19,13 @@ async function api(path: string, options?: RequestInit): Promise<Response> {
 export async function fetchPost(id: string) {
   "use cache: remote";
   cacheLife("days");
+  cacheTag("posts", `post-${id}`);
 
-  return api(`/api/post/${id}`).then((res) => res.json());
+  const result = await api(`/api/post/${id}`);
+
+  if (!result.ok) {
+    throw new Error("Failed to fetch post");
+  }
+
+  return result.json();
 }
