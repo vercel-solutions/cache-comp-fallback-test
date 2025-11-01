@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { AuthorCached } from "@/components/author-cached";
 import { Post } from "@/components/post";
 
-export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
+export default async function Page({ params }: PageProps<"/[gen]/post/[id]">) {
   return (
     <article className="flex flex-col gap-4 max-w-md mx-auto pt-10">
       <p className="text-sm text-gray-500 mb-6">

@@ -4,7 +4,7 @@ import { fetchPost } from "@/lib/api";
 export async function Post({
   params,
 }: {
-  params: PageProps<"/[lang]/post/[id]">["params"];
+  params: PageProps<"/[gen]/post/[id]">["params"];
 }) {
   "use cache";
   cacheLife("days");
