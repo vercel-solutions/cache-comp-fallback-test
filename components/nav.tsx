@@ -57,10 +57,7 @@ export function Nav({ items = combinedNavItems }: NavProps) {
 }
 
 function NavSection({ item }: { item: NavItem }) {
-  const pathname = usePathname();
   const hasChildren = item.children && item.children.length > 0;
-  const isActiveSection =
-    hasChildren && item.children?.some((child) => pathname === child.href);
 
   return (
     <div>
