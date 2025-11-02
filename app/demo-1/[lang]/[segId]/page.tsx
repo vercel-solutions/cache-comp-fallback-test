@@ -7,12 +7,15 @@ type Props = PageProps<"/demo-1/[lang]/[segId]">;
 
 export default async function Page({ params }: Props) {
   return (
-    <article className="flex flex-col gap-4 w-full">
+    <article className="flex flex-col gap-6 w-full">
       <p>
-        This sections uses <code>generateStaticParams</code>, returning only{" "}
-        <code>{`{lang: "__"}`}</code>. Notice that when navigating to pages
-        under <code>/__</code>, we see both suspense fallbacks. For all other
-        lang paths, only the 2nd fallback shows.
+        This sections uses <Code>generateStaticParams</Code>, returning only{" "}
+        <Code>{`{lang: "__"}`}</Code>. Notice that when navigating to pages
+        under <Code>/__</Code>, we see both suspense fallbacks. For all other
+        lang paths, only the 2nd fallback shows (as expected). This approach
+        allows us to await <Code>params</Code> for all lang paths except{" "}
+        <Code>/__</Code> without showing the suspense fallback while still
+        getting instant navigation.
       </p>
 
       <div className="flex flex-col gap-4">

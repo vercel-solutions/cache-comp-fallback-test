@@ -36,16 +36,6 @@ const combinedNavItems: NavItem[] = [
       { href: "/demo-2/ca/2", title: "/[ca]/[4]" },
     ],
   },
-  {
-    title: "demo 3",
-    href: "/demo-3",
-    children: [
-      { href: "/demo-3/jp/pg/1", title: "/[jp]/pg/[5]" },
-      { href: "/demo-3/es/pg/1", title: "/[es]/pg/[5]" },
-      { href: "/demo-3/jp/pg/2", title: "/[jp]/pg/[6]" },
-      { href: "/demo-3/es/pg/2", title: "/[es]/pg/[6]" },
-    ],
-  },
 ];
 
 export function Nav({ items = combinedNavItems }: NavProps) {

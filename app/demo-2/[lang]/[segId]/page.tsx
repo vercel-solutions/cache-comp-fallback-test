@@ -7,9 +7,14 @@ type Props = PageProps<"/demo-2/[lang]/[segId]">;
 
 export default async function Page({ params }: Props) {
   return (
-    <article className="flex flex-col gap-4 w-full">
+    <article className="flex flex-col gap-6 w-full">
       <p>
-        this sections does not use <code>generateStaticParams</code> at all.
+        This sections doesn't use <Code>generateStaticParams</Code> at all.
+        Notice that when navigating across different boundaries, we see the{" "}
+        <Code>loading.tsx</Code>. When navigating to pages under the same lang
+        in this section, we see both suspense fallbacks. Without{" "}
+        <Code>generateStaticParams</Code> in place for a single dummy lang,
+        awaiting <Code>params</Code> always shows the fallback.
       </p>
 
       <div className="flex flex-col gap-4">
