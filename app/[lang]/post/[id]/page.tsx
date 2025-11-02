@@ -56,10 +56,10 @@ async function ParamValues({
 
 async function CookieValue() {
   "use cache: private";
-  cacheTag("cookie-value");
   cacheLife({ stale: 60 });
 
   const sessionId = (await cookies()).get("sessionId")?.value;
+  cacheTag(`sessionId-${sessionId}`);
 
   return (
     <div>
