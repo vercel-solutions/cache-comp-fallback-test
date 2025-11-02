@@ -8,6 +8,10 @@ type Props = PageProps<"/demo-2/[lang]/[segId]">;
 export default async function Page({ params }: Props) {
   return (
     <article className="flex flex-col gap-4 w-full">
+      <p>
+        this sections does not use <code>generateStaticParams</code> at all.
+      </p>
+
       <div className="flex flex-col gap-4">
         <Suspense
           fallback={
@@ -39,7 +43,7 @@ export default async function Page({ params }: Props) {
 
 async function ParamValues({ params }: { params: Props["params"] }) {
   "use cache";
-  cacheLife({ stale: 30, revalidate: 30, expire: 30 });
+  cacheLife("max");
 
   const _params = await params;
 

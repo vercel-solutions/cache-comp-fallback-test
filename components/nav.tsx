@@ -23,7 +23,7 @@ const combinedNavItems: NavItem[] = [
       { href: "/demo-1/en/2", title: "/[en]/[2]" },
       { href: "/demo-1/de/2", title: "/[de]/[2]" },
       { href: "/demo-1/__/2", title: "/[__]/[3]" },
-      { href: "/demo-1/__/2", title: "/[__]/[3]" },
+      { href: "/demo-1/__/2", title: "/[__]/[4]" },
     ],
   },
   {

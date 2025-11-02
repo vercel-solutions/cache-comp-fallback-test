@@ -8,6 +8,13 @@ type Props = PageProps<"/demo-1/[lang]/[segId]">;
 export default async function Page({ params }: Props) {
   return (
     <article className="flex flex-col gap-4 w-full">
+      <p>
+        This sections uses <code>generateStaticParams</code>, returning only{" "}
+        <code>{`{lang: "__"}`}</code>. Notice that when navigating to pages
+        under <code>/__</code>, we see both suspense fallbacks. For all other
+        lang paths, only the 2nd fallback shows.
+      </p>
+
       <div className="flex flex-col gap-4">
         <Suspense
           fallback={
