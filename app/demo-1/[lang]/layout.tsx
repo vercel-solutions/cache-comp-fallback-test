@@ -1,25 +1,20 @@
-import type { Metadata } from "next";
 import "@/app/globals.css";
 import { Nav, type NavItem } from "@/components/nav";
 
-export const metadata: Metadata = {
-  title: "Cache Component Suspense Fallbacks",
-};
-
 const navItems: NavItem[] = [
   { href: "/demo-1/en/1", title: "/[en]/[1]" },
-  { href: "/demo-1/fr/2", title: "/[fr]/[1]" },
-  { href: "/demo-1/en/3", title: "/[en]/[2]" },
-  { href: "/demo-1/fr/4", title: "/[fr]/[2]" },
-  { href: "/demo-1/__/0", title: "/[__]/[3]" },
-  { href: "/demo-1/__/0", title: "/[__]/[3]" },
+  { href: "/demo-1/fr/1", title: "/[fr]/[1]" },
+  { href: "/demo-1/de/1", title: "/[de]/[1]" },
+  { href: "/demo-1/en/2", title: "/[en]/[2]" },
+  { href: "/demo-1/fr/2", title: "/[fr]/[2]" },
+  { href: "/demo-1/de/2", title: "/[de]/[2]" },
 ];
 
 export async function generateStaticParams() {
-  return [{ lang: "__" }];
+  return [{ lang: "de" }];
 }
 
-export default async function LangLayout({
+export default async function Demo1LangLayout({
   children,
   params,
 }: Readonly<LayoutProps<"/demo-1/[lang]">>) {
