@@ -41,9 +41,11 @@ async function ParamValues({
   params: PageProps<"/[lang]/post/[id]">["params"];
 }) {
   "use cache";
-  cacheLife("weeks");
+  cacheLife({ stale: 30, revalidate: 30, expire: 30 });
 
   const _params = await params;
+
+  cacheTag(`post-${_params.lang}-${_params.id}`);
 
   return (
     <div>
@@ -56,7 +58,7 @@ async function ParamValues({
 
 async function CookieValue() {
   "use cache: private";
-  cacheLife({ stale: 30, revalidate: 30 });
+  cacheLife({ stale: 30, revalidate: 30, expire: 30 });
 
   const sessionId = (await cookies()).get("sessionId")?.value;
   cacheTag(`sessionId-${sessionId}`);
