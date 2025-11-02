@@ -22,7 +22,7 @@ export async function proxy(req: NextRequest) {
     response.cookies.set(
       "sessionId",
       Math.floor(Math.random() * 1000000).toString(),
-      { maxAge: 60 },
+      { maxAge: 30 },
     );
   }
 
