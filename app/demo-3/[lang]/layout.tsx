@@ -1,10 +1,10 @@
 import "@/app/globals.css";
 import { Nav } from "@/components/nav";
 
-export default async function Demo2LangLayout({
+export default async function Demo3LangLayout({
   children,
   params,
-}: Readonly<LayoutProps<"/demo-2/[lang]">>) {
+}: Readonly<LayoutProps<"/demo-3/[lang]">>) {
   const { lang } = await params;
 
   return (

@@ -1,14 +1,5 @@
 import "@/app/globals.css";
-import { Nav, type NavItem } from "@/components/nav";
-
-const navItems: NavItem[] = [
-  { href: "/demo-1/en/1", title: "/[en]/[1]" },
-  { href: "/demo-1/fr/1", title: "/[fr]/[1]" },
-  { href: "/demo-1/de/1", title: "/[de]/[1]" },
-  { href: "/demo-1/en/2", title: "/[en]/[2]" },
-  { href: "/demo-1/fr/2", title: "/[fr]/[2]" },
-  { href: "/demo-1/de/2", title: "/[de]/[2]" },
-];
+import { Nav } from "@/components/nav";
 
 export async function generateStaticParams() {
   return [{ lang: "de" }];
@@ -31,7 +22,7 @@ export default async function Demo1LangLayout({
 
           {/* Sidebar */}
           <aside className="w-48 py-6.5">
-            <Nav items={navItems} />
+            <Nav />
           </aside>
 
           {/* Main Content Area */}
