@@ -22,8 +22,8 @@ const combinedNavItems: NavItem[] = [
       { href: "/demo-1/de/1", title: "/[de]/[1]" },
       { href: "/demo-1/en/2", title: "/[en]/[2]" },
       { href: "/demo-1/de/2", title: "/[de]/[2]" },
-      { href: "/demo-1/__/3", title: "/[__]/[3]" },
-      { href: "/demo-1/__/4", title: "/[__]/[4]" },
+      { href: "/demo-1/__/3", title: "/[__]/[5]" },
+      { href: "/demo-1/__/4", title: "/[__]/[6]" },
     ],
   },
   {
@@ -31,8 +31,8 @@ const combinedNavItems: NavItem[] = [
     href: "/demo-2",
     children: [
       { href: "/demo-2/fr/1", title: "/[fr]/[3]" },
-      { href: "/demo-2/ca/1", title: "/[ca]/[3]" },
       { href: "/demo-2/fr/2", title: "/[fr]/[4]" },
+      { href: "/demo-2/ca/1", title: "/[ca]/[3]" },
       { href: "/demo-2/ca/2", title: "/[ca]/[4]" },
     ],
   },
