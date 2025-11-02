@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
-import "../globals.css";
-import { Nav } from "@/components/nav";
+import "@/app/globals.css";
+import { Nav, type NavItem } from "@/components/nav";
 
 export const metadata: Metadata = {
   title: "Cache Component Suspense Fallbacks",
 };
 
+const navItems: NavItem[] = [
+  { href: "/en/post/1", title: "[en] post 1" },
+  { href: "/en/post/2", title: "[en] post 2" },
+  { href: "/fr/post/3", title: "[fr] post 3" },
+  { href: "/fr/post/4", title: "[fr] post 4" },
+];
+
 export async function generateStaticParams() {
-  return [{ lang: "__throwaway__" }];
+  return [{ lang: "_placeholder_" }];
 }
 
 export default async function RootLayout({
   children,
   params,
-}: Readonly<LayoutProps<"/[lang]">>) {
+}: Readonly<LayoutProps<"/demo-1/[lang]">>) {
   const { lang } = await params;
 
   return (
@@ -27,7 +34,7 @@ export default async function RootLayout({
 
           {/* Sidebar */}
           <aside className="w-48 py-6.5">
-            <Nav />
+            <Nav items={navItems} />
           </aside>
 
           {/* Main Content Area */}

@@ -3,7 +3,9 @@ import { cookies } from "next/headers";
 import { Suspense } from "react";
 import { Code } from "@/components/code";
 
-export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
+type Props = PageProps<"/demo-1/[lang]/post/[id]">;
+
+export default async function Page({ params }: Props) {
   return (
     <article className="flex flex-col gap-4 w-full">
       <div className="flex flex-col gap-4">
@@ -35,11 +37,7 @@ export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
   );
 }
 
-async function ParamValues({
-  params,
-}: {
-  params: PageProps<"/[lang]/post/[id]">["params"];
-}) {
+async function ParamValues({ params }: { params: Props["params"] }) {
   "use cache";
   cacheLife({ stale: 30, revalidate: 30, expire: 30 });
 

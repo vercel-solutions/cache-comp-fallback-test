@@ -3,13 +3,23 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export function Nav() {
+export interface NavItem {
+  href: string;
+  title: string;
+}
+
+interface NavProps {
+  items: NavItem[];
+}
+
+export function Nav({ items }: NavProps) {
   return (
     <nav>
-      <NavLink href={`/en/post/1`}>[en] post 1</NavLink>
-      <NavLink href={`/en/post/2`}>[en] post 2</NavLink>
-      <NavLink href={`/fr/post/3`}>[fr] post 3</NavLink>
-      <NavLink href={`/fr/post/4`}>[fr] post 4</NavLink>
+      {items.map((item) => (
+        <NavLink key={item.href} href={item.href}>
+          {item.title}
+        </NavLink>
+      ))}
     </nav>
   );
 }
