@@ -65,16 +65,12 @@ async function CookieValue() {
     ? Date.now() - Number.parseInt(cookieValue, 10) > 60000
     : false;
 
-  if (isExpired) {
-    updateTag("cookie-value");
-  }
-
   return (
     <div>
       <p>
         user cookie:{" "}
         <Code>
-          {`${cookieValue}`} {isExpired ? "[expired]" : ""}
+          {`${cookieValue}`} {isExpired ? "[stale]" : ""}
         </Code>
       </p>
     </div>

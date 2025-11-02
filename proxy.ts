@@ -1,3 +1,4 @@
+import { revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 
 export const config = {
@@ -25,6 +26,7 @@ export async function proxy(req: NextRequest) {
 
     // If more than 60 seconds old, set a new userId
     if (timeDifference > 120000) {
+      revalidateTag("cookie-value", { expire: 0 });
       response.cookies.set("userId", now.toString());
     }
   } else {
