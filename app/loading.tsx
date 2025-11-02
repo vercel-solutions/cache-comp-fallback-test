@@ -1,3 +1,9 @@
+import { Code } from "@/components/code";
+
 export default function Loading() {
-  return <div>Loading...</div>;
+  return (
+    <div className="flex justify-center items-center h-svh bg-blue-500 text-white">
+      <Code>loading.tsx</Code>
+    </div>
+  );
 }

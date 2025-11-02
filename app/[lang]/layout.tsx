@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import "../globals.css";
+import { Nav } from "@/components/nav";
 
 export const metadata: Metadata = {
   title: "Cache Component Suspense Fallbacks",
 };
+
+export async function generateStaticParams() {
+  return [{ lang: "__throwaway__" }];
+}
 
 export default async function RootLayout({
   children,
@@ -22,24 +26,8 @@ export default async function RootLayout({
           <div className="absolute bottom-0 right-0 size-10 -m-px border-b border-r border-neutral-700" />
 
           {/* Sidebar */}
-          <aside className="w-48 py-6">
-            <nav className="space-y-2">
-              <Link href={`/${lang}`} className="block px-4 md:px-6 py-1">
-                runtime params
-              </Link>
-              <Link href={`/en/post/1`} className="block px-4 md:px-6 py-1">
-                [en] post 1
-              </Link>
-              <Link href={`/en/post/2`} className="block px-4 md:px-6 py-1">
-                [en] post 2
-              </Link>
-              <Link href={`/fr/post/3`} className="block px-4 md:px-6 py-1">
-                [fr] post 3
-              </Link>
-              <Link href={`/fr/post/4`} className="block px-4 md:px-6 py-1">
-                [fr] post 4
-              </Link>
-            </nav>
+          <aside className="w-48 py-6.5">
+            <Nav />
           </aside>
 
           {/* Main Content Area */}

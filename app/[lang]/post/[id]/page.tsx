@@ -1,17 +1,31 @@
+import { cacheLife } from "next/cache";
 import { cookies } from "next/headers";
 import { Suspense } from "react";
+import { Code } from "@/components/code";
 
 export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
   return (
     <article className="flex flex-col gap-4 w-full">
       <div className="flex flex-col gap-4">
-        <Suspense fallback={<Fallback />}>
+        <Suspense
+          fallback={
+            <Fallback>
+              <TextSkeleton />
+            </Fallback>
+          }
+        >
           <Boundary>
             <ParamValues params={params} />
           </Boundary>
         </Suspense>
 
-        <Suspense fallback={<Fallback />}>
+        <Suspense
+          fallback={
+            <Fallback>
+              <TextSkeleton />
+            </Fallback>
+          }
+        >
           <Boundary>
             <CookieValue />
           </Boundary>
@@ -39,6 +53,9 @@ async function ParamValues({
 }: {
   params: PageProps<"/[lang]/post/[id]">["params"];
 }) {
+  "use cache";
+  cacheLife("weeks");
+
   const _params = await params;
 
   return (
@@ -102,10 +119,6 @@ function Fallback({ children }: { children?: React.ReactNode }) {
       {children}
     </div>
   );
-}
-
-function Code({ children }: { children: React.ReactNode }) {
-  return <code className="text-pink-300 text-xs">{children}</code>;
 }
 
 function TextSkeleton() {
