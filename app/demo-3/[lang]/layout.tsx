@@ -1,6 +1,10 @@
 import "@/app/globals.css";
 import { Nav } from "@/components/nav";
 
+export async function generateStaticParams() {
+  return [{ lang: "__sample__" }];
+}
+
 export default async function Demo3LangLayout({
   children,
   params,
