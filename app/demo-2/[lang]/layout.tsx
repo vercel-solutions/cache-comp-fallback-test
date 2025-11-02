@@ -7,22 +7,18 @@ export const metadata: Metadata = {
 };
 
 const navItems: NavItem[] = [
-  { href: "/demo-1/en/1", title: "/[en]/[1]" },
-  { href: "/demo-1/fr/2", title: "/[fr]/[1]" },
-  { href: "/demo-1/en/3", title: "/[en]/[2]" },
-  { href: "/demo-1/fr/4", title: "/[fr]/[2]" },
-  { href: "/demo-1/__/0", title: "/[__]/[3]" },
-  { href: "/demo-1/__/0", title: "/[__]/[3]" },
+  { href: "/demo-2/en/1", title: "/[en]/[1]" },
+  { href: "/demo-2/fr/2", title: "/[fr]/[1]" },
+  { href: "/demo-2/en/3", title: "/[en]/[2]" },
+  { href: "/demo-2/fr/4", title: "/[fr]/[2]" },
+  { href: "/demo-2/__/0", title: "/[__]/[3]" },
+  { href: "/demo-2/__/0", title: "/[__]/[3]" },
 ];
-
-export async function generateStaticParams() {
-  return [{ lang: "__" }];
-}
 
 export default async function LangLayout({
   children,
   params,
-}: Readonly<LayoutProps<"/demo-1/[lang]">>) {
+}: Readonly<LayoutProps<"/demo-2/[lang]">>) {
   const { lang } = await params;
 
   return (
