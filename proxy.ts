@@ -1,4 +1,3 @@
-import { revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 
 export const config = {
@@ -16,22 +15,15 @@ export async function proxy(req: NextRequest) {
 
   const response = NextResponse.next();
 
-  // Get the existing userId cookie
-  const existingCookie = req.cookies.get("userId");
-  const now = Date.now();
+  // Get the existing sessionId cookie
+  const existingCookie = req.cookies.get("sessionId");
 
-  if (existingCookie) {
-    const cookieTimestamp = Number.parseInt(existingCookie.value, 10);
-    const timeDifference = now - cookieTimestamp;
-
-    // If more than 60 seconds old, set a new userId
-    if (timeDifference > 120000) {
-      revalidateTag("cookie-value", { expire: 0 });
-      response.cookies.set("userId", now.toString());
-    }
-  } else {
-    // Cookie doesn't exist, set it to now
-    response.cookies.set("userId", now.toString());
+  if (!existingCookie) {
+    response.cookies.set(
+      "sessionId",
+      Math.floor(Math.random() * 1000000).toString(),
+      { maxAge: 60000 },
+    );
   }
 
   return response;

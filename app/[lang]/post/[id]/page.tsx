@@ -59,19 +59,12 @@ async function CookieValue() {
   cacheTag("cookie-value");
   cacheLife({ stale: 60 });
 
-  const cookieValue = (await cookies()).get("userId")?.value;
-
-  const isExpired = cookieValue
-    ? Date.now() - Number.parseInt(cookieValue, 10) > 60000
-    : false;
+  const sessionId = (await cookies()).get("sessionId")?.value;
 
   return (
     <div>
       <p>
-        user cookie:{" "}
-        <Code>
-          {`${cookieValue}`} {isExpired ? "[stale]" : ""}
-        </Code>
+        sessionId cookie: <Code>{`${sessionId}`}</Code>
       </p>
     </div>
   );
