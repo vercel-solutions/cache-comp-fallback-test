@@ -92,7 +92,7 @@ async function ParamsAndCookies({
 
 async function CookieValue() {
   "use cache: private";
-  cacheLife("minutes");
+  cacheLife({ stale: 60 });
 
   const userId = (await cookies()).get("userId")?.value;
 

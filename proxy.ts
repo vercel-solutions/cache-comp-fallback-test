@@ -14,7 +14,23 @@ export async function proxy(req: NextRequest) {
   }
 
   const response = NextResponse.next();
-  response.cookies.set("userId", Date.now().toString());
+
+  // Get the existing userId cookie
+  const existingCookie = req.cookies.get("userId");
+  const now = Date.now();
+
+  if (existingCookie) {
+    const cookieTimestamp = Number.parseInt(existingCookie.value, 10);
+    const timeDifference = now - cookieTimestamp;
+
+    // If more than 60 seconds old, set a new userId
+    if (timeDifference > 120000) {
+      response.cookies.set("userId", now.toString());
+    }
+  } else {
+    // Cookie doesn't exist, set it to now
+    response.cookies.set("userId", now.toString());
+  }
 
   return response;
 }
