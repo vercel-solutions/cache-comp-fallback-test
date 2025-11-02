@@ -1,12 +1,14 @@
-import { cacheLife, cacheTag } from "next/cache";
-import { cookies } from "next/headers";
 import { Suspense } from "react";
 import { Boundary } from "@/components/boundary";
 import { Code } from "@/components/code";
+import { CookieValue } from "@/components/cookie-value";
+import { Fallback } from "@/components/fallback";
+import { ParamValues } from "@/components/param-values";
+import { TextSkeleton } from "@/components/text-skeleton";
 
-type Props = PageProps<"/demo-1/[lang]/[segId]">;
-
-export default async function Page({ params }: Props) {
+export default async function Page({
+  params,
+}: PageProps<"/demo-1/[lang]/[segId]">) {
   return (
     <article className="flex flex-col gap-6 w-full">
       <p className="text-xs leading-relaxed text-neutral-300">
@@ -49,58 +51,5 @@ export default async function Page({ params }: Props) {
         </Suspense>
       </div>
     </article>
-  );
-}
-
-async function ParamValues({ params }: { params: Props["params"] }) {
-  "use cache";
-  cacheLife("weeks");
-
-  const _params = await params;
-
-  cacheTag(`post-${_params.lang}-${_params.segId}`);
-
-  return (
-    <div>
-      <p>
-        params:{" "}
-        <Code>{`{lang: "${_params.lang}", segId: "${_params.segId}"}`}</Code>
-      </p>
-    </div>
-  );
-}
-
-async function CookieValue() {
-  "use cache: private";
-  cacheLife({ stale: 30, revalidate: 30, expire: 30 });
-
-  const sessionId = (await cookies()).get("sessionId")?.value;
-  cacheTag(`sessionId-${sessionId}`);
-
-  return (
-    <div>
-      <p>
-        sessionId cookie: <Code>{`${sessionId}`}</Code>
-      </p>
-    </div>
-  );
-}
-
-function Fallback({ children }: { children?: React.ReactNode }) {
-  return (
-    <div className="relative border border-dashed border-yellow-500/50 p-4 pt-8">
-      <div className="absolute top-0 left-0 -m-px px-1.5 py-0.5 text-xs text-yellow-500 border-r border-b border-dashed border-yellow-500/50">
-        suspense fallback
-      </div>
-      {children}
-    </div>
-  );
-}
-
-function TextSkeleton() {
-  return (
-    <div className="flex items-center h-[18px]">
-      <div className="h-3 w-64 bg-neutral-700 animate-pulse" />
-    </div>
   );
 }
