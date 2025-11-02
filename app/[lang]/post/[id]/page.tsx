@@ -72,6 +72,9 @@ async function ParamsAndCookies({
 }: {
   params: PageProps<"/[lang]/post/[id]">["params"];
 }) {
+  "use cache: private";
+  cacheLife("minutes");
+
   const _params = await params;
   const userId = (await cookies()).get("userId")?.value;
 
@@ -88,6 +91,9 @@ async function ParamsAndCookies({
 }
 
 async function CookieValue() {
+  "use cache: private";
+  cacheLife("minutes");
+
   const userId = (await cookies()).get("userId")?.value;
 
   return (
