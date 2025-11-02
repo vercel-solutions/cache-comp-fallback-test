@@ -1,9 +1,9 @@
-import { cacheLife, cacheTag, revalidateTag, updateTag } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import { cookies } from "next/headers";
 import { Suspense } from "react";
 import { Code } from "@/components/code";
 
-type Props = PageProps<"/demo-1/[lang]/post/[id]">;
+type Props = PageProps<"/demo-1/[lang]/[segId]">;
 
 export default async function Page({ params }: Props) {
   return (
@@ -43,7 +43,7 @@ async function ParamValues({ params }: { params: Props["params"] }) {
 
   const _params = await params;
 
-  cacheTag(`post-${_params.lang}-${_params.id}`);
+  cacheTag(`post-${_params.lang}-${_params.segId}`);
 
   return (
     <div>

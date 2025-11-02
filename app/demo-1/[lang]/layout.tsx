@@ -7,18 +7,18 @@ export const metadata: Metadata = {
 };
 
 const navItems: NavItem[] = [
-  { href: "/demo-1/__/post/0", title: "[__] post 0" },
-  { href: "/demo-1/en/post/1", title: "[en] post 1" },
-  { href: "/demo-1/fr/post/2", title: "[fr] post 1" },
-  { href: "/demo-1/en/post/3", title: "[en] post 2" },
-  { href: "/demo-1/fr/post/4", title: "[fr] post 2" },
+  { href: "/demo-1/__/0", title: "/[__]/[0]" },
+  { href: "/demo-1/en/1", title: "/[en]/[1]" },
+  { href: "/demo-1/fr/2", title: "/[fr]/[1]" },
+  { href: "/demo-1/en/3", title: "/[en]/[2]" },
+  { href: "/demo-1/fr/4", title: "/[fr]/[2]" },
 ];
 
 export async function generateStaticParams() {
   return [{ lang: "__" }];
 }
 
-export default async function RootLayout({
+export default async function LangLayout({
   children,
   params,
 }: Readonly<LayoutProps<"/demo-1/[lang]">>) {
