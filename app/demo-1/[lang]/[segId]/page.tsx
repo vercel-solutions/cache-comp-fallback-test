@@ -39,7 +39,7 @@ export default async function Page({ params }: Props) {
 
 async function ParamValues({ params }: { params: Props["params"] }) {
   "use cache";
-  cacheLife({ stale: 30, revalidate: 30, expire: 30 });
+  cacheLife("weeks");
 
   const _params = await params;
 
