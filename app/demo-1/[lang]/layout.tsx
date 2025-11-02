@@ -2,7 +2,7 @@ import "@/app/globals.css";
 import { Nav } from "@/components/nav";
 
 export async function generateStaticParams() {
-  return [{ lang: "__sample1__" }];
+  return [{ lang: "__" }];
 }
 
 export default async function Demo1LangLayout({
