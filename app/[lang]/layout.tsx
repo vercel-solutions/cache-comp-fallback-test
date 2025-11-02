@@ -27,16 +27,16 @@ export default async function RootLayout({
               <Link href={`/${lang}`} className="block px-4 md:px-6 py-1">
                 runtime params
               </Link>
-              <Link href={`/${lang}`} className="block px-4 md:px-6 py-1">
+              <Link href={`/en/post/1`} className="block px-4 md:px-6 py-1">
                 [en] post 1
               </Link>
-              <Link href={`/${lang}`} className="block px-4 md:px-6 py-1">
+              <Link href={`/en/post/2`} className="block px-4 md:px-6 py-1">
                 [en] post 2
               </Link>
-              <Link href={`/${lang}`} className="block px-4 md:px-6 py-1">
+              <Link href={`/fr/post/3`} className="block px-4 md:px-6 py-1">
                 [fr] post 3
               </Link>
-              <Link href={`/${lang}`} className="block px-4 md:px-6 py-1">
+              <Link href={`/fr/post/4`} className="block px-4 md:px-6 py-1">
                 [fr] post 4
               </Link>
             </nav>
