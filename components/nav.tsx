@@ -28,20 +28,20 @@ const combinedNavItems: NavItem[] = [
     title: "demo 2",
     href: "/demo-2",
     children: [
-      { href: "/demo-2/en/1", title: "/[en]/[1]" },
-      { href: "/demo-2/de/1", title: "/[de]/[1]" },
-      { href: "/demo-2/en/2", title: "/[en]/[2]" },
-      { href: "/demo-2/de/2", title: "/[de]/[2]" },
+      { href: "/demo-2/fr/1", title: "/[fr]/[3]" },
+      { href: "/demo-2/ca/1", title: "/[ca]/[3]" },
+      { href: "/demo-2/fr/2", title: "/[fr]/[4]" },
+      { href: "/demo-2/ca/2", title: "/[ca]/[4]" },
     ],
   },
   {
     title: "demo 3",
     href: "/demo-3",
     children: [
-      { href: "/demo-3/en/pg/1", title: "/[en]/pg/[1]" },
-      { href: "/demo-3/de/pg/1", title: "/[de]/pg/[1]" },
-      { href: "/demo-3/en/pg/2", title: "/[en]/pg/[2]" },
-      { href: "/demo-3/de/pg/2", title: "/[de]/pg/[2]" },
+      { href: "/demo-3/jp/pg/1", title: "/[jp]/pg/[5]" },
+      { href: "/demo-3/es/pg/1", title: "/[es]/pg/[5]" },
+      { href: "/demo-3/jp/pg/2", title: "/[jp]/pg/[6]" },
+      { href: "/demo-3/es/pg/2", title: "/[es]/pg/[6]" },
     ],
   },
 ];
