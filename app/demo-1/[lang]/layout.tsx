@@ -26,7 +26,7 @@ export default async function Demo1LangLayout({
           </aside>
 
           {/* Main Content Area */}
-          <main className="flex flex-col items-center justify-center md:min-w-lg flex-1 overflow-y-auto max-md:p-4 p-8 max-md:border-t border-l border-dashed border-neutral-800">
+          <main className="flex flex-col items-center justify-center w-full md:max-w-xl min-h-[420px] flex-1 overflow-y-auto max-md:p-4 p-8 max-md:border-t border-l border-dashed border-neutral-800">
             {children}
           </main>
         </div>

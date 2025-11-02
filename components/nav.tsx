@@ -22,8 +22,8 @@ const combinedNavItems: NavItem[] = [
       { href: "/demo-1/de/1", title: "/[de]/[1]" },
       { href: "/demo-1/en/2", title: "/[en]/[2]" },
       { href: "/demo-1/de/2", title: "/[de]/[2]" },
-      { href: "/demo-1/__/2", title: "/[__]/[3]" },
-      { href: "/demo-1/__/2", title: "/[__]/[4]" },
+      { href: "/demo-1/__/3", title: "/[__]/[3]" },
+      { href: "/demo-1/__/4", title: "/[__]/[4]" },
     ],
   },
   {
@@ -40,7 +40,7 @@ const combinedNavItems: NavItem[] = [
 
 export function Nav({ items = combinedNavItems }: NavProps) {
   return (
-    <nav className="flex flex-col gap-2">
+    <nav className="flex flex-col gap-4">
       {items.map((item) => (
         <NavSection key={item.href || item.title} item={item} />
       ))}
