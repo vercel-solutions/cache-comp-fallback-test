@@ -7,10 +7,10 @@ export const metadata: Metadata = {
 };
 
 const navItems: NavItem[] = [
-  { href: "/en/post/1", title: "[en] post 1" },
-  { href: "/en/post/2", title: "[en] post 2" },
-  { href: "/fr/post/3", title: "[fr] post 3" },
-  { href: "/fr/post/4", title: "[fr] post 4" },
+  { href: "/demo-1/en/post/1", title: "[en] post 1" },
+  { href: "/demo-1/en/post/2", title: "[en] post 2" },
+  { href: "/demo-1/fr/post/3", title: "[fr] post 3" },
+  { href: "/demo-1/fr/post/4", title: "[fr] post 4" },
 ];
 
 export async function generateStaticParams() {
