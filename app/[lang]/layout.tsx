@@ -6,10 +6,6 @@ export const metadata: Metadata = {
   title: "Cache Component Suspense Fallbacks",
 };
 
-export async function generateStaticParams() {
-  return [{ lang: "en" }];
-}
-
 export default async function RootLayout({
   children,
   params,
@@ -18,24 +14,26 @@ export default async function RootLayout({
 
   return (
     <html lang={lang}>
-      <body>
-        <div className="flex flex-col gap-4 max-w-lg mx-auto pt-10">
-          <div className="flex gap-6 mb-4">
-            <Link
-              href="/en/post/1"
-              className={`text-sm text-yellow-500 hover:underline ${lang === "en" ? "underline" : ""}`}
-            >
-              path in gsp at build time
-            </Link>
-            <Link
-              href="/fr/post/1"
-              className={`text-sm text-yellow-500 hover:underline ${lang !== "en" ? "underline" : ""}`}
-            >
-              path not in gsp at build time
-            </Link>
-          </div>
+      <body className="flex justify-center items-center h-svh">
+        <div className="flex max-md:flex-col justify-center items-stretch max-w-4xl relative mx-auto border border-dashed border-neutral-800">
+          <div className="absolute top-0 left-0 size-10 -m-px border-t border-l border-neutral-700" />
+          <div className="absolute top-0 right-0 size-10 -m-px border-t border-r border-neutral-700" />
+          <div className="absolute bottom-0 left-0 size-10 -m-px border-b border-l border-neutral-700" />
+          <div className="absolute bottom-0 right-0 size-10 -m-px border-b border-r border-neutral-700" />
 
-          <main>{children}</main>
+          {/* Sidebar */}
+          <aside className="w-48 py-6">
+            <nav className="space-y-2">
+              <Link href={`/${lang}`} className="block px-4 md:px-6 py-1">
+                runtime params
+              </Link>
+            </nav>
+          </aside>
+
+          {/* Main Content Area */}
+          <main className="flex flex-col items-center justify-center md:min-w-lg flex-1 overflow-y-auto max-md:p-4 p-8 max-md:border-t border-l border-dashed border-neutral-800">
+            {children}
+          </main>
         </div>
       </body>
     </html>

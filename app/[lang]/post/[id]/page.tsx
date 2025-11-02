@@ -1,72 +1,117 @@
+import { cookies } from "next/headers";
 import { Suspense } from "react";
-import { AuthorCached } from "@/components/author-cached";
-import { AuthorDynamic } from "@/components/author-dynamic";
-import { Post } from "@/components/post";
 
 export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
   return (
-    <article className="flex flex-col gap-4">
-      <p className="text-sm text-gray-300">
-        Our top level dynamic segment{" "}
-        <code className="text-pink-300 text-xs">/[lang]</code> uses{" "}
-        <code className="text-pink-300 text-xs">generateStaticParams</code> in
-        the layout, returning a single path:{" "}
-        <code className="text-pink-300 text-xs">"en"</code>.
-      </p>
-
-      <pre>
-        <code className="text-pink-300 text-xs">{`export async function generateStaticParams() {
-  return [{ lang: "en" }];
-}`}</code>
-      </pre>
-
-      <p className="text-sm text-gray-300">
-        This page renders{" "}
-        <strong>two cached components and one dynamic component</strong> wrapped
-        in suspense that read from params to fetch remote data.
-      </p>
-      <p className="text-sm text-gray-300">
-        If we are under the <code className="text-pink-300 text-xs">/en</code>{" "}
-        path, we will always see the suspense fallbacks for all componentswhen
-        the page is loaded.
-      </p>
-      <p className="text-sm text-gray-300">
-        If we are under the any other lang path, the cached components will not
-        show the suspense fallbacksm whle the dynamic component will. This is
-        the behavior we expect.
-      </p>
-
-      <div className="flex flex-col gap-4 mt-4">
+    <article className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col gap-4">
         <Suspense fallback={<Fallback />}>
-          <Content>
-            <AuthorCached idPromise={params.then((p) => p.id)} />
-          </Content>
+          <Boundary>
+            <ParamValues params={params} />
+          </Boundary>
         </Suspense>
 
         <Suspense fallback={<Fallback />}>
-          <Content>
-            <AuthorDynamic idPromise={params.then((p) => p.id)} />
-          </Content>
+          <Boundary>
+            <CookieValue />
+          </Boundary>
         </Suspense>
 
-        <Suspense fallback={<Fallback />}>
-          <Content>
-            <Post params={params} />
-          </Content>
+        <Suspense
+          fallback={
+            <Fallback>
+              <TextSkeleton />
+              <TextSkeleton />
+            </Fallback>
+          }
+        >
+          <Boundary>
+            <ParamsAndCookies params={params} />
+          </Boundary>
         </Suspense>
       </div>
     </article>
   );
 }
 
-function Content({ children }: { children: React.ReactNode }) {
+async function ParamValues({
+  params,
+}: {
+  params: PageProps<"/[lang]/post/[id]">["params"];
+}) {
+  const _params = await params;
+
   return (
-    <div className="border border-blue-500 p-2 rounded-sm">{children}</div>
+    <div>
+      <p>
+        runtime params: <Code>{JSON.stringify(_params, null, 2)}</Code>
+      </p>
+    </div>
   );
 }
 
-function Fallback() {
+async function ParamsAndCookies({
+  params,
+}: {
+  params: PageProps<"/[lang]/post/[id]">["params"];
+}) {
+  const _params = await params;
+  const userId = (await cookies()).get("userId")?.value;
+
   return (
-    <div className="border border-yellow-500 p-2 rounded-sm">Loading...</div>
+    <div>
+      <p>
+        runtime params: <Code>{JSON.stringify(_params, null, 2)}</Code>
+      </p>
+      <p>
+        user cookie: <Code>{`${userId}`}</Code>
+      </p>
+    </div>
+  );
+}
+
+async function CookieValue() {
+  const userId = (await cookies()).get("userId")?.value;
+
+  return (
+    <div>
+      <p>
+        user cookie: <Code>{`${userId}`}</Code>
+      </p>
+    </div>
+  );
+}
+
+function Boundary({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative border border-dashed border-blue-500/50 p-4 pt-8">
+      <div className="absolute top-0 left-0 -m-px px-1.5 py-0.5 text-xs text-blue-500 border-r border-b border-dashed border-blue-500/50">
+        suspense
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function Fallback({ children }: { children?: React.ReactNode }) {
+  return (
+    <div className="relative border border-dashed border-yellow-500/50 p-4 pt-8">
+      <div className="absolute top-0 left-0 -m-px px-1.5 py-0.5 text-xs text-yellow-500 border-r border-b border-dashed border-yellow-500/50">
+        suspense fallback
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function Code({ children }: { children: React.ReactNode }) {
+  return <code className="text-pink-300 text-xs">{children}</code>;
+}
+
+function TextSkeleton() {
+  return (
+    <div className="flex items-center h-[18px]">
+      <div className="h-3 w-64 bg-neutral-700 animate-pulse" />
+    </div>
   );
 }

@@ -13,5 +13,8 @@ export async function proxy(req: NextRequest) {
     return NextResponse.redirect(new URL(`/en/post/1`, req.url));
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  response.cookies.set("userId", Date.now().toString());
+
+  return response;
 }
