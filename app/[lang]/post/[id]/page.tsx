@@ -1,4 +1,4 @@
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag, revalidateTag, updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { Suspense } from "react";
 import { Code } from "@/components/code";
@@ -30,19 +30,6 @@ export default async function Page({ params }: PageProps<"/[lang]/post/[id]">) {
             <CookieValue />
           </Boundary>
         </Suspense>
-
-        <Suspense
-          fallback={
-            <Fallback>
-              <TextSkeleton />
-              <TextSkeleton />
-            </Fallback>
-          }
-        >
-          <Boundary>
-            <ParamsAndCookies params={params} />
-          </Boundary>
-        </Suspense>
       </div>
     </article>
   );
@@ -67,39 +54,28 @@ async function ParamValues({
   );
 }
 
-async function ParamsAndCookies({
-  params,
-}: {
-  params: PageProps<"/[lang]/post/[id]">["params"];
-}) {
-  "use cache: private";
-  cacheLife("minutes");
-
-  const _params = await params;
-  const userId = (await cookies()).get("userId")?.value;
-
-  return (
-    <div>
-      <p>
-        runtime params: <Code>{JSON.stringify(_params, null, 2)}</Code>
-      </p>
-      <p>
-        user cookie: <Code>{`${userId}`}</Code>
-      </p>
-    </div>
-  );
-}
-
 async function CookieValue() {
   "use cache: private";
+  cacheTag("cookie-value");
   cacheLife({ stale: 60 });
 
-  const userId = (await cookies()).get("userId")?.value;
+  const cookieValue = (await cookies()).get("userId")?.value;
+
+  const isExpired = cookieValue
+    ? Date.now() - Number.parseInt(cookieValue, 10) > 60000
+    : false;
+
+  if (isExpired) {
+    updateTag("cookie-value");
+  }
 
   return (
     <div>
       <p>
-        user cookie: <Code>{`${userId}`}</Code>
+        user cookie:{" "}
+        <Code>
+          {`${cookieValue}`} {isExpired ? "[expired]" : ""}
+        </Code>
       </p>
     </div>
   );
