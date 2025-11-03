@@ -3,7 +3,7 @@ import { Boundary } from "@/components/boundary";
 import { Code } from "@/components/code";
 import { CookieValue } from "@/components/cookie-value";
 import { Fallback } from "@/components/fallback";
-import { ParamValues } from "@/components/param-values-demo2";
+import { ParamValues } from "@/components/param-values";
 import { TextSkeleton } from "@/components/text-skeleton";
 
 export default async function Page({
