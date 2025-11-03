@@ -31,7 +31,7 @@ export default async function Page({
             </Fallback>
           }
         >
-          <Boundary label="suspense 'use cache'">
+          <Boundary label="suspense">
             <ParamValues params={params} />
           </Boundary>
         </Suspense>
