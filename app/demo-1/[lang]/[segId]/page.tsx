@@ -45,7 +45,7 @@ export default async function Page({
             </Fallback>
           }
         >
-          <Boundary label="suspense 'use cache: private'">
+          <Boundary label="suspense">
             <CookieValue />
           </Boundary>
         </Suspense>
