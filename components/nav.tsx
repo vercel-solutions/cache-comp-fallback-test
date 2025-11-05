@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 
 export interface NavItem {
   href: string;
@@ -30,14 +31,11 @@ const combinedNavItems: NavItem[] = [
   },
 ];
 
-export function Nav({ items = combinedNavItems }: NavProps) {
-  const pathname = usePathname();
-  const postId = pathname.split("/")[1]; // Extract postId from pathname like "/1/use-cache"
-
+export function Nav() {
   return (
     <nav className="flex flex-col gap-4">
-      {items.map((item) => (
-        <NavSection key={item.href || item.title} item={item} postId={postId} />
+      {combinedNavItems.map((item) => (
+        <NavSection key={item.href || item.title} item={item} />
       ))}
     </nav>
   );
@@ -47,24 +45,26 @@ function NavSection({ item }: { item: NavItem; postId?: string }) {
   const hasChildren = item.children && item.children.length > 0;
 
   return (
-    <div>
-      {hasChildren && item.children ? (
-        <>
-          <div className="px-4 md:px-6 py-1 font-semibold text-xs text-neutral-300 mb-2">
-            {item.title}
-          </div>
-          <div className="">
-            {item.children.map((child) => (
-              <NavLink key={child.href} href={child.href}>
-                {child.title}
-              </NavLink>
-            ))}
-          </div>
-        </>
-      ) : (
-        <NavLink href={item.href}>{item.title}</NavLink>
-      )}
-    </div>
+    <Suspense>
+      <div>
+        {hasChildren && item.children ? (
+          <>
+            <div className="px-4 md:px-6 py-1 font-semibold text-xs text-neutral-300 mb-2">
+              {item.title}
+            </div>
+            <div className="">
+              {item.children.map((child) => (
+                <NavLink key={child.href} href={child.href}>
+                  {child.title}
+                </NavLink>
+              ))}
+            </div>
+          </>
+        ) : (
+          <NavLink href={item.href}>{item.title}</NavLink>
+        )}
+      </div>
+    </Suspense>
   );
 }
 
