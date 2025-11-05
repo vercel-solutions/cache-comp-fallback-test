@@ -9,11 +9,13 @@ import { TextSkeleton } from "@/components/text-skeleton";
 import { getPost } from "@/lib/api";
 
 async function PostTitle({ id }: { id: string }) {
+  "use cache";
   const post = await getPost(id);
   return <h2 className="text-base font-bold">{post.title}</h2>;
 }
 
 async function PostContent({ id }: { id: string }) {
+  "use cache";
   const post = await getPost(id);
   return <p className="text-sm text-neutral-400">{post.body}</p>;
 }
