@@ -8,15 +8,15 @@ import { Code } from "@/components/code";
 import { TextSkeleton } from "@/components/text-skeleton";
 import { getPost } from "@/lib/api";
 
-async function PostTitle({ id }: { id: Promise<string> }) {
+async function PostTitle({ id }: { id: string }) {
   "use cache";
-  const post = await getPost(await id);
+  const post = await getPost(id);
   return <h2 className="text-base font-bold">{post.title}</h2>;
 }
 
-async function PostContent({ id }: { id: Promise<string> }) {
+async function PostContent({ id }: { id: string }) {
   "use cache";
-  const post = await getPost(await id);
+  const post = await getPost(id);
   return <p className="text-sm text-neutral-400">{post.body}</p>;
 }
 
@@ -25,13 +25,11 @@ async function User() {
   return <p className="text-xs text-neutral-400">Session ID: {sessionId}</p>;
 }
 
-export async function generateStaticParams() {
-  return [{ postId: "1" }];
-}
-
 export default async function Page({
   params,
 }: PageProps<"/[postId]/use-cache">) {
+  const { postId } = await params;
+
   return (
     <article className="flex flex-col gap-6 w-full">
       <p>
@@ -42,11 +40,11 @@ export default async function Page({
 
       <div className="flex flex-col gap-4">
         <VisualComponentBoundary label="post header">
-          <PostTitle id={params.then((p) => p.postId)} />
+          <PostTitle id={postId} />
         </VisualComponentBoundary>
 
         <VisualComponentBoundary label="post body">
-          <PostContent id={params.then((p) => p.postId)} />
+          <PostContent id={postId} />
         </VisualComponentBoundary>
       </div>
 
