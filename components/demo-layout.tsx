@@ -1,6 +1,9 @@
 import { Nav } from "./nav";
 
-export function DemoLayout({ children }: React.PropsWithChildren) {
+export function DemoLayout({
+  children,
+  postId,
+}: React.PropsWithChildren<{ postId?: string }>) {
   return (
     <div className="flex flex-col gap-6 w-full max-w-3xl">
       <header>
@@ -14,7 +17,7 @@ export function DemoLayout({ children }: React.PropsWithChildren) {
 
         {/* Sidebar */}
         <aside className="w-48 py-6.5">
-          <Nav />
+          <Nav postId={postId} />
         </aside>
 
         {/* Main Content Area */}

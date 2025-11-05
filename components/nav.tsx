@@ -20,8 +20,8 @@ const combinedNavItems: NavItem[] = [
     title: "request memoization",
     href: "/",
     children: [
-      { href: "/42/use-cache", title: "with 'use cache'", prepend: true },
-      { href: "/42/no-use-cache", title: "no 'use cache'", prepend: true },
+      { href: "/use-cache", title: "with 'use cache'", prepend: true },
+      { href: "/no-use-cache", title: "no 'use cache'", prepend: true },
     ],
   },
   {
@@ -31,18 +31,25 @@ const combinedNavItems: NavItem[] = [
   },
 ];
 
-export function Nav() {
+export function Nav({ postId }: { postId?: string }) {
   return (
     <nav className="flex flex-col gap-4">
       {combinedNavItems.map((item) => (
-        <NavSection key={item.href || item.title} item={item} />
+        <NavSection key={item.href || item.title} item={item} postId={postId} />
       ))}
     </nav>
   );
 }
 
-function NavSection({ item }: { item: NavItem; postId?: string }) {
+function NavSection({ item, postId }: { item: NavItem; postId?: string }) {
   const hasChildren = item.children && item.children.length > 0;
+
+  const getHref = ({ href, prepend }: NavItem) => {
+    if (prepend) {
+      return `/${postId || "42"}${href}`;
+    }
+    return href;
+  };
 
   return (
     <Suspense>
@@ -54,14 +61,14 @@ function NavSection({ item }: { item: NavItem; postId?: string }) {
             </div>
             <div className="">
               {item.children.map((child) => (
-                <NavLink key={child.href} href={child.href}>
+                <NavLink key={child.href} href={getHref(child)}>
                   {child.title}
                 </NavLink>
               ))}
             </div>
           </>
         ) : (
-          <NavLink href={item.href}>{item.title}</NavLink>
+          <NavLink href={getHref(item)}>{item.title}</NavLink>
         )}
       </div>
     </Suspense>
