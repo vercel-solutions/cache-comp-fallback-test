@@ -48,11 +48,11 @@ export default async function Page({
         </VisualComponentBoundary>
       </div>
 
-      <Suspense fallback={<TextSkeleton />}>
-        <VisualSuspenseBoundary>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextSkeleton />}>
           <User />
-        </VisualSuspenseBoundary>
-      </Suspense>
+        </Suspense>
+      </VisualSuspenseBoundary>
     </article>
   );
 }
