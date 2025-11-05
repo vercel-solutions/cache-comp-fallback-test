@@ -15,25 +15,11 @@ interface NavProps {
 
 const combinedNavItems: NavItem[] = [
   {
-    title: "demo 1",
-    href: "/demo-1",
+    title: "request memoization",
+    href: "/",
     children: [
-      { href: "/demo-1/en/1", title: "/[en]/[1]" },
-      { href: "/demo-1/de/1", title: "/[de]/[1]" },
-      { href: "/demo-1/en/2", title: "/[en]/[2]" },
-      { href: "/demo-1/de/2", title: "/[de]/[2]" },
-      { href: "/demo-1/__/3", title: "/[__]/[5]" },
-      { href: "/demo-1/__/4", title: "/[__]/[6]" },
-    ],
-  },
-  {
-    title: "demo 2",
-    href: "/demo-2",
-    children: [
-      { href: "/demo-2/fr/1", title: "/[fr]/[3]" },
-      { href: "/demo-2/fr/2", title: "/[fr]/[4]" },
-      { href: "/demo-2/ca/1", title: "/[ca]/[3]" },
-      { href: "/demo-2/ca/2", title: "/[ca]/[4]" },
+      { href: "/use-cache", title: "with 'use cache'" },
+      { href: "/no-use-cache", title: "no 'use cache'" },
     ],
   },
 ];
@@ -55,7 +41,7 @@ function NavSection({ item }: { item: NavItem }) {
     <div>
       {hasChildren && item.children ? (
         <>
-          <div className="px-4 md:px-6 py-1 font-semibold text-xs text-neutral-300">
+          <div className="px-4 md:px-6 py-1 font-semibold text-xs text-neutral-300 mb-2">
             {item.title}
           </div>
           <div className="">
