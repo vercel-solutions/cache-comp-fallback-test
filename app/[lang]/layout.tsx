@@ -1,5 +1,7 @@
+import "@/app/globals.css";
+
 export async function generateStaticParams() {
-  return [{ postId: "1" }];
+  return [{ lang: "en" }];
 }
 
 export default async function Layout({ children }: React.PropsWithChildren) {

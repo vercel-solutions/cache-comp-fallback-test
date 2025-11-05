@@ -1,4 +1,3 @@
-import "@/app/globals.css";
 import { DemoLayout } from "@/components/demo-layout";
 
 export default async function Layout({ children }: React.PropsWithChildren) {

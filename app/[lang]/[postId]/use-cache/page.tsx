@@ -5,14 +5,17 @@ import {
   VisualSuspenseBoundary,
 } from "@/components/boundary";
 import { Code } from "@/components/code";
+import { TextSkeleton } from "@/components/text-skeleton";
 import { getPost } from "@/lib/api";
 
 async function PostTitle({ id }: { id: string }) {
+  "use cache";
   const post = await getPost(id);
   return <h2 className="text-base font-bold">{post.title}</h2>;
 }
 
 async function PostContent({ id }: { id: string }) {
+  "use cache";
   const post = await getPost(id);
   return <p className="text-sm text-neutral-400">{post.body}</p>;
 }
@@ -24,15 +27,15 @@ async function User() {
 
 export default async function Page({
   params,
-}: PageProps<"/[postId]/no-use-cache">) {
+}: PageProps<"/[lang]/[postId]/use-cache">) {
   const { postId } = await params;
 
   return (
     <article className="flex flex-col gap-6 w-full max-md:p-4 p-8">
       <p>
-        The first two components below use the same fetch function. Neither are
-        marked with <Code>use cache</Code>. The shared function does have{" "}
-        <Code>use cache</Code>. In this scenario, the fetch is deduplicated.
+        The first two components below use the same fetch function. Both are
+        marked with <Code>use cache</Code>, and the shared function also has{" "}
+        <Code>use cache</Code>. In this scenario, the fetch is not deduplicated.
       </p>
 
       <div className="flex flex-col gap-4">
@@ -45,11 +48,11 @@ export default async function Page({
         </VisualComponentBoundary>
       </div>
 
-      <Suspense>
-        <VisualSuspenseBoundary>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextSkeleton />}>
           <User />
-        </VisualSuspenseBoundary>
-      </Suspense>
+        </Suspense>
+      </VisualSuspenseBoundary>
     </article>
   );
 }
