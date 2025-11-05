@@ -25,17 +25,25 @@ const combinedNavItems: NavItem[] = [
 ];
 
 export function Nav({ items = combinedNavItems }: NavProps) {
+  const pathname = usePathname();
+  const postId = pathname.split("/")[1]; // Extract postId from pathname like "/1/use-cache"
+
   return (
     <nav className="flex flex-col gap-4">
       {items.map((item) => (
-        <NavSection key={item.href || item.title} item={item} />
+        <NavSection key={item.href || item.title} item={item} postId={postId} />
       ))}
     </nav>
   );
 }
 
-function NavSection({ item }: { item: NavItem }) {
+function NavSection({ item, postId }: { item: NavItem; postId?: string }) {
   const hasChildren = item.children && item.children.length > 0;
+
+  const getHref = (href: string) => {
+    if (href === "/" || !postId) return href;
+    return `/${postId}${href}`;
+  };
 
   return (
     <div>
@@ -46,14 +54,14 @@ function NavSection({ item }: { item: NavItem }) {
           </div>
           <div className="">
             {item.children.map((child) => (
-              <NavLink key={child.href} href={child.href}>
+              <NavLink key={child.href} href={getHref(child.href)}>
                 {child.title}
               </NavLink>
             ))}
           </div>
         </>
       ) : (
-        <NavLink href={item.href}>{item.title}</NavLink>
+        <NavLink href={getHref(item.href)}>{item.title}</NavLink>
       )}
     </div>
   );
@@ -66,7 +74,8 @@ function NavLink({
   href: string;
   children: React.ReactNode;
 }) {
-  const isActive = usePathname() === href;
+  const pathname = usePathname();
+  const isActive = href === "/" ? pathname === href : pathname.includes(href);
 
   return (
     <Link

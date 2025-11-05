@@ -22,7 +22,11 @@ async function User() {
   return <p className="text-sm text-neutral-400">Session ID: {sessionId}</p>;
 }
 
-export default async function Page() {
+export default async function Page({
+  params,
+}: PageProps<"/[postId]/no-use-cache">) {
+  const { postId } = await params;
+
   return (
     <article className="flex flex-col gap-6 w-full">
       <p>
@@ -33,11 +37,11 @@ export default async function Page() {
 
       <div className="flex flex-col gap-4">
         <VisualComponentBoundary label="post header">
-          <PostTitle id="1" />
+          <PostTitle id={postId} />
         </VisualComponentBoundary>
 
         <VisualComponentBoundary label="post body">
-          <PostContent id="1" />
+          <PostContent id={postId} />
         </VisualComponentBoundary>
       </div>
 
