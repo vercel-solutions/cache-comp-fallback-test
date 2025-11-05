@@ -13,12 +13,14 @@ export default function Page() {
 }
 
 function PostItem({ postId }: { postId: string }) {
+  const postIdNum = Number(postId) + 1;
+
   return (
     <Link
-      href={`/posts/${postId}`}
+      href={`/posts/${postIdNum}`}
       className="flex items-center justify-center h-40 p-4 border border-neutral-800"
     >
-      Post {postId}
+      Post {postIdNum}
     </Link>
   );
 }
