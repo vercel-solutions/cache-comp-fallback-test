@@ -22,7 +22,7 @@ async function PostContent({ id }: { id: string }) {
 
 async function User() {
   const sessionId = (await cookies()).get("sessionId")?.value;
-  return <p className="text-sm text-neutral-400">Session ID: {sessionId}</p>;
+  return <p className="text-xs text-neutral-400">Session ID: {sessionId}</p>;
 }
 
 export default async function Page({
