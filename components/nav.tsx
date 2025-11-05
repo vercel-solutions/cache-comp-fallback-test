@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 export interface NavItem {
   href: string;
   title: string;
+  prepend?: boolean;
   children?: NavItem[];
 }
 
@@ -18,9 +19,14 @@ const combinedNavItems: NavItem[] = [
     title: "request memoization",
     href: "/",
     children: [
-      { href: "/use-cache", title: "with 'use cache'" },
-      { href: "/no-use-cache", title: "no 'use cache'" },
+      { href: "/42/use-cache", title: "with 'use cache'", prepend: true },
+      { href: "/42/no-use-cache", title: "no 'use cache'", prepend: true },
     ],
+  },
+  {
+    title: "prefetch quirk",
+    href: "/posts",
+    children: [{ href: "/posts", title: "list of page links", prepend: false }],
   },
 ];
 
@@ -37,13 +43,8 @@ export function Nav({ items = combinedNavItems }: NavProps) {
   );
 }
 
-function NavSection({ item, postId }: { item: NavItem; postId?: string }) {
+function NavSection({ item }: { item: NavItem; postId?: string }) {
   const hasChildren = item.children && item.children.length > 0;
-
-  const getHref = (href: string) => {
-    if (href === "/" || !postId) return href;
-    return `/${postId}${href}`;
-  };
 
   return (
     <div>
@@ -54,14 +55,14 @@ function NavSection({ item, postId }: { item: NavItem; postId?: string }) {
           </div>
           <div className="">
             {item.children.map((child) => (
-              <NavLink key={child.href} href={getHref(child.href)}>
+              <NavLink key={child.href} href={child.href}>
                 {child.title}
               </NavLink>
             ))}
           </div>
         </>
       ) : (
-        <NavLink href={getHref(item.href)}>{item.title}</NavLink>
+        <NavLink href={item.href}>{item.title}</NavLink>
       )}
     </div>
   );
