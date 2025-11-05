@@ -5,5 +5,6 @@ export async function generateStaticParams() {
 }
 
 export default async function Layout({ children }: React.PropsWithChildren) {
+  "use cache";
   return children;
 }

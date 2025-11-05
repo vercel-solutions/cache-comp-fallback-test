@@ -8,6 +8,7 @@ export default async function Layout({
   children,
   params,
 }: LayoutProps<"/[lang]/[postId]">) {
+  "use cache";
   const { postId, lang } = await params;
 
   return (
