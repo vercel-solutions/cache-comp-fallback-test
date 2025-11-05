@@ -30,8 +30,8 @@ export default async function Page({
   return (
     <article className="flex flex-col gap-6 w-full max-md:p-4 p-8">
       <p>
-        There first two components below use the same fetch function. Neither
-        are marked with <Code>use cache</Code>. The shared function does have{" "}
+        The first two components below use the same fetch function. Neither are
+        marked with <Code>use cache</Code>. The shared function does have{" "}
         <Code>use cache</Code>. In this scenario, the fetch is deduplicated.
       </p>
 
