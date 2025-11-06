@@ -47,18 +47,17 @@ async function CachedData({ id }: { id: Promise<string> }) {
   return <div>Cached data: {data.date}</div>;
 }
 
+export async function generateStaticParams() {
+  return [{ postId: "1" }];
+}
+
 export default async function Page({
   params,
 }: PageProps<"/[lang]/posts/[postId]">) {
   return (
     <article className="flex flex-col gap-6 w-full max-md:p-4 p-8">
-      <p>
-        No <Code>generateStaticParams</Code> is used here.
-      </p>
       <VisualSuspenseBoundary label="isr">
-        <Suspense fallback={<div>Loading...</div>}>
-          <CachedData id={params.then((params) => params.postId)} />
-        </Suspense>
+        <CachedData id={params.then((params) => params.postId)} />
       </VisualSuspenseBoundary>
 
       <VisualSuspenseBoundary>
