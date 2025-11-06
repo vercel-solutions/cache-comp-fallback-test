@@ -4,6 +4,7 @@ import {
   VisualComponentBoundary,
   VisualSuspenseBoundary,
 } from "@/components/boundary";
+import { Code } from "@/components/code";
 import { getPost } from "@/lib/api";
 
 type DrupalData = {
@@ -51,6 +52,9 @@ export default async function Page({
 }: PageProps<"/[lang]/posts/[postId]">) {
   return (
     <article className="flex flex-col gap-6 w-full max-md:p-4 p-8">
+      <p>
+        No <Code>generateStaticParams</Code> is used here.
+      </p>
       <VisualSuspenseBoundary label="isr">
         <Suspense fallback={<div>Loading...</div>}>
           <CachedData id={params.then((params) => params.postId)} />
