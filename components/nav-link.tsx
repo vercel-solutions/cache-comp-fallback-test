@@ -12,14 +12,14 @@ export function NavLink({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isActive = false;
+  const isActive = pathname === href;
 
   return (
     <Link
       href={href}
       prefetch={false}
       className={cn("block text-xs", {
-        "text-blue-500": isActive,
+        "text-yellow-500": isActive,
       })}
     >
       {children}
