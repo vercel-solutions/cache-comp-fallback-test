@@ -5,7 +5,7 @@ export default function Page() {
     <div className="px-8 flex flex-col gap-4 text-balanced">
       <p>
         Both post types make a fake request to a 2.5s promise that includes{" "}
-        <Code>use cache: remote</Code> with a 30s expiration.
+        <Code>use cache: remote</Code> with a 60s expiration.
       </p>
       <p>
         Slow posts will block navigation until they're fully prerendered, since
