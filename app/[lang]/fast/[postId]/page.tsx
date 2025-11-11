@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export default function Page({ params }: PageProps<"/[lang]/fast/[postId]">) {
   return (
-    <Container as="article" className="flex flex-col gap-6">
+    <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
         This text is static, and we saw it immediately upon navigating here,
         while the content below was still loading.

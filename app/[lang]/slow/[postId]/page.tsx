@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
   return (
-    <Container as="article" className="flex flex-col gap-6">
+    <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
         This text is static, but we waited 2.5 seconds before you could navigate
         here since the content below blocked the entire page.
