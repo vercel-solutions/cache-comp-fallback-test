@@ -4,9 +4,9 @@ import { VisualSuspenseBoundary } from "@/components/boundary";
 import { TextFallback } from "@/components/fallbacks";
 import { getPost } from "@/lib/api";
 
-// export async function generateStaticParams() {
-//   return [{ postId: "1" }];
-// }
+export async function generateStaticParams() {
+  return [{ postId: "1" }];
+}
 
 export default function Page({ params }: PageProps<"/[lang]/fast/[postId]">) {
   return (
