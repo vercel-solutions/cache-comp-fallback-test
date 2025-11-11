@@ -1,6 +1,6 @@
 "use server";
 
-import { cacheLife, cacheTag } from "next/cache";
+import { cacheLife, cacheTag, updateTag } from "next/cache";
 
 type Post = {
   id: string;
@@ -21,5 +21,5 @@ export async function getPost(id: string): Promise<Post> {
 }
 
 export async function updatePostsTag() {
-  cacheTag("posts");
+  updateTag("posts");
 }

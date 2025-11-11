@@ -17,6 +17,7 @@ export function NavLink({
   return (
     <Link
       href={href}
+      prefetch={false}
       className={cn("block text-xs", {
         "text-blue-500": isActive,
       })}
