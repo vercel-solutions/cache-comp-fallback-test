@@ -1,19 +1,26 @@
-import { ClearPostsCacheButton } from "./clear-tags";
+import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
-export async function Nav({ lang: localPromise }: { lang: Promise<string> }) {
-  "use cache";
-
-  const lang = await localPromise;
+export async function Nav({ lang: langPromise }: { lang: Promise<string> }) {
+  const lang = await langPromise;
 
   return (
-    <nav className="flex flex-col h-full py-8 px-6">
-      <div className="flex flex-col gap-5 grow">
+    <nav className="flex flex-col h-full">
+      <div className="flex flex-col gap-4 grow">
         <NavLink href={`/${lang}/fast`}>fast posts</NavLink>
         <NavLink href={`/${lang}/slow`}>slow posts</NavLink>
       </div>
+    </nav>
+  );
+}
 
-      <ClearPostsCacheButton />
+export function NavFallback() {
+  return (
+    <nav className="flex flex-col h-full">
+      <div className="flex flex-col gap-4 grow">
+        <TextFallback />
+        <TextFallback />
+      </div>
     </nav>
   );
 }

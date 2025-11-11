@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { Nav } from "./nav";
+import { VisualSuspenseBoundary } from "./boundary";
+import { Nav, NavFallback } from "./nav";
 
 async function HeaderLink({ langPromise }: { langPromise: Promise<string> }) {
   const lang = await langPromise;
@@ -24,10 +25,12 @@ export function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
         <div className="absolute bottom-0 right-0 size-10 -m-px border-b border-r border-neutral-700" />
 
         {/* Sidebar */}
-        <aside className="w-48 shrink-0">
-          <Suspense fallback={<div>Loading...</div>}>
-            <Nav lang={params.then((p) => p.lang)} />
-          </Suspense>
+        <aside className="w-56 shrink-0 py-6 px-6">
+          <VisualSuspenseBoundary>
+            <Suspense fallback={<NavFallback />}>
+              <Nav lang={params.then((p) => p.lang)} />
+            </Suspense>
+          </VisualSuspenseBoundary>
         </aside>
 
         {/* Main Content Area */}
