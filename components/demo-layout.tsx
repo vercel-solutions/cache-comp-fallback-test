@@ -11,7 +11,7 @@ async function HeaderLink({ langPromise }: { langPromise: Promise<string> }) {
   );
 }
 
-export async function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
+export function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
   return (
     <div className="flex flex-col gap-6 w-full max-w-3xl h-full max-h-[540px]">
       <header>
