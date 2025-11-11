@@ -11,7 +11,7 @@ async function HeaderLink({ langPromise }: { langPromise: Promise<string> }) {
   );
 }
 
-export function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
+export async function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
   return (
     <div className="flex flex-col gap-6 w-full max-w-3xl h-full max-h-[540px]">
       <header>
@@ -27,9 +27,9 @@ export function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
 
         {/* Sidebar */}
         <aside className="w-48 shrink-0">
-          {/* <Suspense> */}
-          <Nav lang={params.then((p) => p.lang)} />
-          {/* </Suspense> */}
+          <Suspense>
+            <Nav lang={params.then((p) => p.lang)} />
+          </Suspense>
         </aside>
 
         {/* Main Content Area */}
