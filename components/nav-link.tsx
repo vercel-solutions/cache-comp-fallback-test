@@ -12,7 +12,9 @@ export function NavLink({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  // For home route, only exact match. For other routes, match exact or child routes
+  const isHomeRoute = href.split("/").length === 2; // e.g., "/en"
+  const isActive = pathname === href || (!isHomeRoute && pathname.startsWith(href + "/"));
 
   return (
     <Link

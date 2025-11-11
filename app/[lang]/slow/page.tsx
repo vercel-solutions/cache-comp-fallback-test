@@ -1,14 +1,13 @@
 import Link from "next/link";
+import { Container } from "@/components/container";
 
-export default async function Page({
-  params,
-}: PageProps<"/[lang]/slow">) {
+export default async function Page({ params }: PageProps<"/[lang]/slow">) {
   const { lang } = await params;
 
   const links = Array.from({ length: 300 }, (_, i) => i + 1);
 
   return (
-    <div className="grid grid-cols-3 gap-4 p-8 w-full">
+    <Container className="grid grid-cols-3 gap-4">
       {links.map((num) => (
         <Link
           key={num}
@@ -18,7 +17,6 @@ export default async function Page({
           {num}
         </Link>
       ))}
-    </div>
+    </Container>
   );
 }
-

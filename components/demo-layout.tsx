@@ -21,7 +21,7 @@ export function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
       </header>
       <Corners>
         {/* Sidebar */}
-        <aside className="w-56 shrink-0 py-6 px-6">
+        <aside className="w-56 shrink-0 p-8">
           <VisualSuspenseBoundary>
             <Suspense fallback={<NavFallback />}>
               <Nav lang={params.then((p) => p.lang)} />

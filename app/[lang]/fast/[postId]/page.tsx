@@ -1,6 +1,7 @@
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@/components/boundary";
+import { Container } from "@/components/container";
 import { TextFallback } from "@/components/fallbacks";
 import { getPost } from "@/lib/api";
 
@@ -10,7 +11,7 @@ export async function generateStaticParams() {
 
 export default function Page({ params }: PageProps<"/[lang]/fast/[postId]">) {
   return (
-    <article className="flex flex-col gap-6 w-full max-md:p-4 p-6">
+    <Container as="article" className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
         This text is static, and we saw it immediately upon navigating here,
         while the content below was still loading.
@@ -20,7 +21,7 @@ export default function Page({ params }: PageProps<"/[lang]/fast/[postId]">) {
           <Post id={params.then((p) => `fast-${p.postId}`)} />
         </Suspense>
       </VisualSuspenseBoundary>
-    </article>
+    </Container>
   );
 }
 

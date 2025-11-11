@@ -1,9 +1,10 @@
 import { Code } from "@/components/code";
+import { Container } from "@/components/container";
 
 export default function Page() {
   return (
     <div className="flex flex-col justify-center h-full">
-      <div className="px-8 flex flex-col gap-4 text-balanced">
+      <Container className="flex flex-col gap-4 text-balanced">
         <p>
           Both post types make a fake request to a 2.5s promise that includes{" "}
           <Code>use cache: remote</Code> with a 60s expiration.
@@ -30,7 +31,7 @@ export default function Page() {
           immediately render the static parts of the page while the suspense
           content streams in with fallback.
         </p>
-      </div>
+      </Container>
     </div>
   );
 }
