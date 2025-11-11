@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
   return (
     <article className="flex flex-col gap-6 w-full max-md:p-4 p-6">
-      <p>
+      <p className="text-xs leading-relaxed">
         This text is static, but we waited 2.5 seconds before you could navigate
         here since the content below blocked the entire page.
       </p>
@@ -31,5 +31,5 @@ async function Post({ id }: { id: Promise<string> }) {
   const postId = await id;
   const post = await getPost(postId);
 
-  return <p>{post.title} loaded.</p>;
+  return <p className="text-xs">{post.title} loaded.</p>;
 }

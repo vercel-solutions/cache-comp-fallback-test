@@ -18,11 +18,11 @@ export function NavLink({
     <Link
       href={href}
       prefetch={false}
-      className={cn("block text-xs", {
+      className={cn("block", {
         "text-yellow-500": isActive,
       })}
     >
-      {children}
+      <p>{children}</p>
     </Link>
   );
 }

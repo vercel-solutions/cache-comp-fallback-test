@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 export default function Page({ params }: PageProps<"/[lang]/fast/[postId]">) {
   return (
     <article className="flex flex-col gap-6 w-full max-md:p-4 p-6">
-      <p>
+      <p className="text-xs leading-relaxed">
         This text is static, and we saw it immediately upon navigating here,
         while the content below was still loading.
       </p>
@@ -29,5 +29,5 @@ async function Post({ id }: { id: Promise<string> }) {
 
   const post = await getPost(postId);
 
-  return <p>{post.title} loaded.</p>;
+  return <p className="text-xs">{post.title} loaded.</p>;
 }

@@ -6,7 +6,7 @@ export async function Nav({ lang: langPromise }: { lang: Promise<string> }) {
 
   return (
     <nav className="flex flex-col h-full">
-      <div className="flex flex-col gap-4 grow">
+      <div className="flex flex-col gap-3">
         <NavLink href={`/${lang}/fast`}>fast posts</NavLink>
         <NavLink href={`/${lang}/slow`}>slow posts</NavLink>
       </div>
@@ -17,7 +17,7 @@ export async function Nav({ lang: langPromise }: { lang: Promise<string> }) {
 export function NavFallback() {
   return (
     <nav className="flex flex-col h-full">
-      <div className="flex flex-col gap-4 grow">
+      <div className="flex flex-col gap-4">
         <TextFallback />
         <TextFallback />
       </div>
