@@ -8,9 +8,7 @@ export async function generateStaticParams() {
   return [{ postId: "1" }];
 }
 
-export default function Page({
-  params,
-}: PageProps<"/[lang]/fast/[postId]">) {
+export default function Page({ params }: PageProps<"/[lang]/fast/[postId]">) {
   return (
     <article className="flex flex-col gap-6 w-full max-md:p-4 p-8">
       <p>
@@ -27,13 +25,9 @@ export default function Page({
 }
 
 async function Post({ id }: { id: Promise<string> }) {
-  const postId = await id;
-  if (postId.startsWith("fast")) {
-    await connection();
-  }
+  const [postId] = await Promise.all([id, connection()]);
 
   const post = await getPost(postId);
 
   return <p>{post.title} loaded.</p>;
 }
-
