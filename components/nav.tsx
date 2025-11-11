@@ -2,6 +2,8 @@ import { ClearPostsCacheButton } from "./clear-tags";
 import { NavLink } from "./nav-link";
 
 export async function Nav({ lang: localPromise }: { lang: Promise<string> }) {
+  "use cache";
+
   const lang = await localPromise;
 
   return (
