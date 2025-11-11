@@ -1,10 +1,7 @@
+import { Suspense } from "react";
 import { Nav } from "./nav";
 
-export function DemoLayout({
-  children,
-  postId,
-  lang,
-}: React.PropsWithChildren<{ postId?: string; lang?: string }>) {
+export function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
   return (
     <div className="flex flex-col gap-6 w-full max-w-3xl">
       <header>
@@ -17,8 +14,10 @@ export function DemoLayout({
         <div className="absolute bottom-0 right-0 size-10 -m-px border-b border-r border-neutral-700" />
 
         {/* Sidebar */}
-        <aside className="w-48 py-6.5">
-          <Nav postId={postId} lang={lang} />
+        <aside className="w-48 py-6.5 px-5">
+          <Suspense>
+            <Nav lang={params.then((p) => p.lang)} />
+          </Suspense>
         </aside>
 
         {/* Main Content Area */}
