@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export default async function Page({
   params,
-}: PageProps<"/[lang]/posts/[postId]">) {
+}: PageProps<"/[lang]/post/[postId]">) {
   const { postId } = await params;
 
   return (
