@@ -27,9 +27,9 @@ export function DemoLayout({ children, params }: LayoutProps<"/[lang]">) {
 
         {/* Sidebar */}
         <aside className="w-48 shrink-0">
-          <Suspense>
-            <Nav lang={params.then((p) => p.lang)} />
-          </Suspense>
+          {/* <Suspense> */}
+          <Nav lang={params.then((p) => p.lang)} />
+          {/* </Suspense> */}
         </aside>
 
         {/* Main Content Area */}
