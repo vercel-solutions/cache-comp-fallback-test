@@ -16,9 +16,9 @@ export default function Page({
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
         This text is static, but we waited 2.5 seconds before you could navigate
-        here since the content below blocked the entire page. The only
-        difference between this demo 2 is that the left nav does not use
-        suspense.
+        here (if it wasn't prefetched or already prerendered) since the content
+        below blocked the entire page. The only difference between this demo 2
+        is that the left nav does not use suspense.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
@@ -42,5 +42,5 @@ async function Post({ id }: { id: Promise<string> }) {
   const postId = await id;
   const post = await getPost(postId);
 
-  return <p className="text-xs">{post.title} contentloaded.</p>;
+  return <p className="text-xs">{post.title} content loaded.</p>;
 }
