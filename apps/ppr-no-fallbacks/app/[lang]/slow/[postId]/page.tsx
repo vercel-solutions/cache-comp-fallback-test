@@ -2,6 +2,7 @@ import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { getPost } from "@lib/api";
+import { cacheLife } from "next/cache";
 import { Suspense } from "react";
 
 // export async function generateStaticParams() {
@@ -33,6 +34,9 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
 }
 
 async function Post({ id }: { id: Promise<string> }) {
+  "use cache: remote";
+  cacheLife({ expire: 30 });
+
   const postId = await id;
   const post = await getPost(postId);
 
