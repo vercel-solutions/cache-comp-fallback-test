@@ -1,6 +1,7 @@
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@/components/boundary";
+import { Code } from "@/components/code";
 import { Container } from "@/components/container";
 import { TextFallback } from "@/components/fallbacks";
 import { getPost } from "@/lib/api";
@@ -16,7 +17,8 @@ export default function Page({
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
         This text is static, and we saw it immediately upon navigating here,
-        while the content below was still loading.
+        while the content below was still loading. We are forcing the post
+        content area to be dynamic with <Code>await connection()</Code>.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>

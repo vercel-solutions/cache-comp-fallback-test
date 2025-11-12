@@ -15,8 +15,9 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
-        This text is static, but we waited 2.5 seconds before you could navigate
-        here since the content below blocked the entire page.
+        This text is static, and we saw it immediately upon navigating while the
+        content below was still loading. The only difference between this demo 2
+        is that the left nav uses suspense.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
