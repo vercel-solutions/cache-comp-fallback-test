@@ -31,7 +31,7 @@ export default function Layout({ children, params }: LayoutProps<"/[lang]">) {
       <body className="dark flex justify-center items-center h-svh">
         <VisualComponentBoundary
           label={<div className="text-red-500/60">/[lang]/layout.tsx</div>}
-          className="w-full max-w-4xl h-full max-h-[720px] p-8 px-16 pt-12 border-red-500/30"
+          className="w-full max-w-4xl h-full max-h-[720px] p-8 px-16 pt-12 border-red-500/30 border-solid"
         >
           <div className="flex flex-col gap-6 w-full h-full">
             <RootHeader lang={params.then((p) => p.lang)} />

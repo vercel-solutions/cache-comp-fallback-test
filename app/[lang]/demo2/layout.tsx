@@ -13,7 +13,7 @@ export default function Layout({
   return (
     <VisualComponentBoundary
       label={<div className="text-red-500/60">/[lang]/demo2/layout.tsx</div>}
-      className="flex h-full min-h-0 p-8 pt-12 -mx-8 border-red-500/30"
+      className="flex h-full min-h-0 p-8 pt-12 -mx-8 border-red-500/30 border-solid"
     >
       <Corners>
         {/* Sidebar */}
