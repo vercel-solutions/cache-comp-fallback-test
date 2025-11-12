@@ -1,6 +1,9 @@
 import "@/app/globals.css";
 import { Suspense } from "react";
-import { VisualSuspenseBoundary } from "@/components/boundary";
+import {
+  VisualComponentBoundary,
+  VisualSuspenseBoundary,
+} from "@/components/boundary";
 import { TextFallback } from "@/components/fallbacks";
 import { RootNav } from "@/components/root-nav";
 
@@ -26,10 +29,15 @@ export default function Layout({ children, params }: LayoutProps<"/[lang]">) {
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
-        <div className="flex flex-col gap-6 w-full max-w-3xl h-full max-h-[540px]">
-          <RootHeader lang={params.then((p) => p.lang)} />
-          {children}
-        </div>
+        <VisualComponentBoundary
+          label={<div className="text-red-500/60">/[lang]/layout.tsx</div>}
+          className="w-full max-w-4xl h-full max-h-[720px] p-8 px-16 pt-12 border-red-500/30"
+        >
+          <div className="flex flex-col gap-6 w-full h-full">
+            <RootHeader lang={params.then((p) => p.lang)} />
+            {children}
+          </div>
+        </VisualComponentBoundary>
       </body>
     </html>
   );

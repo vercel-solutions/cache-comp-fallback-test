@@ -6,8 +6,8 @@ export default function Page() {
     <Container className="flex flex-col gap-4">
       <p className="text-xs leading-relaxed">
         <strong>
-          No suspense in the layout for nav. Only post detail pages use suspense
-          around the post content area.
+          No suspense around left nav in this layout. Only post detail pages use
+          suspense around the post content area.
         </strong>
       </p>
       <p className="text-xs leading-relaxed">

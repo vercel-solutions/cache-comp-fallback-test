@@ -17,10 +17,13 @@ export default function Page() {
             <Code>{`<Suspense/>`}</Code>.
           </p>
           <p className="text-xs leading-relaxed">
-            <strong>Demo 1 renders a static nav in the layout.</strong>
+            The top-level layout renders the primary nav with suspense.
           </p>
           <p className="text-xs leading-relaxed">
-            <strong>Demo 2 renders nav with suspense.</strong>
+            <strong>Demo 1 renders a static left nav in it's layout.</strong>
+          </p>
+          <p className="text-xs leading-relaxed">
+            <strong>Demo 2 renders it's left nav with suspense.</strong>
           </p>
           <p className="text-xs leading-relaxed">
             The post API applies <Code>"use cache: remote"</Code>, simulating a
