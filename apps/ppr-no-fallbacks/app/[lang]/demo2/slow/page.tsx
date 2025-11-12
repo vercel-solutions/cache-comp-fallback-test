@@ -3,7 +3,7 @@ import { Container } from "@components/container";
 
 export default async function Page({
   params,
-}: PageProps<"/exhibit-a/[lang]/demo2/slow">) {
+}: PageProps<"/[lang]/demo2/slow">) {
   const { lang } = await params;
 
   const links = Array.from({ length: 300 }, (_, i) => i + 1);

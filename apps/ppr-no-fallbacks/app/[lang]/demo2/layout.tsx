@@ -9,7 +9,7 @@ import { Nav, NavFallback } from "@components/nav";
 export default function Layout({
   children,
   params,
-}: LayoutProps<"/exhibit-a/[lang]/demo2">) {
+}: LayoutProps<"/[lang]/demo2">) {
   return (
     <VisualComponentBoundary
       label={

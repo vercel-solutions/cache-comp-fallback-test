@@ -29,7 +29,7 @@ export async function RootHeader({ lang }: { lang: Promise<string> }) {
 export default function Layout({
   children,
   params,
-}: LayoutProps<"/exhibit-a/[lang]">) {
+}: LayoutProps<"/[lang]">) {
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">

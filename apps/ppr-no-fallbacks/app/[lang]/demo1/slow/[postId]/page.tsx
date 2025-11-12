@@ -10,7 +10,7 @@ export async function generateStaticParams() {
 
 export default function Page({
   params,
-}: PageProps<"/exhibit-a/[lang]/demo1/slow/[postId]">) {
+}: PageProps<"/[lang]/demo1/slow/[postId]">) {
   return (
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">

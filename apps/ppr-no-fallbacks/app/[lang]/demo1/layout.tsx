@@ -5,7 +5,7 @@ import { Nav } from "@components/nav";
 export default function Layout({
   children,
   params,
-}: LayoutProps<"/exhibit-a/[lang]/demo1">) {
+}: LayoutProps<"/[lang]/demo1">) {
   return (
     <VisualComponentBoundary
       label={
