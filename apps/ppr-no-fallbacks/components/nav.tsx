@@ -23,7 +23,7 @@ export function Nav({ lang }: { lang: string }) {
             {link.label}
           </NavLink>
         ))} */}
-        <Link href={`${lang}/fast`} prefetch={false} className="text-sm">
+        <Link href={`${lang}/fast`} prefetch={false} className="text-xs">
           fast posts
         </Link>
         <Link href={`${lang}/slow`} prefetch={false} className="text-xs">

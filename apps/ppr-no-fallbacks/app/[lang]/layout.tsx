@@ -17,10 +17,7 @@ export default async function Layout({
       <body className="dark flex justify-center items-center h-svh">
         <div className="flex flex-col gap-6 w-full max-w-3xl h-full max-h-[560px]">
           <header>
-            <h1>
-              Cache Components and Suspense UX Demos (No Suspense in Root
-              Layout)
-            </h1>
+            <h1>No Fallbacks</h1>
           </header>
 
           <Corners>
