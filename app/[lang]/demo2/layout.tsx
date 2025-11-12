@@ -3,10 +3,22 @@ import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@/components/boundary";
 import { Corners } from "@/components/corners";
 import { Nav, NavFallback } from "@/components/nav";
-import { RootHeader } from "@/components/root-header";
+import { RootNav } from "@/components/root-nav";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }];
+}
+
+export async function RootHeader({ lang }: { lang: Promise<string> }) {
+  const l = await lang;
+  return (
+    <header className="flex flex-col gap-4">
+      <h1>Cache Components Testing</h1>
+      <Suspense fallback={<NavFallback />}>
+        <RootNav lang={l} />
+      </Suspense>
+    </header>
+  );
 }
 
 export default function Layout({
@@ -21,11 +33,7 @@ export default function Layout({
           <Corners>
             {/* Sidebar */}
             <aside className="flex flex-col gap-4 w-56 shrink-0 p-8">
-              <VisualSuspenseBoundary label="static nav">
-                <Suspense fallback={<NavFallback />}>
-                  <Nav lang={params.then((p) => p.lang)} demo="demo2" />
-                </Suspense>
-              </VisualSuspenseBoundary>
+              <Nav lang={params.then((p) => p.lang)} demo="demo2" />
             </aside>
 
             {/* Main Content Area */}

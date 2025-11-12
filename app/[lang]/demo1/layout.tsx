@@ -2,10 +2,20 @@ import "@/app/globals.css";
 import { VisualComponentBoundary } from "@/components/boundary";
 import { Corners } from "@/components/corners";
 import { Nav } from "@/components/nav";
-import { RootHeader } from "@/components/root-header";
+import { RootNav } from "@/components/root-nav";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }];
+}
+
+export async function RootHeader({ lang }: { lang: Promise<string> }) {
+  const l = await lang;
+  return (
+    <header className="flex flex-col gap-4">
+      <h1>Cache Components Testing</h1>
+      <RootNav lang={l} />
+    </header>
+  );
 }
 
 export default function Layout({
@@ -20,9 +30,7 @@ export default function Layout({
           <Corners>
             {/* Sidebar */}
             <aside className="flex flex-col gap-4 w-56 shrink-0 p-8">
-              <VisualComponentBoundary label="static nav">
-                <Nav lang={params.then((p) => p.lang)} demo="demo1" />
-              </VisualComponentBoundary>
+              <Nav lang={params.then((p) => p.lang)} demo="demo1" />
             </aside>
 
             {/* Main Content Area */}
