@@ -6,7 +6,12 @@ export async function generateStaticParams() {
   return [{ lang: "en" }];
 }
 
-export default function Layout({ children, params }: LayoutProps<"/[lang]">) {
+export default async function Layout({
+  children,
+  params,
+}: LayoutProps<"/[lang]">) {
+  const { lang } = await params;
+
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
@@ -21,7 +26,7 @@ export default function Layout({ children, params }: LayoutProps<"/[lang]">) {
           <Corners>
             {/* Sidebar */}
             <aside className="flex flex-col gap-4 w-50 p-8">
-              <Nav lang={params.then((p) => p.lang)} />
+              <Nav lang={lang} />
             </aside>
 
             {/* Main Content Area */}

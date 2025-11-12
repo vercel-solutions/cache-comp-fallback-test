@@ -1,10 +1,9 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
-export async function Nav({ lang: langPromise }: { lang: Promise<string> }) {
-  const lang = await langPromise;
-
+export function Nav({ lang }: { lang: string }) {
   const links = [
     {
       href: `/${lang}/fast`,
@@ -17,17 +16,21 @@ export async function Nav({ lang: langPromise }: { lang: Promise<string> }) {
   ];
 
   return (
-    <Suspense fallback={<NavFallback />}>
-      <nav className="flex flex-col h-full">
-        <div className="flex flex-col gap-3">
-          {links.map((link) => (
-            <NavLink key={link.href} href={link.href}>
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
-      </nav>
-    </Suspense>
+    <nav className="flex flex-col h-full">
+      <div className="flex flex-col gap-3">
+        {/* {links.map((link) => (
+          <NavLink key={link.href} href={link.href}>
+            {link.label}
+          </NavLink>
+        ))} */}
+        <Link href={`${lang}/fast`} prefetch={false} className="text-sm">
+          fast posts
+        </Link>
+        <Link href={`${lang}/slow`} prefetch={false} className="text-xs">
+          slow posts
+        </Link>
+      </div>
+    </nav>
   );
 }
 
