@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 import { Suspense } from "react";
-import { VisualComponentBoundary } from "@/components/boundary";
+import { VisualSuspenseBoundary } from "@/components/boundary";
 import { Corners } from "@/components/corners";
 import { Nav, NavFallback } from "@/components/nav";
 import { RootHeader } from "@/components/root-header";
@@ -21,11 +21,11 @@ export default function Layout({
           <Corners>
             {/* Sidebar */}
             <aside className="flex flex-col gap-4 w-56 shrink-0 p-8">
-              <VisualComponentBoundary label="static nav">
+              <VisualSuspenseBoundary label="static nav">
                 <Suspense fallback={<NavFallback />}>
                   <Nav lang={params.then((p) => p.lang)} demo="demo2" />
                 </Suspense>
-              </VisualComponentBoundary>
+              </VisualSuspenseBoundary>
             </aside>
 
             {/* Main Content Area */}
