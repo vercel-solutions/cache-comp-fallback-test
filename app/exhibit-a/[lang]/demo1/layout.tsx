@@ -8,13 +8,17 @@ export default function Layout({
 }: LayoutProps<"/exhibit-a/[lang]/demo1">) {
   return (
     <VisualComponentBoundary
-      label={<div className="text-red-500/60">/exhibit-a/[lang]/demo1/layout.tsx</div>}
+      label={
+        <div className="text-red-500/60">
+          /exhibit-a/[lang]/demo1/layout.tsx
+        </div>
+      }
       className="flex h-full min-h-0 p-8 pt-12 -mx-8 border-red-500/30 border-solid"
     >
       <Corners>
         {/* Sidebar */}
         <aside className="flex flex-col gap-4 w-50 shrink-0 p-8">
-          <Nav lang={params.then((p) => p.lang)} demo="demo1" />
+          <Nav lang={params.then((p) => p.lang)} demo="demo1" exhibit="a" />
         </aside>
 
         {/* Main Content Area */}

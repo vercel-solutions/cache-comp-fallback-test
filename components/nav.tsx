@@ -4,21 +4,35 @@ import { NavLink } from "./nav-link";
 export async function Nav({
   lang: langPromise,
   demo,
+  exhibit,
 }: {
   lang: Promise<string>;
   demo: "demo1" | "demo2";
+  exhibit: "a" | "b";
 }) {
   const lang = await langPromise;
 
   const links =
     demo === "demo1"
       ? [
-          { href: `/exhibit-a/${lang}/demo1/fast`, label: "fast posts" },
-          { href: `/exhibit-a/${lang}/demo1/slow`, label: "slow posts" },
+          {
+            href: `/exhibit-${exhibit}/${lang}/demo1/fast`,
+            label: "fast posts",
+          },
+          {
+            href: `/exhibit-${exhibit}/${lang}/demo1/slow`,
+            label: "slow posts",
+          },
         ]
       : [
-          { href: `/exhibit-a/${lang}/demo2/fast`, label: "fast posts" },
-          { href: `/exhibit-a/${lang}/demo2/slow`, label: "slow posts" },
+          {
+            href: `/exhibit-${exhibit}/${lang}/demo2/fast`,
+            label: "fast posts",
+          },
+          {
+            href: `/exhibit-${exhibit}/${lang}/demo2/slow`,
+            label: "slow posts",
+          },
         ];
 
   return (
