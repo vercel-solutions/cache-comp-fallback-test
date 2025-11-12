@@ -38,4 +38,3 @@ async function Post({ id }: { id: Promise<string> }) {
 
   return <p className="text-xs">{post.title} content loaded.</p>;
 }
-
