@@ -9,7 +9,9 @@ export async function generateStaticParams() {
   return [{ postId: "1" }];
 }
 
-export default function Page({ params }: PageProps<"/[lang]/demo1/fast/[postId]">) {
+export default function Page({
+  params,
+}: PageProps<"/[lang]/demo1/fast/[postId]">) {
   return (
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">

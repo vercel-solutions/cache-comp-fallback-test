@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
 
-export default async function Page({ params }: PageProps<"/[lang]/demo2/slow">) {
+export default async function Page({
+  params,
+}: PageProps<"/[lang]/demo2/slow">) {
   const { lang } = await params;
 
   const links = Array.from({ length: 300 }, (_, i) => i + 1);
@@ -20,4 +22,3 @@ export default async function Page({ params }: PageProps<"/[lang]/demo2/slow">) 
     </Container>
   );
 }
-

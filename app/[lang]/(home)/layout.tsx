@@ -1,18 +1,8 @@
 import "@/app/globals.css";
-import { RootNav } from "@/components/root-nav";
+import { RootHeader } from "@/components/root-header";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }];
-}
-
-async function RootHeader({ lang }: { lang: Promise<string> }) {
-  const l = await lang;
-  return (
-    <header className="flex flex-col gap-4">
-      <h1>Cache Components Testing</h1>
-      <RootNav lang={l} />
-    </header>
-  );
 }
 
 export default function Layout({ children, params }: LayoutProps<"/[lang]">) {
