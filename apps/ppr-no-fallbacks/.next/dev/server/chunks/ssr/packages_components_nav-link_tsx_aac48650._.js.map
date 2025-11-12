@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/darekrossman/dev/cc-fallback-test/packages/components/nav-link.tsx"],"sourcesContent":["\"use client\";\n\nimport Link from \"next/link\";\nimport { usePathname } from \"next/navigation\";\nimport { cn } from \"@lib/utils\";\n\nexport function NavLink({\n  href,\n  children,\n}: {\n  href: string;\n  children: React.ReactNode;\n}) {\n  const pathname = usePathname();\n  // For home route, only exact match. For other routes, match exact or child routes\n  const isHomeRoute = href.split(\"/\").length === 2; // e.g., \"/en\"\n  const isActive = pathname === href || (!isHomeRoute && pathname.startsWith(href + \"/\"));\n\n  return (\n    <Link\n      href={href}\n      prefetch={false}\n      className={cn(\"block\", {\n        \"text-yellow-500\": isActive,\n      })}\n    >\n      <p>{children}</p>\n    </Link>\n  );\n}\n\n"],"names":[],"mappings":";;;;;AAEA;AACA;AACA;AAJA;;;;;AAMO,SAAS,QAAQ,EACtB,IAAI,EACJ,QAAQ,EAIT;IACC,MAAM,WAAW,IAAA,0VAAW;IAC5B,kFAAkF;IAClF,MAAM,cAAc,KAAK,KAAK,CAAC,KAAK,MAAM,KAAK,GAAG,cAAc;IAChE,MAAM,WAAW,aAAa,QAAS,CAAC,eAAe,SAAS,UAAU,CAAC,OAAO;IAElF,qBACE,ubAAC,gXAAI;QACH,MAAM;QACN,UAAU;QACV,WAAW,IAAA,8HAAE,EAAC,SAAS;YACrB,mBAAmB;QACrB;kBAEA,cAAA,ubAAC;sBAAG;;;;;;;;;;;AAGV"}}]
-}
