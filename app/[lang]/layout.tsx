@@ -1,5 +1,4 @@
 import "@/app/globals.css";
-import { Suspense } from "react";
 import { RootNav } from "@/components/root-nav";
 
 export async function generateStaticParams() {
@@ -11,9 +10,7 @@ async function RootHeader({ lang }: { lang: Promise<string> }) {
   return (
     <header className="flex flex-col gap-4">
       <h1>Cache Components Testing</h1>
-      <Suspense fallback={<div>Loading...</div>}>
-        <RootNav lang={l} />
-      </Suspense>
+      <RootNav lang={l} />
     </header>
   );
 }
