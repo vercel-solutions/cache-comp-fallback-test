@@ -1,6 +1,12 @@
+import Link from "next/link";
 import { VisualComponentBoundary } from "./boundary";
 import { Corners } from "./corners";
 import { Nav } from "./nav";
+
+async function HomeLink({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  return <Link href={`/${lang}`}>home</Link>;
+}
 
 export function Demo1Layout({
   children,
@@ -12,7 +18,9 @@ export function Demo1Layout({
   return (
     <Corners>
       {/* Sidebar */}
-      <aside className="w-56 shrink-0 p-8">
+      <aside className="flex flex-col gap-4 w-56 shrink-0 p-8">
+        <HomeLink params={params} />
+
         <VisualComponentBoundary label="static nav">
           <Nav lang={params.then((p) => p.lang)} demo="demo1" />
         </VisualComponentBoundary>

@@ -1,7 +1,13 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "./boundary";
 import { Corners } from "./corners";
 import { Nav, NavFallback } from "./nav";
+
+async function HomeLink({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  return <Link href={`/${lang}`}>home</Link>;
+}
 
 export function Demo2Layout({
   children,
@@ -13,7 +19,9 @@ export function Demo2Layout({
   return (
     <Corners>
       {/* Sidebar */}
-      <aside className="w-56 shrink-0 p-8">
+      <aside className="flex flex-col gap-4 w-56 shrink-0 p-8">
+        <HomeLink params={params} />
+
         <VisualSuspenseBoundary label="suspense nav">
           <Suspense fallback={<NavFallback />}>
             <Nav lang={params.then((p) => p.lang)} demo="demo2" />

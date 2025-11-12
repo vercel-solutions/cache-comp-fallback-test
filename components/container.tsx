@@ -8,7 +8,6 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={cn("w-full p-8 text-balanced", className)}>{children}</div>
+    <div className={cn("w-full p-8 text-pretty", className)}>{children}</div>
   );
 }
-
