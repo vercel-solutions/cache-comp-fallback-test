@@ -1,5 +1,5 @@
 {
-  "name": "cc-fallback-test",
+  "name": "cache-components-testing",
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@10.14.0",

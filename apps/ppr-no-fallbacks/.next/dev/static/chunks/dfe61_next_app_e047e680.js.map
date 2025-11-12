@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["file:///Users/darekrossman/dev/cc-fallback-test/node_modules/.pnpm/next%4016.0.2-canary.15_babel-plugin-react-compiler%401.0.0_react-dom%4019.3.0-canary-100fc4a_aa28d138aff5507317c089db25e7d94f/node_modules/next/app.js"],"sourcesContent":["module.exports = require('./dist/pages/_app')\n"],"names":[],"mappings":"AAAA,OAAO,OAAO","ignoreList":[0]}}]
+}

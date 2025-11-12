@@ -4,8 +4,8 @@ This is a Turborepo monorepo containing two Next.js applications for testing cac
 
 ## Structure
 
-- `apps/app1` - First Next.js application
-- `apps/app2` - Second Next.js application
+- `apps/ppr-with-fallbacks` - Next.js application with fallbacks
+- `apps/ppr-no-fallbacks` - Next.js application without fallbacks
 
 Both apps use Turbopack for development and share common tooling configurations.
 
@@ -28,8 +28,8 @@ pnpm dev
 Run a specific app:
 
 ```bash
-pnpm dev --filter app1
-pnpm dev --filter app2
+pnpm dev --filter ppr-with-fallbacks
+pnpm dev --filter ppr-no-fallbacks
 ```
 
 ### Build
@@ -43,8 +43,8 @@ pnpm build
 Build a specific app:
 
 ```bash
-pnpm build --filter app1
-pnpm build --filter app2
+pnpm build --filter ppr-with-fallbacks
+pnpm build --filter ppr-no-fallbacks
 ```
 
 ### Linting & Formatting
