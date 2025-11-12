@@ -39,5 +39,5 @@ async function Post({ id }: { id: Promise<string> }) {
 
   const post = await getPost(postId);
 
-  return <p className="text-xs">{post.title} loaded.</p>;
+  return <p className="text-xs">{post.title} content loaded.</p>;
 }

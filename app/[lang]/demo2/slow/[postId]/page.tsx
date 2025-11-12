@@ -16,7 +16,7 @@ export default function Page({
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
         This text is static, and we saw it immediately upon navigating while the
-        content below was still loading. The only difference between this demo 2
+        content below was still loading. The only difference between this demo 1
         is that the left nav uses suspense.
       </p>
       <VisualSuspenseBoundary>
@@ -40,5 +40,5 @@ async function Post({ id }: { id: Promise<string> }) {
   const postId = await id;
   const post = await getPost(postId);
 
-  return <p className="text-xs">{post.title} loaded.</p>;
+  return <p className="text-xs">{post.title} content loaded.</p>;
 }
