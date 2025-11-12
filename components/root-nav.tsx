@@ -21,7 +21,7 @@ export function RootNav({ lang }: { lang: string }) {
       <nav className="flex gap-4">
         <Link
           href={homeHref}
-          className={cn("text-sm", {
+          className={cn("text-xs", {
             "text-yellow-500": isHomeActive,
           })}
         >
@@ -29,7 +29,7 @@ export function RootNav({ lang }: { lang: string }) {
         </Link>
         <Link
           href={demo1Href}
-          className={cn("text-sm", {
+          className={cn("text-xs", {
             "text-yellow-500": isDemo1Active,
           })}
         >
@@ -37,7 +37,7 @@ export function RootNav({ lang }: { lang: string }) {
         </Link>
         <Link
           href={demo2Href}
-          className={cn("text-sm", {
+          className={cn("text-xs", {
             "text-yellow-500": isDemo2Active,
           })}
         >
