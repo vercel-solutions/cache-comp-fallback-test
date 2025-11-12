@@ -27,7 +27,7 @@ export default function Page({
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         When refreshing, we only see the post content suspense fallback, and
-        subseqent visit behave the same as the slow (static) posts.
+        subseqent visits behave the same as the slow (static) posts.
       </p>
     </Container>
   );
