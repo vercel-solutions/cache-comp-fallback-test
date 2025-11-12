@@ -25,7 +25,9 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we see all suspense fallbacks from the top down.
+        When refreshing, we see all suspense fallbacks from the top down. In
+        this scenario, there is no UX difference between static and dynamic
+        approaches.
       </p>
     </Container>
   );

@@ -16,9 +16,9 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
-        This text is static, and we saw it immediately upon navigating here,
-        while the content below was still loading. We are forcing the post
-        content area to be dynamic with <Code>await connection()</Code>.
+        This text is static, and we saw it immediately upon navigating while the
+        content below was still loading. We are forcing the post content area to
+        be dynamic with <Code>await connection()</Code>.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>

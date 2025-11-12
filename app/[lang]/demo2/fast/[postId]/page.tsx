@@ -28,7 +28,7 @@ export default function Page({
       <p className="text-xs leading-relaxed">
         When refreshing, we see all suspense fallbacks from the top down. In
         this scenario, there is no UX difference between static and dynamic
-        loading.
+        approaches.
       </p>
     </Container>
   );
