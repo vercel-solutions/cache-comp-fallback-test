@@ -1,11 +1,8 @@
 import "@/app/globals.css";
-import Link from "next/link";
-import { Suspense } from "react";
 import {
   VisualComponentBoundary,
   VisualSuspenseBoundary,
 } from "@components/boundary";
-import { TextFallback } from "@components/fallbacks";
 import { RootNav } from "@components/root-nav";
 
 export async function generateStaticParams() {
@@ -18,23 +15,17 @@ export async function RootHeader({ lang }: { lang: Promise<string> }) {
     <header className="flex flex-col gap-4">
       <h1>Cache Components and Suspense UX Demos (Suspense in Root Layout)</h1>
       <VisualSuspenseBoundary>
-        <Suspense fallback={<TextFallback />}>
-          <RootNav lang={l} />
-        </Suspense>
+        <RootNav lang={l} />
       </VisualSuspenseBoundary>
     </header>
   );
 }
 
-export default function Layout({
-  children,
-  params,
-}: LayoutProps<"/[lang]">) {
+export default function Layout({ children, params }: LayoutProps<"/[lang]">) {
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
-        <nav className="fixed top-0 left-0 right-0 flex justify-center items-center gap-4 py-4 z-50">
-        </nav>
+        <nav className="fixed top-0 left-0 right-0 flex justify-center items-center gap-4 py-4 z-50"></nav>
         <VisualComponentBoundary
           label={
             <div className="text-red-500/60">/exhibit-a/[lang]/layout.tsx</div>

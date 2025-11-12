@@ -1,10 +1,10 @@
-import { Suspense } from "react";
 import {
   VisualComponentBoundary,
   VisualSuspenseBoundary,
 } from "@components/boundary";
 import { Corners } from "@components/corners";
 import { Nav, NavFallback } from "@components/nav";
+import { Suspense } from "react";
 
 export default function Layout({
   children,
