@@ -1,24 +1,25 @@
 import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
-export async function Nav({ 
+export async function Nav({
   lang: langPromise,
-  demo 
-}: { 
+  demo,
+}: {
   lang: Promise<string>;
   demo: "demo1" | "demo2";
 }) {
   const lang = await langPromise;
 
-  const links = demo === "demo1" 
-    ? [
-        { href: `/${lang}/demo1/fast`, label: "fast posts" },
-        { href: `/${lang}/demo1/slow`, label: "slow posts" },
-      ]
-    : [
-        { href: `/${lang}/demo2/fast`, label: "fast posts" },
-        { href: `/${lang}/demo2/slow`, label: "slow posts" },
-      ];
+  const links =
+    demo === "demo1"
+      ? [
+          { href: `/${lang}/demo1/fast`, label: "fast posts" },
+          { href: `/${lang}/demo1/slow`, label: "slow posts" },
+        ]
+      : [
+          { href: `/${lang}/demo2/fast`, label: "fast posts" },
+          { href: `/${lang}/demo2/slow`, label: "slow posts" },
+        ];
 
   return (
     <nav className="flex flex-col h-full">
@@ -37,7 +38,6 @@ export function NavFallback() {
   return (
     <nav className="flex flex-col h-full">
       <div className="flex flex-col gap-4">
-        <TextFallback className="w-24" />
         <TextFallback className="w-24" />
         <TextFallback className="w-24" />
       </div>

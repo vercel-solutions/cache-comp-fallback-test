@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 
 export function RootNav({ lang }: { lang: string }) {
   const pathname = usePathname();
-  
+
   const homeHref = `/${lang}`;
   const demo1Href = `/${lang}/demo1`;
   const demo2Href = `/${lang}/demo2`;
-  
+
   const isHomeActive = pathname === homeHref;
   const isDemo1Active = pathname.startsWith(demo1Href);
   const isDemo2Active = pathname.startsWith(demo2Href);
@@ -19,7 +19,7 @@ export function RootNav({ lang }: { lang: string }) {
     <nav className="flex gap-4">
       <Link
         href={homeHref}
-        className={cn({
+        className={cn("text-sm", {
           "text-yellow-500": isHomeActive,
         })}
       >
@@ -27,7 +27,7 @@ export function RootNav({ lang }: { lang: string }) {
       </Link>
       <Link
         href={demo1Href}
-        className={cn({
+        className={cn("text-sm", {
           "text-yellow-500": isDemo1Active,
         })}
       >
@@ -35,7 +35,7 @@ export function RootNav({ lang }: { lang: string }) {
       </Link>
       <Link
         href={demo2Href}
-        className={cn({
+        className={cn("text-sm", {
           "text-yellow-500": isDemo2Active,
         })}
       >
@@ -44,4 +44,3 @@ export function RootNav({ lang }: { lang: string }) {
     </nav>
   );
 }
-
