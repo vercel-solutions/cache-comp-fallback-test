@@ -8,16 +8,17 @@ export default function Page() {
       <main className="flex w-full flex-1 items-center justify-center">
         <Container className="flex flex-col gap-4 max-w-xl">
           <p className="text-xs leading-relaxed">
-            These demos demonstrate the different behaviors of suspense
+            These demos illustrate the different behaviors of suspense
             fallbacks, blocking navigation, and static vs dynamic content.
           </p>
           <p className="text-xs leading-relaxed">
-            Both demos contain a post list and a post detail page. The post
+            Demos 1 and 2 contain a post list and a post detail page. The post
             details render a static paragraph and a post content area wrapped in{" "}
             <Code>{`<Suspense/>`}</Code>.
           </p>
           <p className="text-xs leading-relaxed">
-            The top-level layout renders the primary nav with suspense.
+            The top-level layout renders the primary nav with suspense. This is
+            important to note as it affects the behavior across both demos.
           </p>
           <p className="text-xs leading-relaxed">
             <strong>Demo 1 renders a static left nav in it's layout.</strong>
