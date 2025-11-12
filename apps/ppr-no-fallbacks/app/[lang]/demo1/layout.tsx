@@ -18,7 +18,7 @@ export default function Layout({
       <Corners>
         {/* Sidebar */}
         <aside className="flex flex-col gap-4 w-50 shrink-0 p-8">
-          <Nav lang={params.then((p) => p.lang)} demo="demo1" exhibit="a" />
+          <Nav lang={params.then((p) => p.lang)} demo="demo1" />
         </aside>
 
         {/* Main Content Area */}

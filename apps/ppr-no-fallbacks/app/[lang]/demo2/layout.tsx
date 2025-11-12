@@ -1,24 +1,32 @@
-import { VisualComponentBoundary } from "@components/boundary";
+import { Suspense } from "react";
+import {
+  VisualComponentBoundary,
+  VisualSuspenseBoundary,
+} from "@components/boundary";
 import { Corners } from "@components/corners";
-import { Nav } from "@components/nav";
+import { Nav, NavFallback } from "@components/nav";
 
 export default function Layout({
   children,
   params,
-}: LayoutProps<"/exhibit-b/[lang]/demo1">) {
+}: LayoutProps<"/exhibit-a/[lang]/demo2">) {
   return (
     <VisualComponentBoundary
       label={
         <div className="text-red-500/60">
-          /exhibit-b/[lang]/demo1/layout.tsx
+          /exhibit-a/[lang]/demo2/layout.tsx
         </div>
       }
       className="flex h-full min-h-0 p-8 pt-12 -mx-8 border-red-500/30 border-solid"
     >
       <Corners>
         {/* Sidebar */}
-        <aside className="flex flex-col gap-4 w-50 shrink-0 p-8">
-          <Nav lang={params.then((p) => p.lang)} demo="demo1" exhibit="b" />
+        <aside className="flex flex-col gap-4 w-50 shrink-0 p-4">
+          <VisualSuspenseBoundary>
+            <Suspense fallback={<NavFallback />}>
+              <Nav lang={params.then((p) => p.lang)} demo="demo2" />
+            </Suspense>
+          </VisualSuspenseBoundary>
         </aside>
 
         {/* Main Content Area */}

@@ -34,16 +34,6 @@ export default function Layout({
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
         <nav className="fixed top-0 left-0 right-0 flex justify-center items-center gap-4 py-4 z-50">
-          <Link
-            href="/exhibit-a/en"
-            className="text-xs text-yellow-500"
-            prefetch={false}
-          >
-            exhibit a
-          </Link>
-          <Link href="/exhibit-b/en" className="text-xs" prefetch={false}>
-            exhibit b
-          </Link>
         </nav>
         <VisualComponentBoundary
           label={

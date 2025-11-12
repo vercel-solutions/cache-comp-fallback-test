@@ -13,7 +13,7 @@ export default async function Page({
       {links.map((num) => (
         <Link
           key={num}
-          href={`/exhibit-a/${lang}/demo2/fast/${num}`}
+          href={`/${lang}/demo2/fast/${num}`}
           className="aspect-square flex items-center justify-center border border-neutral-700 hover:border-blue-500 transition-colors"
         >
           {num}
