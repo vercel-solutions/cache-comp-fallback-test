@@ -1,14 +1,25 @@
 import "@/app/globals.css";
-import { RootHeader } from "@/components/root-header";
+import { Suspense } from "react";
+import { TextFallback } from "@/components/fallbacks";
+import { RootNav } from "@/components/root-nav";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }];
 }
 
-export default function Layout({
-  children,
-  params,
-}: LayoutProps<"/[lang]">) {
+export async function RootHeader({ lang }: { lang: Promise<string> }) {
+  const l = await lang;
+  return (
+    <header className="flex flex-col gap-4">
+      <h1>Cache Components Testing</h1>
+      <Suspense fallback={<TextFallback />}>
+        <RootNav lang={l} />
+      </Suspense>
+    </header>
+  );
+}
+
+export default function Layout({ children, params }: LayoutProps<"/[lang]">) {
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
@@ -20,4 +31,3 @@ export default function Layout({
     </html>
   );
 }
-

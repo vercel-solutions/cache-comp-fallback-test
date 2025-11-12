@@ -1,5 +1,6 @@
+import { Suspense } from "react";
 import { Corners } from "@/components/corners";
-import { Nav } from "@/components/nav";
+import { Nav, NavFallback } from "@/components/nav";
 
 export default function Layout({
   children,
@@ -9,7 +10,9 @@ export default function Layout({
     <Corners>
       {/* Sidebar */}
       <aside className="flex flex-col gap-4 w-56 shrink-0 p-8">
-        <Nav lang={params.then((p) => p.lang)} demo="demo2" />
+        <Suspense fallback={<NavFallback />}>
+          <Nav lang={params.then((p) => p.lang)} demo="demo2" />
+        </Suspense>
       </aside>
 
       {/* Main Content Area */}
