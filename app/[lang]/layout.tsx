@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import { Suspense } from "react";
+import { VisualSuspenseBoundary } from "@/components/boundary";
 import { TextFallback } from "@/components/fallbacks";
 import { RootNav } from "@/components/root-nav";
 
@@ -12,9 +13,11 @@ export async function RootHeader({ lang }: { lang: Promise<string> }) {
   return (
     <header className="flex flex-col gap-4">
       <h1>Cache Components Testing</h1>
-      <Suspense fallback={<TextFallback />}>
-        <RootNav lang={l} />
-      </Suspense>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextFallback />}>
+          <RootNav lang={l} />
+        </Suspense>
+      </VisualSuspenseBoundary>
     </header>
   );
 }

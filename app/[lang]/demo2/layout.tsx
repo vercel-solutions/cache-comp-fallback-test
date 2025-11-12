@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { VisualSuspenseBoundary } from "@/components/boundary";
 import { Corners } from "@/components/corners";
 import { Nav, NavFallback } from "@/components/nav";
 
@@ -10,9 +11,11 @@ export default function Layout({
     <Corners>
       {/* Sidebar */}
       <aside className="flex flex-col gap-4 w-56 shrink-0 p-8">
-        <Suspense fallback={<NavFallback />}>
-          <Nav lang={params.then((p) => p.lang)} demo="demo2" />
-        </Suspense>
+        <VisualSuspenseBoundary>
+          <Suspense fallback={<NavFallback />}>
+            <Nav lang={params.then((p) => p.lang)} demo="demo2" />
+          </Suspense>
+        </VisualSuspenseBoundary>
       </aside>
 
       {/* Main Content Area */}

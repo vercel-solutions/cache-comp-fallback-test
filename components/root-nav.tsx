@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { VisualSuspenseBoundary } from "./boundary";
 
 export function RootNav({ lang }: { lang: string }) {
   const pathname = usePathname();
@@ -17,33 +16,31 @@ export function RootNav({ lang }: { lang: string }) {
   const isDemo2Active = pathname.startsWith(demo2Href);
 
   return (
-    <VisualSuspenseBoundary>
-      <nav className="flex gap-4">
-        <Link
-          href={homeHref}
-          className={cn("text-xs", {
-            "text-yellow-500": isHomeActive,
-          })}
-        >
-          home
-        </Link>
-        <Link
-          href={demo1Href}
-          className={cn("text-xs", {
-            "text-yellow-500": isDemo1Active,
-          })}
-        >
-          demo one
-        </Link>
-        <Link
-          href={demo2Href}
-          className={cn("text-xs", {
-            "text-yellow-500": isDemo2Active,
-          })}
-        >
-          demo two
-        </Link>
-      </nav>
-    </VisualSuspenseBoundary>
+    <nav className="flex gap-4">
+      <Link
+        href={homeHref}
+        className={cn("text-xs", {
+          "text-yellow-500": isHomeActive,
+        })}
+      >
+        home
+      </Link>
+      <Link
+        href={demo1Href}
+        className={cn("text-xs", {
+          "text-yellow-500": isDemo1Active,
+        })}
+      >
+        demo one
+      </Link>
+      <Link
+        href={demo2Href}
+        className={cn("text-xs", {
+          "text-yellow-500": isDemo2Active,
+        })}
+      >
+        demo two
+      </Link>
+    </nav>
   );
 }
