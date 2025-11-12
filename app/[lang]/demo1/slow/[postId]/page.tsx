@@ -25,6 +25,12 @@ export default function Page({
           <Post id={params.then((p) => `slow-${p.postId}`)} />
         </Suspense>
       </VisualSuspenseBoundary>
+      <p className="text-xs leading-relaxed">
+        When refreshing, we only see the post content suspense fallback, and
+        subseqent visit behave the same as the fast (dynamic) posts. However, on
+        long tail posts, before prefetch can finish, users experience a
+        noticeable delay.
+      </p>
     </Container>
   );
 }

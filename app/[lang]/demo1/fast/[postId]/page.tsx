@@ -25,6 +25,10 @@ export default function Page({
           <Post id={params.then((p) => `fast-${p.postId}`)} />
         </Suspense>
       </VisualSuspenseBoundary>
+      <p className="text-xs leading-relaxed">
+        When refreshing, we only see the post content suspense fallback, and
+        subseqent visit behave the same as the slow (static) posts.
+      </p>
     </Container>
   );
 }

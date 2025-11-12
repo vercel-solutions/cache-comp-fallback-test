@@ -24,6 +24,9 @@ export default function Page({
           <Post id={params.then((p) => `slow-${p.postId}`)} />
         </Suspense>
       </VisualSuspenseBoundary>
+      <p className="text-xs leading-relaxed">
+        When refreshing, we see all suspense fallbacks from the top down.
+      </p>
     </Container>
   );
 }
