@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
@@ -19,9 +20,9 @@ export async function Nav({ lang: langPromise }: { lang: Promise<string> }) {
     <nav className="flex flex-col h-full">
       <div className="flex flex-col gap-3">
         {links.map((link) => (
-          <NavLink key={link.href} href={link.href}>
-            {link.label}
-          </NavLink>
+          <Suspense key={link.href} fallback={<TextFallback />}>
+            <NavLink href={link.href}>{link.label}</NavLink>
+          </Suspense>
         ))}
       </div>
     </nav>
