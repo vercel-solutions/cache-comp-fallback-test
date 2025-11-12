@@ -4,9 +4,9 @@ import {
   VisualComponentBoundary,
   VisualSuspenseBoundary,
 } from "@/components/boundary";
+import { ExhibitNav } from "@/components/exhibit-nav";
 import { TextFallback } from "@/components/fallbacks";
 import { RootNav } from "@/components/root-nav";
-import { ExhibitNavWrapper } from "@/components/exhibit-nav-wrapper";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }];
@@ -26,13 +26,18 @@ export async function RootHeader({ lang }: { lang: Promise<string> }) {
   );
 }
 
-export default function Layout({ children, params }: LayoutProps<"/exhibit-a/[lang]">) {
+export default function Layout({
+  children,
+  params,
+}: LayoutProps<"/exhibit-a/[lang]">) {
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
-        <ExhibitNavWrapper lang={params.then((p) => p.lang)} />
+        <ExhibitNav exhibit="a" />
         <VisualComponentBoundary
-          label={<div className="text-red-500/60">/exhibit-a/[lang]/layout.tsx</div>}
+          label={
+            <div className="text-red-500/60">/exhibit-a/[lang]/layout.tsx</div>
+          }
           className="w-full max-w-4xl h-full max-h-[720px] p-8 px-16 pt-12 border-red-500/30 border-solid"
         >
           <div className="flex flex-col gap-6 w-full h-full">

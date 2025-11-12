@@ -4,19 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-export function ExhibitNav({ lang }: { lang: string }) {
-  const pathname = usePathname();
-
-  const exhibitAHref = `/exhibit-a/${lang}`;
-  const exhibitBHref = `/exhibit-b/${lang}`;
-
-  const isExhibitAActive = pathname.startsWith("/exhibit-a");
-  const isExhibitBActive = pathname.startsWith("/exhibit-b");
+export function ExhibitNav({ exhibit }: { exhibit: "a" | "b" }) {
+  const isExhibitAActive = exhibit === "a";
+  const isExhibitBActive = exhibit === "b";
 
   return (
     <nav className="fixed top-0 left-0 right-0 flex justify-center items-center gap-4 py-4 z-50">
       <Link
-        href={exhibitAHref}
+        href="/exhibit-a/en"
         className={cn("text-xs", {
           "text-yellow-500": isExhibitAActive,
         })}
@@ -24,7 +19,7 @@ export function ExhibitNav({ lang }: { lang: string }) {
         exhibit a
       </Link>
       <Link
-        href={exhibitBHref}
+        href="/exhibit-b/en"
         className={cn("text-xs", {
           "text-yellow-500": isExhibitBActive,
         })}

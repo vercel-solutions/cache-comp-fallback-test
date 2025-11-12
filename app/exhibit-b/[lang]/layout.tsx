@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 import { VisualComponentBoundary } from "@/components/boundary";
-import { ExhibitNavWrapper } from "@/components/exhibit-nav-wrapper";
+import { ExhibitNav } from "@/components/exhibit-nav";
 import { RootNav } from "@/components/root-nav";
 
 export async function generateStaticParams() {
@@ -26,7 +26,7 @@ export default function Layout({
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
-        <ExhibitNavWrapper lang={params.then((p) => p.lang)} />
+        <ExhibitNav exhibit="b" />
         <VisualComponentBoundary
           label={
             <div className="text-red-500/60">/exhibit-b/[lang]/layout.tsx</div>
