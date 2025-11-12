@@ -13,12 +13,12 @@ export async function Nav({
   const links =
     demo === "demo1"
       ? [
-          { href: `/${lang}/demo1/fast`, label: "fast posts" },
-          { href: `/${lang}/demo1/slow`, label: "slow posts" },
+          { href: `/exhibit-a/${lang}/demo1/fast`, label: "fast posts" },
+          { href: `/exhibit-a/${lang}/demo1/slow`, label: "slow posts" },
         ]
       : [
-          { href: `/${lang}/demo2/fast`, label: "fast posts" },
-          { href: `/${lang}/demo2/slow`, label: "slow posts" },
+          { href: `/exhibit-a/${lang}/demo2/fast`, label: "fast posts" },
+          { href: `/exhibit-a/${lang}/demo2/slow`, label: "slow posts" },
         ];
 
   return (
