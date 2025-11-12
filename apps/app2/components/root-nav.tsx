@@ -6,11 +6,9 @@ import { cn } from "@/lib/utils";
 
 export function RootNav({ lang }: { lang: string }) {
   const pathname = usePathname();
-
+  
   // Detect which exhibit we're in based on pathname
-  const exhibitPrefix = pathname.startsWith("/exhibit-b")
-    ? "exhibit-b"
-    : "exhibit-a";
+  const exhibitPrefix = pathname.startsWith("/exhibit-b") ? "exhibit-b" : "exhibit-a";
 
   const homeHref = `/${exhibitPrefix}/${lang}`;
   const demo1Href = `/${exhibitPrefix}/${lang}/demo1`;
