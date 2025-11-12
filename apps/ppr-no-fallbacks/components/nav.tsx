@@ -6,11 +6,11 @@ export async function Nav({ lang: langPromise }: { lang: Promise<string> }) {
 
   const links = [
     {
-      href: `/${lang}/demo1/fast`,
+      href: `/${lang}/fast`,
       label: "fast posts",
     },
     {
-      href: `/${lang}/demo1/slow`,
+      href: `/${lang}/slow`,
       label: "slow posts",
     },
   ];

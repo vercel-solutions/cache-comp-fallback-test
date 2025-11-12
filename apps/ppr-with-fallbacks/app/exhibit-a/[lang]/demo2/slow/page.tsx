@@ -14,7 +14,7 @@ export default async function Page({
         <Link
           key={num}
           href={`/exhibit-a/${lang}/demo2/slow/${num}`}
-          className="aspect-square flex items-center justify-center border border-neutral-700 hover:border-blue-500 transition-colors"
+          className="aspect-square flex items-center justify-center border border-neutral-700 hover:border-yellow-500 hover:bg-yellow-500/10"
         >
           {num}
         </Link>

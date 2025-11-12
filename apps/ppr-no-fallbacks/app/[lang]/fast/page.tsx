@@ -3,7 +3,7 @@ import { Container } from "@components/container";
 
 export default async function Page({
   params,
-}: PageProps<"/[lang]/demo1/fast">) {
+}: PageProps<"/[lang]/fast">) {
   const { lang } = await params;
 
   const links = Array.from({ length: 300 }, (_, i) => i + 1);
@@ -13,8 +13,8 @@ export default async function Page({
       {links.map((num) => (
         <Link
           key={num}
-          href={`/${lang}/demo1/fast/${num}`}
-          className="aspect-square flex items-center justify-center border border-neutral-700 hover:border-blue-500 transition-colors"
+          href={`/${lang}/fast/${num}`}
+          className="aspect-square flex items-center justify-center border border-neutral-700 hover:border-yellow-500 hover:bg-yellow-500/10"
         >
           {num}
         </Link>
