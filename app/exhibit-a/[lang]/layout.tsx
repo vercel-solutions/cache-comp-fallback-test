@@ -1,10 +1,10 @@
 import "@/app/globals.css";
+import Link from "next/link";
 import { Suspense } from "react";
 import {
   VisualComponentBoundary,
   VisualSuspenseBoundary,
 } from "@/components/boundary";
-import { ExhibitNav } from "@/components/exhibit-nav";
 import { TextFallback } from "@/components/fallbacks";
 import { RootNav } from "@/components/root-nav";
 
@@ -33,7 +33,18 @@ export default function Layout({
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
-        <ExhibitNav exhibit="a" />
+        <nav className="fixed top-0 left-0 right-0 flex justify-center items-center gap-4 py-4 z-50">
+          <Link
+            href="/exhibit-a/en"
+            className="text-xs text-yellow-500"
+            prefetch={false}
+          >
+            exhibit a
+          </Link>
+          <Link href="/exhibit-b/en" className="text-xs" prefetch={false}>
+            exhibit b
+          </Link>
+        </nav>
         <VisualComponentBoundary
           label={
             <div className="text-red-500/60">/exhibit-a/[lang]/layout.tsx</div>
