@@ -4,9 +4,9 @@ import { TextFallback } from "@components/fallbacks";
 import { getPost } from "@lib/api";
 import { Suspense } from "react";
 
-export async function generateStaticParams() {
-  return [{ postId: "1" }];
-}
+// export async function generateStaticParams() {
+//   return [{ postId: "1" }];
+// }
 
 export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
   return (
