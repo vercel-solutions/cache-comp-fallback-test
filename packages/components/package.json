@@ -1,0 +1,23 @@
+{
+  "name": "@repo/components",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./*": "./*.tsx"
+  },
+  "dependencies": {
+    "@repo/lib": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "next": "^16"
+  },
+  "devDependencies": {
+    "next": "^16",
+    "react": "19.3.0-canary-100fc4a8-20251110",
+    "react-dom": "19.3.0-canary-100fc4a8-20251110",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

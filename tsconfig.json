@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./apps/ppr-no-fallbacks" },
+    { "path": "./apps/ppr-with-fallbacks" }
+  ]
+}
+

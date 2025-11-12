@@ -12,10 +12,6 @@
       "@lib/*": ["../../packages/lib/*"]
     }
   },
-  "references": [
-    { "path": "../../packages/lib" },
-    { "path": "../../packages/components" }
-  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -26,4 +22,3 @@
   ],
   "exclude": ["node_modules"]
 }
-

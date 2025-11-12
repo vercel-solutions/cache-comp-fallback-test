@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   reactCompiler: true,
-  transpilePackages: ['components', 'lib'],
+  transpilePackages: ["@repo/components", "@repo/lib"],
 
   // experimental: {
   //   staleTimes: {

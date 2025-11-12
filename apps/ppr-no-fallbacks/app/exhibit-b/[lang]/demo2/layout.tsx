@@ -12,7 +12,11 @@ export default function Layout({
 }: LayoutProps<"/exhibit-b/[lang]/demo2">) {
   return (
     <VisualComponentBoundary
-      label={<div className="text-red-500/60">/exhibit-b/[lang]/demo2/layout.tsx</div>}
+      label={
+        <div className="text-red-500/60">
+          /exhibit-b/[lang]/demo2/layout.tsx
+        </div>
+      }
       className="flex h-full min-h-0 p-8 pt-12 -mx-8 border-red-500/30 border-solid"
     >
       <Corners>
@@ -33,4 +37,3 @@ export default function Layout({
     </VisualComponentBoundary>
   );
 }
-

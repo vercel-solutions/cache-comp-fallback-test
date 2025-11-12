@@ -1,0 +1,22 @@
+{
+  "name": "@repo/lib",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./api.ts",
+  "types": "./api.ts",
+  "exports": {
+    "./api": "./api.ts",
+    "./utils": "./utils.ts"
+  },
+  "peerDependencies": {
+    "next": "^16",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "next": "^16",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.4.0",
+    "typescript": "^5"
+  }
+}
