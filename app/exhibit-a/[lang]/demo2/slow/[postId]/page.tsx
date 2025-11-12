@@ -1,4 +1,3 @@
-import { cacheLife } from "next/cache";
 import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@/components/boundary";
 import { Container } from "@/components/container";
@@ -34,9 +33,6 @@ export default function Page({
 }
 
 async function Post({ id }: { id: Promise<string> }) {
-  "use cache: remote";
-  cacheLife({ expire: 30 });
-
   const postId = await id;
   const post = await getPost(postId);
 
