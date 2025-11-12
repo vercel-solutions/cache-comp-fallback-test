@@ -1,8 +1,5 @@
 import "@/app/globals.css";
-import {
-  VisualComponentBoundary,
-  VisualSuspenseBoundary,
-} from "@components/boundary";
+import { VisualComponentBoundary } from "@components/boundary";
 import { RootNav } from "@components/root-nav";
 
 export async function generateStaticParams() {
@@ -13,10 +10,10 @@ export async function RootHeader({ lang }: { lang: Promise<string> }) {
   const l = await lang;
   return (
     <header className="flex flex-col gap-4">
-      <h1>Cache Components and Suspense UX Demos (Suspense in Root Layout)</h1>
-      <VisualSuspenseBoundary>
-        <RootNav lang={l} />
-      </VisualSuspenseBoundary>
+      <h1>
+        Cache Components and Suspense UX Demos (No Suspense in Root Layout)
+      </h1>
+      <RootNav lang={l} />
     </header>
   );
 }
