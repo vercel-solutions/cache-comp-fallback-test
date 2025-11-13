@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
@@ -10,6 +11,13 @@ export async function Nav({
   demo?: "demo1" | "demo2";
   exhibit?: "a" | "b";
 }) {
+  "use cache";
+  cacheLife({
+    stale: 86400, // 1 day
+    revalidate: 86400, // 1 day
+    expire: 604800, // 1 week
+  });
+
   const lang = await langPromise;
 
   const prefix = exhibit ? `/exhibit-${exhibit}` : "";
