@@ -16,8 +16,7 @@ export default function Page({
       <p className="text-xs leading-relaxed">
         This text is static, but we waited 2.5 seconds before you could navigate
         here (if it wasn't prefetched or already prerendered) since the content
-        below blocked the entire page. The only difference between this demo 2
-        is that the left nav does not use suspense.
+        below blocked the entire page.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
@@ -25,10 +24,7 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we only see the post content suspense fallback, and
-        subsequent visits behave the same as the fast (dynamic) posts. However,
-        on long tail posts, before prefetch can finish, users experience a
-        noticeable delay.
+        When refreshing, we don't see any suspense fallbacks.
       </p>
     </Container>
   );

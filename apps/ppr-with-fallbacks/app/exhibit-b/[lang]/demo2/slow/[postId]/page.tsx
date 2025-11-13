@@ -1,8 +1,8 @@
-import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { getPost } from "@lib/api";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -14,9 +14,9 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
-        This text is static, and we saw it immediately upon navigating while the
-        content below was still loading. The only difference between this demo 1
-        is that the left nav uses suspense.
+        This text is static, but we waited 2.5 seconds before you could navigate
+        here (if it wasn't prefetched or already prerendered) since the content
+        below blocked the entire page.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
@@ -24,9 +24,7 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we see all suspense fallbacks from the top down. In
-        this scenario, there is no UX difference between static and dynamic
-        approaches.
+        When refreshing, we see no suspense fallbacks.
       </p>
     </Container>
   );

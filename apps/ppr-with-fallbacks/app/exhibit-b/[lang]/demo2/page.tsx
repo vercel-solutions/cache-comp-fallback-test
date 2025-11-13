@@ -7,13 +7,13 @@ export default function Page() {
       <p className="text-xs leading-relaxed">
         <strong>
           Suspense around the left nav in this layout. Post detail pages also
-          use suspense around the post content area.
+          use suspense around the post content area. No suspense in the root
+          header.
         </strong>
       </p>
       <p className="text-xs leading-relaxed">
-        Slow posts will not block navigation in this scenario. Both slow and
-        fast posts behave the same when there is an suspense boundary in the
-        layout.
+        Slow posts will block navigation in this scenario. (Scroll the list
+        quickly then click a link to beat prefetching.)
       </p>
       <p className="text-xs leading-relaxed">
         Fast posts will not block navigation, as we've forced the post content
@@ -23,11 +23,11 @@ export default function Page() {
       </p>
       <p className="text-xs leading-relaxed">
         Refreshing the fast post detail page after its been loaded will show
-        suspense fallbacks in both the nav and post content area always.
+        suspense fallbacks only in the post content area.
       </p>
       <p className="text-xs leading-relaxed">
         Refreshing the slow post detail page after its been loaded will not show
-        suspense fallbacks anymore in either the nav or the post content area.
+        any suspense fallbacks.
       </p>
     </Container>
   );

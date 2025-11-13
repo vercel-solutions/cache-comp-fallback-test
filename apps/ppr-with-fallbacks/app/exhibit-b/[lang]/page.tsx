@@ -17,8 +17,9 @@ export default function Page() {
             <Code>{`<Suspense/>`}</Code>.
           </p>
           <p className="text-xs leading-relaxed">
-            The top-level layout renders the primary nav with suspense. This is
-            important to note as it affects the behavior across both demos.
+            The top-level layout renders the primary nav{" "}
+            <strong>without suspense</strong>. This is important to note as it
+            affects the behavior across both demos.
           </p>
           <p className="text-xs leading-relaxed">
             <strong>Demo 1 renders a static left nav in it's layout.</strong>
