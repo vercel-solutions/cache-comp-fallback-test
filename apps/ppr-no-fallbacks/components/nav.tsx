@@ -1,6 +1,6 @@
+import { TextFallback } from "@components/fallbacks";
 import Link from "next/link";
 import { Suspense } from "react";
-import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
 export function Nav({ lang }: { lang: string }) {

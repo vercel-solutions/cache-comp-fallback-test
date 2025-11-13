@@ -1,17 +1,31 @@
 import "@/app/globals.css";
 import { Corners } from "@components/corners";
-import Link from "next/link";
+import { TextFallback } from "@components/fallbacks";
+import { Suspense } from "react";
+import { NavLink } from "@/components/nav-link";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }];
+}
+
+async function Nav({ langPromise }: { langPromise: Promise<string> }) {
+  const lang = await langPromise;
+  return (
+    <nav className="flex flex-col h-full">
+      <div className="flex flex-col gap-3">
+        <Suspense fallback={<TextFallback />}>
+          <NavLink href={`/${lang}/fast`}>fast posts</NavLink>
+          <NavLink href={`/${lang}/slow`}>slow posts</NavLink>
+        </Suspense>
+      </div>
+    </nav>
+  );
 }
 
 export default async function Layout({
   children,
   params,
 }: LayoutProps<"/[lang]">) {
-  const { lang } = await params;
-
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
@@ -23,16 +37,7 @@ export default async function Layout({
           <Corners>
             {/* Sidebar */}
             <aside className="flex flex-col gap-4 w-50 p-8">
-              <nav className="flex flex-col h-full">
-                <div className="flex flex-col gap-3">
-                  <Link href={`/${lang}/fast`} className="text-xs">
-                    fast posts
-                  </Link>
-                  <Link href={`/${lang}/slow`} className="text-xs">
-                    slow posts
-                  </Link>
-                </div>
-              </nav>
+              <Nav langPromise={params.then((p) => p.lang)} />
             </aside>
 
             {/* Main Content Area */}
