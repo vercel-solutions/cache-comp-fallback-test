@@ -6,9 +6,9 @@ import { cacheLife } from "next/cache";
 import { connection } from "next/server";
 import { Suspense } from "react";
 
-// export async function generateStaticParams() {
-//   return [{ postId: "1" }];
-// }
+export async function generateStaticParams() {
+  return [{ postId: "1" }];
+}
 
 export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
   return (
