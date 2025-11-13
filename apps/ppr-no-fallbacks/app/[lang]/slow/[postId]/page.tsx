@@ -23,6 +23,11 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
           <Post id={params.then((p) => `slow-${p.postId}`)} />
         </Suspense>
       </VisualSuspenseBoundary>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextFallback />}>
+          <Post id={params.then((p) => `slow-${p.postId}`)} />
+        </Suspense>
+      </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         When refreshing, we only see the post content suspense fallback, and
         subseqents visit behave the same as the fast (dynamic) posts. However,
