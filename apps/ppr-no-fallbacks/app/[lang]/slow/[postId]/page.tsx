@@ -44,7 +44,7 @@ async function Post({
   params: Promise<{ lang: string; postId: string }>;
 }) {
   const { lang, postId } = await params;
-  const post = await getPost(postId, lang, 1000);
+  const post = await getPost(postId, lang);
 
   return (
     <p className="text-xs">
