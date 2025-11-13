@@ -1,10 +1,7 @@
 import { VisualComponentBoundary } from "@components/boundary";
 import { Corners } from "@components/corners";
-import { Nav } from "@components/nav";
-
-export async function generateStaticParams() {
-  return [{ lang: "en" }];
-}
+import { cn } from "@lib/utils";
+import Link from "next/link";
 
 export default function Layout({
   children,
@@ -29,5 +26,68 @@ export default function Layout({
         </main>
       </Corners>
     </VisualComponentBoundary>
+  );
+}
+
+async function Nav({
+  lang: langPromise,
+  demo,
+  exhibit,
+}: {
+  lang: Promise<string>;
+  demo?: "demo1" | "demo2";
+  exhibit?: "a" | "b";
+}) {
+  const lang = await langPromise;
+
+  const prefix = exhibit ? `/exhibit-${exhibit}` : "";
+
+  const links =
+    demo === "demo1"
+      ? [
+          {
+            href: prefix
+              ? `${prefix}/${lang}/demo1/fast`
+              : `/${lang}/demo1/fast`,
+            label: "fast posts",
+          },
+          {
+            href: prefix
+              ? `${prefix}/${lang}/demo1/slow`
+              : `/${lang}/demo1/slow`,
+            label: "slow posts",
+          },
+        ]
+      : [
+          {
+            href: prefix
+              ? `${prefix}/${lang}/demo2/fast`
+              : `/${lang}/demo2/fast`,
+            label: "fast posts",
+          },
+          {
+            href: prefix
+              ? `${prefix}/${lang}/demo2/slow`
+              : `/${lang}/demo2/slow`,
+            label: "slow posts",
+          },
+        ];
+
+  return (
+    <nav className="flex flex-col h-full">
+      <div className="flex flex-col gap-3">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={cn("block", {
+              "text-yellow-500": false,
+            })}
+          >
+            <p>{link.label}</p>
+          </Link>
+        ))}
+      </div>
+    </nav>
   );
 }

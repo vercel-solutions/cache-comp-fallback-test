@@ -6,10 +6,6 @@ import { Corners } from "@components/corners";
 import { Nav, NavFallback } from "@components/nav";
 import { Suspense } from "react";
 
-export async function generateStaticParams() {
-  return [{ lang: "en" }];
-}
-
 export default function Layout({
   children,
   params,
