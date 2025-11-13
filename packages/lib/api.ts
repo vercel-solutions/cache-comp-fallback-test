@@ -8,7 +8,7 @@ type Post = {
 
 export async function getPost(id: string): Promise<Post> {
   "use cache: remote";
-  cacheLife({ expire: 30 });
+  cacheLife({ expire: 60 });
 
   return new Promise((resolve) => {
     setTimeout(() => {

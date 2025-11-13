@@ -31,7 +31,7 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         When refreshing, we only see the post content suspense fallback, and
-        subseqents visit behave the same as the fast (dynamic) posts. However,
+        subsequent visits behave the same as the fast (dynamic) posts. However,
         on long tail posts, before prefetch can finish, users experience a
         noticeable delay.
       </p>

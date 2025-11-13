@@ -1,8 +1,8 @@
-import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { getPost } from "@lib/api";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -26,7 +26,7 @@ export default function Page({
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         When refreshing, we only see the post content suspense fallback, and
-        subseqents visit behave the same as the fast (dynamic) posts. However,
+        subsequent visits behave the same as the fast (dynamic) posts. However,
         on long tail posts, before prefetch can finish, users experience a
         noticeable delay.
       </p>
