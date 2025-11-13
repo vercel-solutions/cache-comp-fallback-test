@@ -1,4 +1,5 @@
 import { cacheLife } from "next/cache";
+import { cookies } from "next/headers";
 
 type Post = {
   id: string;
@@ -71,4 +72,16 @@ export async function getPostDynamic(
       });
     }, delay ?? 2500);
   });
+}
+
+export async function getSessionId() {
+  "use cache: private";
+  cacheLife({
+    stale: 300,
+    revalidate: 300,
+    expire: 300,
+  });
+
+  const sessionId = (await cookies()).get("sessionId")?.value;
+  return sessionId;
 }

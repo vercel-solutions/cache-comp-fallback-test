@@ -1,9 +1,9 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
+import { CookieValue } from "@components/cookie-value";
 import { TextFallback } from "@components/fallbacks";
-import { getPost, getPostDynamic } from "@lib/api";
-import { connection } from "next/server";
 import { Suspense } from "react";
+import { Post, PostShortCacheLife } from "@/components/posts";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -21,7 +21,17 @@ export default function Page({
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <Post id={params.then((p) => `slow-${p.postId}`)} />
+          <Post params={params} />
+        </Suspense>
+      </VisualSuspenseBoundary>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextFallback />}>
+          <PostShortCacheLife params={params} />
+        </Suspense>
+      </VisualSuspenseBoundary>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextFallback />}>
+          <CookieValue />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
@@ -31,11 +41,4 @@ export default function Page({
       </p>
     </Container>
   );
-}
-
-async function Post({ id }: { id: Promise<string> }) {
-  const postId = await id;
-  const post = await getPost(postId);
-
-  return <p className="text-xs">{post.title} content loaded.</p>;
 }

@@ -1,9 +1,8 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
-import { getPost, getPostDynamic, getPostShortCacheLife } from "@lib/api";
-import { connection } from "next/server";
 import { Suspense } from "react";
+import { Post, PostDynamic, PostShortCacheLife } from "@/components/posts";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -32,7 +31,7 @@ export default function Page({
       </VisualSuspenseBoundary>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <Post2 params={params} />
+          <PostDynamic params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
@@ -42,51 +41,5 @@ export default function Page({
         noticeable delay.
       </p>
     </Container>
-  );
-}
-
-async function Post({
-  params,
-}: {
-  params: Promise<{ lang: string; postId: string }>;
-}) {
-  const { lang, postId } = await params;
-  const post = await getPost(postId, lang);
-
-  return (
-    <p className="text-xs">
-      {post.title} [{post.lang}] content loaded.
-    </p>
-  );
-}
-
-async function PostShortCacheLife({
-  params,
-}: {
-  params: Promise<{ lang: string; postId: string }>;
-}) {
-  const { lang, postId } = await params;
-  const post = await getPostShortCacheLife(`${postId}-short-cache-life`, lang);
-
-  return (
-    <p className="text-xs">
-      {post.title} [{post.lang}] content loaded.
-    </p>
-  );
-}
-
-async function Post2({
-  params,
-}: {
-  params: Promise<{ lang: string; postId: string }>;
-}) {
-  const [{ postId, lang }] = await Promise.all([params, connection()]);
-
-  const post = await getPostDynamic(`${postId}-dynamic`, lang, 3500);
-
-  return (
-    <p className="text-xs">
-      {post.title} [{post.lang}] content loaded.
-    </p>
   );
 }
