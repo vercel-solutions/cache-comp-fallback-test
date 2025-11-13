@@ -1,8 +1,9 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
+import { CookieValue } from "@components/cookie-value";
 import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
-import { Post, PostDynamic, PostShortCacheLife } from "@/components/posts";
+import { Post, PostShortCacheLife } from "@/components/posts";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -31,7 +32,7 @@ export default function Page({
       </VisualSuspenseBoundary>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <PostDynamic params={params} />
+          <CookieValue />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
