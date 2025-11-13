@@ -11,7 +11,7 @@ export async function Nav({
   demo?: "demo1" | "demo2";
   exhibit?: "a" | "b";
 }) {
-  "use cache";
+  "use cache: remote";
   cacheLife({
     stale: 86400, // 1 day
     revalidate: 86400, // 1 day

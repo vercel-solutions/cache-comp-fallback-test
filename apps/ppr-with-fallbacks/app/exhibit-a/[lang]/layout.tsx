@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 }
 
 export async function RootHeader({ lang }: { lang: Promise<string> }) {
-  "use cache";
+  "use cache: remote";
   cacheLife({
     stale: 86400, // 1 day
     revalidate: 86400, // 1 day
