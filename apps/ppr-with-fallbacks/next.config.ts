@@ -5,12 +5,12 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   transpilePackages: ["@repo/components", "@repo/lib"],
 
-  experimental: {
-    staleTimes: {
-      dynamic: 18000,
-      static: 18000,
-    },
-  },
+  // experimental: {
+  //   staleTimes: {
+  //     dynamic: 18000,
+  //     static: 18000,
+  //   },
+  // },
 };
 
 export default nextConfig;
