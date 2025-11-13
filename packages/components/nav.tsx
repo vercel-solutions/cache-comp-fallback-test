@@ -18,21 +18,29 @@ export async function Nav({
     demo === "demo1"
       ? [
           {
-            href: `${prefix}/${lang}/demo1/fast`,
+            href: prefix
+              ? `${prefix}/${lang}/demo1/fast`
+              : `/${lang}/demo1/fast`,
             label: "fast posts",
           },
           {
-            href: `${prefix}/${lang}/demo1/slow`,
+            href: prefix
+              ? `${prefix}/${lang}/demo1/slow`
+              : `/${lang}/demo1/slow`,
             label: "slow posts",
           },
         ]
       : [
           {
-            href: `${prefix}/${lang}/demo2/fast`,
+            href: prefix
+              ? `${prefix}/${lang}/demo2/fast`
+              : `/${lang}/demo2/fast`,
             label: "fast posts",
           },
           {
-            href: `${prefix}/${lang}/demo2/slow`,
+            href: prefix
+              ? `${prefix}/${lang}/demo2/slow`
+              : `/${lang}/demo2/slow`,
             label: "slow posts",
           },
         ];
