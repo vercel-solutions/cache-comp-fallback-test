@@ -21,12 +21,12 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <Post id={params.then((p) => `slow-${p.postId}`)} />
+          <Post params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <Post2 id={params.then((p) => `slow-${p.postId + 1}`)} />
+          <Post2 params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
@@ -39,18 +39,26 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
   );
 }
 
-async function Post({ id }: { id: Promise<string> }) {
+async function Post({
+  params,
+}: {
+  params: Promise<{ lang: string; postId: string }>;
+}) {
   "use cache";
-  const postId = await id;
-  const post = await getPost(postId);
+  const { lang, postId } = await params;
+  const post = await getPost(postId, lang);
 
   return <p className="text-xs">{post.title} content loaded.</p>;
 }
 
-async function Post2({ id }: { id: Promise<string> }) {
-  const [postId] = await Promise.all([id, connection()]);
+async function Post2({
+  params,
+}: {
+  params: Promise<{ lang: string; postId: string }>;
+}) {
+  const [{ postId, lang }] = await Promise.all([params, connection()]);
 
-  const post = await getPost(postId);
+  const post = await getPost(postId, lang);
 
   return <p className="text-xs">{post.title} content loaded.</p>;
 }

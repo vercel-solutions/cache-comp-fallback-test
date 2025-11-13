@@ -8,19 +8,19 @@ export async function generateStaticParams() {
   return [{ lang: "en" }];
 }
 
-async function Nav({ langPromise }: { langPromise: Promise<string> }) {
-  const lang = await langPromise;
-  return (
-    <nav className="flex flex-col h-full">
-      <div className="flex flex-col gap-3">
-        <Suspense fallback={<TextFallback />}>
-          <NavLink href={`/${lang}/fast`}>fast posts</NavLink>
-          <NavLink href={`/${lang}/slow`}>slow posts</NavLink>
-        </Suspense>
-      </div>
-    </nav>
-  );
-}
+// async function Nav({ langPromise }: { langPromise: Promise<string> }) {
+//   const lang = await langPromise;
+//   return (
+//     <nav className="flex flex-col h-full">
+//       <div className="flex flex-col gap-3">
+//         <Suspense fallback={<TextFallback />}>
+//           <NavLink href={`/${lang}/fast`}>fast posts</NavLink>
+//           <NavLink href={`/${lang}/slow`}>slow posts</NavLink>
+//         </Suspense>
+//       </div>
+//     </nav>
+//   );
+// }
 
 export default function Layout({ children }: LayoutProps<"/[lang]">) {
   return (
