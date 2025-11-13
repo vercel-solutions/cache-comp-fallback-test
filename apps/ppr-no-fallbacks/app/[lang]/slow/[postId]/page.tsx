@@ -40,6 +40,7 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
 }
 
 async function Post({ id }: { id: Promise<string> }) {
+  "use cache";
   const postId = await id;
   const post = await getPost(postId);
 
