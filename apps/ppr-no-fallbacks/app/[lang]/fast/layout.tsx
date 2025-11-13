@@ -5,10 +5,10 @@ import { Nav } from "@/components/nav";
 export default function Layout({
   children,
   params,
-}: LayoutProps<"/[lang]/slow">) {
+}: LayoutProps<"/[lang]/fast">) {
   return (
     <VisualComponentBoundary
-      label={<div className="text-red-500/60">/[lang]/slow/layout.tsx</div>}
+      label={<div className="text-red-500/60">/[lang]/fast/layout.tsx</div>}
       className="flex h-full min-h-0 p-8 pt-12 -mx-8 border-red-500/30 border-solid"
     >
       <Corners>

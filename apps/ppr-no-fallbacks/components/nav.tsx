@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { NavLink } from "./nav-link";
 
-export function Nav({ lang }: { lang: string }) {
+export async function Nav({ langPromise }: { langPromise: Promise<string> }) {
+  const lang = await langPromise;
   const links = [
     {
       href: `/${lang}/fast`,
@@ -18,17 +19,11 @@ export function Nav({ lang }: { lang: string }) {
   return (
     <nav className="flex flex-col h-full">
       <div className="flex flex-col gap-3">
-        {/* {links.map((link) => (
+        {links.map((link) => (
           <NavLink key={link.href} href={link.href}>
             {link.label}
           </NavLink>
-        ))} */}
-        <Link href={`/${lang}/fast`} prefetch={false} className="text-xs">
-          fast posts
-        </Link>
-        <Link href={`/${lang}/slow`} prefetch={false} className="text-xs">
-          slow posts
-        </Link>
+        ))}
       </div>
     </nav>
   );

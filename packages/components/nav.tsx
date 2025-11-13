@@ -7,7 +7,7 @@ export async function Nav({
   exhibit,
 }: {
   lang: Promise<string>;
-  demo: "demo1" | "demo2";
+  demo?: "demo1" | "demo2";
   exhibit?: "a" | "b";
 }) {
   const lang = await langPromise;
