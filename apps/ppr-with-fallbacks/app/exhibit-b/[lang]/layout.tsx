@@ -14,7 +14,7 @@ export async function RootHeader({ lang }: { lang: Promise<string> }) {
       <h1>
         Cache Components and Suspense UX Demos (No Suspense in Root Layout)
       </h1>
-      <RootNav lang={l} />
+      <RootNav lang={l} exhibit="b" />
     </header>
   );
 }

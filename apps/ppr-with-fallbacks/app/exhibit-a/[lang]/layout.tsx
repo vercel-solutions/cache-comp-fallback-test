@@ -1,12 +1,12 @@
 import "@/app/globals.css";
-import Link from "next/link";
-import { Suspense } from "react";
 import {
   VisualComponentBoundary,
   VisualSuspenseBoundary,
 } from "@components/boundary";
 import { TextFallback } from "@components/fallbacks";
 import { RootNav } from "@components/root-nav";
+import Link from "next/link";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }];
@@ -19,7 +19,7 @@ export async function RootHeader({ lang }: { lang: Promise<string> }) {
       <h1>Cache Components and Suspense UX Demos (Suspense in Root Layout)</h1>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <RootNav lang={l} />
+          <RootNav lang={l} exhibit="a" />
         </Suspense>
       </VisualSuspenseBoundary>
     </header>

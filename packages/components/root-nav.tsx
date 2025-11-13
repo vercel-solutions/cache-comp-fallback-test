@@ -1,15 +1,23 @@
 "use client";
 
+import { cn } from "@lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@lib/utils";
 
-export function RootNav({ lang }: { lang: string }) {
+export function RootNav({
+  lang,
+  exhibit,
+}: {
+  lang: string;
+  exhibit?: "a" | "b";
+}) {
   const pathname = usePathname();
 
-  const homeHref = `/${lang}`;
-  const demo1Href = `/${lang}/demo1`;
-  const demo2Href = `/${lang}/demo2`;
+  const prefix = exhibit ? `/exhibit-${exhibit}` : "";
+
+  const homeHref = prefix ? `${prefix}/${lang}` : `/${lang}`;
+  const demo1Href = prefix ? `${prefix}/${lang}/demo1` : `/${lang}/demo1`;
+  const demo2Href = prefix ? `${prefix}/${lang}/demo2` : `/${lang}/demo2`;
 
   const isHomeActive = pathname === homeHref;
   const isDemo1Active = pathname.startsWith(demo1Href);
