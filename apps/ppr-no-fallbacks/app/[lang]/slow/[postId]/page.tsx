@@ -45,7 +45,7 @@ async function Post({
   params: Promise<{ lang: string; postId: string }>;
 }) {
   const { lang, postId } = await params;
-  const post = await getPost(postId, lang);
+  const post = await getPost(postId, lang, 1000);
 
   return (
     <p className="text-xs">
@@ -61,7 +61,7 @@ async function Post2({
 }) {
   const [{ postId, lang }] = await Promise.all([params, connection()]);
 
-  const post = await getPost(`${postId}-dynamic`, lang);
+  const post = await getPost(`${postId}-dynamic`, lang, 5000);
 
   return (
     <p className="text-xs">

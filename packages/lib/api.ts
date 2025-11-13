@@ -5,9 +5,14 @@ type Post = {
   title: string;
   body: string;
   lang?: string;
+  delay?: number;
 };
 
-export async function getPost(id: string, lang?: string): Promise<Post> {
+export async function getPost(
+  id: string,
+  lang?: string,
+  delay?: number,
+): Promise<Post> {
   "use cache: remote";
   cacheLife({ expire: 60 });
 
@@ -19,6 +24,6 @@ export async function getPost(id: string, lang?: string): Promise<Post> {
         body: `Body of post ${id}`,
         lang: lang ?? "en",
       });
-    }, 2500);
+    }, delay ?? 2500);
   });
 }
