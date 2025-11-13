@@ -8,21 +8,21 @@ export async function generateStaticParams() {
   return [{ lang: "en" }];
 }
 
-// async function Nav({ langPromise }: { langPromise: Promise<string> }) {
-//   const lang = await langPromise;
-//   return (
-//     <nav className="flex flex-col h-full">
-//       <div className="flex flex-col gap-3">
-//         <Suspense fallback={<TextFallback />}>
-//           <NavLink href={`/${lang}/fast`}>fast posts</NavLink>
-//           <NavLink href={`/${lang}/slow`}>slow posts</NavLink>
-//         </Suspense>
-//       </div>
-//     </nav>
-//   );
-// }
+async function Nav({ langPromise }: { langPromise: Promise<string> }) {
+  const lang = await langPromise;
+  return (
+    <nav className="flex flex-col h-full">
+      <div className="flex flex-col gap-3">
+        <Suspense fallback={<TextFallback />}>
+          <NavLink href={`/${lang}/fast`}>fast posts</NavLink>
+          <NavLink href={`/${lang}/slow`}>slow posts</NavLink>
+        </Suspense>
+      </div>
+    </nav>
+  );
+}
 
-export default function Layout({ children }: LayoutProps<"/[lang]">) {
+export default function Layout({ children, params }: LayoutProps<"/[lang]">) {
   return (
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
@@ -32,9 +32,9 @@ export default function Layout({ children }: LayoutProps<"/[lang]">) {
           </header>
 
           <Corners>
-            {/* <aside className="flex flex-col gap-4 w-50 p-8">
+            <aside className="flex flex-col gap-4 w-50 p-8">
               <Nav langPromise={params.then((p) => p.lang)} />
-            </aside> */}
+            </aside>
 
             <main className="flex w-full flex-1 overflow-y-auto min-h-0 max-md:border-t border-l border-dashed border-neutral-800">
               {children}
