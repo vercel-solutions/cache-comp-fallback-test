@@ -48,7 +48,11 @@ async function Post({
   const { lang, postId } = await params;
   const post = await getPost(postId, lang);
 
-  return <p className="text-xs">{post.title} content loaded.</p>;
+  return (
+    <p className="text-xs">
+      {post.title} [{post.lang}] content loaded.
+    </p>
+  );
 }
 
 async function Post2({
@@ -60,5 +64,9 @@ async function Post2({
 
   const post = await getPost(postId, lang);
 
-  return <p className="text-xs">{post.title} content loaded.</p>;
+  return (
+    <p className="text-xs">
+      {post.title} [{post.lang}] content loaded.
+    </p>
+  );
 }
