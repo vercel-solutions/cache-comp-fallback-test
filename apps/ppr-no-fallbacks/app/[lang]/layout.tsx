@@ -27,9 +27,9 @@ export default function Layout({ children }: LayoutProps<"/[lang]">) {
     <html lang="en">
       <body className="dark flex justify-center items-center h-svh">
         <div className="flex flex-col gap-6 w-full max-w-3xl h-full max-h-[560px]">
-          {/* <header>
+          <header>
             <h1>No Fallbacks</h1>
-          </header> */}
+          </header>
 
           <Corners>
             {/* <aside className="flex flex-col gap-4 w-50 p-8">
