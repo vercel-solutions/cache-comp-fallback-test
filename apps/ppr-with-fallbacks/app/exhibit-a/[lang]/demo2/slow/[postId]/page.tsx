@@ -1,8 +1,9 @@
-import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
-import { getPost } from "@lib/api";
+import { getPost, getPostDynamic } from "@lib/api";
+import { connection } from "next/server";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -23,6 +24,11 @@ export default function Page({
           <Post id={params.then((p) => `slow-${p.postId}`)} />
         </Suspense>
       </VisualSuspenseBoundary>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextFallback />}>
+          <Post2 params={params} />
+        </Suspense>
+      </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         When refreshing, we see all suspense fallbacks from the top down. In
         this scenario, there is no UX difference between static and dynamic
@@ -37,4 +43,20 @@ async function Post({ id }: { id: Promise<string> }) {
   const post = await getPost(postId);
 
   return <p className="text-xs">{post.title} content loaded.</p>;
+}
+
+async function Post2({
+  params,
+}: {
+  params: Promise<{ lang: string; postId: string }>;
+}) {
+  const [{ postId, lang }] = await Promise.all([params, connection()]);
+
+  const post = await getPostDynamic(`${postId}-dynamic`, lang, 3500);
+
+  return (
+    <p className="text-xs">
+      {post.title} [{post.lang}] content loaded.
+    </p>
+  );
 }

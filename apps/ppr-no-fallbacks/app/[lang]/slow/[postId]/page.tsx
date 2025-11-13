@@ -1,7 +1,7 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
-import { getPost, getPostDynamic } from "@lib/api";
+import { getPost, getPostDynamic, getPostShortCacheLife } from "@lib/api";
 import { connection } from "next/server";
 import { Suspense } from "react";
 
@@ -21,6 +21,11 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
           <Post params={params} />
+        </Suspense>
+      </VisualSuspenseBoundary>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextFallback />}>
+          <PostShortCacheLife params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
       <VisualSuspenseBoundary>
@@ -45,6 +50,21 @@ async function Post({
 }) {
   const { lang, postId } = await params;
   const post = await getPost(postId, lang);
+
+  return (
+    <p className="text-xs">
+      {post.title} [{post.lang}] content loaded.
+    </p>
+  );
+}
+
+async function PostShortCacheLife({
+  params,
+}: {
+  params: Promise<{ lang: string; postId: string }>;
+}) {
+  const { lang, postId } = await params;
+  const post = await getPostShortCacheLife(`${postId}-short-cache-life`, lang);
 
   return (
     <p className="text-xs">

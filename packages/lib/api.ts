@@ -32,6 +32,30 @@ export async function getPost(
   });
 }
 
+export async function getPostShortCacheLife(
+  id: string,
+  lang?: string,
+  delay?: number,
+): Promise<Post> {
+  "use cache: remote";
+  cacheLife({
+    stale: 30,
+    revalidate: 30,
+    expire: 30,
+  });
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        id,
+        title: `Post ${id}`,
+        body: `Body of post ${id}`,
+        lang: lang ?? "en",
+      });
+    }, delay ?? 2500);
+  });
+}
+
 export async function getPostDynamic(
   id: string,
   lang?: string,
