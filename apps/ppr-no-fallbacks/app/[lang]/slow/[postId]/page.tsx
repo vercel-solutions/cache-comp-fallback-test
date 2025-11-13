@@ -1,7 +1,7 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
-import { getPost } from "@lib/api";
+import { getPost, getPostDynamic } from "@lib/api";
 import { cacheLife } from "next/cache";
 import { connection } from "next/server";
 import { Suspense } from "react";
@@ -61,7 +61,7 @@ async function Post2({
 }) {
   const [{ postId, lang }] = await Promise.all([params, connection()]);
 
-  const post = await getPost(`${postId}-dynamic`, lang, 5000);
+  const post = await getPostDynamic(`${postId}-dynamic`, lang, 5000);
 
   return (
     <p className="text-xs">

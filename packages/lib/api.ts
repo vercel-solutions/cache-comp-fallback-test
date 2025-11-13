@@ -27,3 +27,20 @@ export async function getPost(
     }, delay ?? 2500);
   });
 }
+
+export async function getPostDynamic(
+  id: string,
+  lang?: string,
+  delay?: number,
+): Promise<Post> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        id,
+        title: `Post ${id}`,
+        body: `Body of post ${id}`,
+        lang: lang ?? "en",
+      });
+    }, delay ?? 2500);
+  });
+}
