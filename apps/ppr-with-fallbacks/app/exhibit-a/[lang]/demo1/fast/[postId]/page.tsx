@@ -5,9 +5,9 @@ import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
 import { PostDynamic } from "@/components/posts";
 
-export async function generateStaticParams() {
-  return [{ postId: "1" }];
-}
+// export async function generateStaticParams() {
+//   return [{ postId: "1" }];
+// }
 
 export default function Page({
   params,
