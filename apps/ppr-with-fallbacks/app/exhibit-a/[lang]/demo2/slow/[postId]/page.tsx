@@ -1,4 +1,5 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
+import { Code } from "@components/code";
 import { Container } from "@components/container";
 import { CookieValue } from "@components/cookie-value";
 import { TextFallback } from "@components/fallbacks";
@@ -35,9 +36,11 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we see all suspense fallbacks from the top down. In
-        this scenario, there is no UX difference between static and dynamic
-        approaches.
+        If this is post "1" (given in <Code>generateStaticParams</Code>), when
+        refreshing, we will only see the suspense fallbacks for the 2 areas
+        below. For all other posts, when refreshing, we will see all suspense
+        fallbacks from the top down. In this scenario, there is no UX difference
+        between static and dynamic approaches.
       </p>
     </Container>
   );
