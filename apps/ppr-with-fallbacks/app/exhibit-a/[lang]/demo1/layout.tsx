@@ -20,7 +20,7 @@ export default function Layout({
       </aside>
 
       <Corners>
-        <main className="flex w-full md:max-w-xl flex-1 overflow-y-auto min-h-0">
+        <main className="w-full md:max-w-xl flex-1 overflow-y-auto min-h-0">
           {children}
         </main>
       </Corners>
