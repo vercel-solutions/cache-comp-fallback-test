@@ -3,6 +3,7 @@ import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { getPost } from "@lib/api";
 import { cacheLife } from "next/cache";
+import { connection } from "next/server";
 import { Suspense } from "react";
 
 // export async function generateStaticParams() {
@@ -25,7 +26,7 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
       </VisualSuspenseBoundary>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <Post id={params.then((p) => `slow-${p.postId}`)} />
+          <Post2 id={params.then((p) => `slow-${p.postId + 1}`)} />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
@@ -40,6 +41,14 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
 
 async function Post({ id }: { id: Promise<string> }) {
   const postId = await id;
+  const post = await getPost(postId);
+
+  return <p className="text-xs">{post.title} content loaded.</p>;
+}
+
+async function Post2({ id }: { id: Promise<string> }) {
+  const [postId] = await Promise.all([id, connection()]);
+
   const post = await getPost(postId);
 
   return <p className="text-xs">{post.title} content loaded.</p>;
