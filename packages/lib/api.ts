@@ -14,7 +14,11 @@ export async function getPost(
   delay?: number,
 ): Promise<Post> {
   "use cache: remote";
-  cacheLife({ expire: 60 });
+  cacheLife({
+    stale: 86400, // 1 day
+    revalidate: 86400, // 1 day
+    expire: 604800, // 1 week
+  });
 
   return new Promise((resolve) => {
     setTimeout(() => {
