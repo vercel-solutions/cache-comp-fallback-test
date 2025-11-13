@@ -77,9 +77,9 @@ export async function getPostDynamic(
 export async function getSessionId() {
   "use cache: private";
   cacheLife({
-    stale: 300,
-    revalidate: 300,
-    expire: 300,
+    stale: 3000,
+    revalidate: 3000,
+    expire: 3000,
   });
 
   const sessionId = (await cookies()).get("sessionId")?.value;
