@@ -12,12 +12,10 @@ export default function Layout({
       className="flex h-full min-h-0 p-8 pt-12 -mx-8 border-red-500/30 border-solid"
     >
       <Corners>
-        {/* Sidebar */}
         <aside className="flex flex-col gap-4 w-50 shrink-0 p-8">
           <Nav langPromise={params.then((p) => p.lang)} />
         </aside>
 
-        {/* Main Content Area */}
         <main className="flex w-full md:max-w-xl flex-1 overflow-y-auto min-h-0 max-md:border-t border-l border-dashed border-neutral-800">
           {children}
         </main>
