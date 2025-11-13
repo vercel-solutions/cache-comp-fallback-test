@@ -2,6 +2,10 @@ import { VisualComponentBoundary } from "@components/boundary";
 import { Corners } from "@components/corners";
 import { Nav } from "@components/nav";
 
+export async function generateStaticParams() {
+  return [{ lang: "en" }];
+}
+
 export default function Layout({
   children,
   params,
