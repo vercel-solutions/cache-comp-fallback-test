@@ -13,10 +13,8 @@ export async function CookieValue() {
   const sessionId = await getSessionId();
 
   return (
-    <div>
-      <p>
-        sessionId cookie: <Code>{`${sessionId}`}</Code> ("use cache: private")
-      </p>
-    </div>
+    <p className="text-xs">
+      sessionId cookie: <Code>{`${sessionId}`}</Code> ("use cache: private")
+    </p>
   );
 }
