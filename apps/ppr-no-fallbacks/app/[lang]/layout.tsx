@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 import { Corners } from "@components/corners";
-import { Nav } from "@/components/nav";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }];
@@ -23,7 +23,16 @@ export default async function Layout({
           <Corners>
             {/* Sidebar */}
             <aside className="flex flex-col gap-4 w-50 p-8">
-              <Nav lang={lang} />
+              <nav className="flex flex-col h-full">
+                <div className="flex flex-col gap-3">
+                  <Link href={`/${lang}/fast`} className="text-xs">
+                    fast posts
+                  </Link>
+                  <Link href={`/${lang}/slow`} className="text-xs">
+                    slow posts
+                  </Link>
+                </div>
+              </nav>
             </aside>
 
             {/* Main Content Area */}

@@ -34,9 +34,6 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
 }
 
 async function Post({ id }: { id: Promise<string> }) {
-  "use cache: remote";
-  cacheLife({ expire: 30 });
-
   const postId = await id;
   const post = await getPost(postId);
 
