@@ -1,10 +1,10 @@
-import { connection } from "next/server";
-import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Code } from "@components/code";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { getPost } from "@lib/api";
+import { connection } from "next/server";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];

@@ -23,11 +23,11 @@ export default function Page({ params }: PageProps<"/[lang]/slow/[postId]">) {
           <Post params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
-      {/* <VisualSuspenseBoundary>
+      <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
           <Post2 params={params} />
         </Suspense>
-      </VisualSuspenseBoundary> */}
+      </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         When refreshing, we only see the post content suspense fallback, and
         subsequent visits behave the same as the fast (dynamic) posts. However,
@@ -53,18 +53,18 @@ async function Post({
   );
 }
 
-// async function Post2({
-//   params,
-// }: {
-//   params: Promise<{ lang: string; postId: string }>;
-// }) {
-//   const [{ postId, lang }] = await Promise.all([params, connection()]);
+async function Post2({
+  params,
+}: {
+  params: Promise<{ lang: string; postId: string }>;
+}) {
+  const [{ postId, lang }] = await Promise.all([params, connection()]);
 
-//   const post = await getPostDynamic(`${postId}-dynamic`, lang, 5000);
+  const post = await getPostDynamic(`${postId}-dynamic`, lang, 3500);
 
-//   return (
-//     <p className="text-xs">
-//       {post.title} [{post.lang}] content loaded.
-//     </p>
-//   );
-// }
+  return (
+    <p className="text-xs">
+      {post.title} [{post.lang}] content loaded.
+    </p>
+  );
+}
