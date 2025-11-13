@@ -1,5 +1,4 @@
 import { cacheLife } from "next/cache";
-import { Suspense } from "react";
 import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
@@ -12,13 +11,6 @@ export async function Nav({
   demo?: "demo1" | "demo2";
   exhibit?: "a" | "b";
 }) {
-  "use cache: remote";
-  cacheLife({
-    stale: 86400, // 1 day
-    revalidate: 86400, // 1 day
-    expire: 604800, // 1 week
-  });
-
   const lang = await langPromise;
 
   const prefix = exhibit ? `/exhibit-${exhibit}` : "";
@@ -58,12 +50,9 @@ export async function Nav({
     <nav className="flex flex-col h-full">
       <div className="flex flex-col gap-3">
         {links.map((link) => (
-          <Suspense
-            key={link.href}
-            fallback={<TextFallback className="w-24" />}
-          >
-            <NavLink href={link.href}>{link.label}</NavLink>
-          </Suspense>
+          <NavLink key={link.href} href={link.href}>
+            {link.label}
+          </NavLink>
         ))}
       </div>
     </nav>
