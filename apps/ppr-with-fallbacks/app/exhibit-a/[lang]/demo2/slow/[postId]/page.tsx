@@ -32,7 +32,8 @@ export default function Page({
       </p>
       <p className="text-xs leading-relaxed font-bold">
         For all other posts, we always see the fallback for the post content and
-        all other suspense boundaries from the top down.
+        all other suspense boundaries from the top down. This is not what we
+        would expect.
       </p>
     </Container>
   );

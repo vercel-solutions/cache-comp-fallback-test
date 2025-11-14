@@ -25,7 +25,7 @@ export default function Page({
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         If this is post <Code>1</Code> (given in <Code>gSP</Code>), when we
-        navigate here see the post content fallback. Refreshing post{" "}
+        navigate here we see the post content fallback. Refreshing post{" "}
         <Code>1</Code> behaves the same, only showing the dynamic post
         component's fallback as expected.
       </p>

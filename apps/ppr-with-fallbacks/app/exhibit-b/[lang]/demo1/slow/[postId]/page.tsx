@@ -1,4 +1,5 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
+import { Code } from "@components/code";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
@@ -14,9 +15,10 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
-        This text is static, but we waited 2.5 seconds before you could navigate
-        here (if it wasn't prefetched or already prerendered) since the content
-        below blocked the entire page.
+        For post <Code>1</Code> (given in <Code>gSP</Code>), navigation here is
+        always instant. For all other posts, navigation is blocked for 2.5s
+        while waiting for the post content (if previously unvisited and not yet
+        prefetched).
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
@@ -24,7 +26,9 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we don't see any suspense fallbacks.
+        When refreshing, we don't see any fallbacks. This is the expected ISR
+        behavior. However, we would expect instant navigation from the post list
+        while the post content is loading with a fallback.
       </p>
     </Container>
   );

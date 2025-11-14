@@ -13,7 +13,7 @@ export default function Page({
   params,
 }: PageProps<"/exhibit-a/[lang]/demo1/slow/[postId]">) {
   return (
-    <Container className="flex flex-col gap-6" key="demo1-slow">
+    <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
         For post <Code>1</Code> (given in <Code>gSP</Code>), navigation here is
         always instant. For all other posts, navigation is blocked for 2.5s
