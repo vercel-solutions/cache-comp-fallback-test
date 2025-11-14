@@ -15,9 +15,7 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6" key="demo2-slow">
       <p className="text-xs leading-relaxed">
-        This text is static, and we saw it immediately upon navigating while the
-        content below was still loading. The only difference between this demo 1
-        is that the left nav uses suspense.
+        Here we see instant navigation from the post list.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />} key="demo2-slow-post">
@@ -26,11 +24,12 @@ export default function Page({
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         If this is post <Code>1</Code> (given in <Code>gSP</Code>), when we
-        won't see any suspense fallbacks.
+        navigate here see no suspense fallbacks. Refreshing post <Code>1</Code>{" "}
+        also shos no fallbacks.
       </p>
       <p className="text-xs leading-relaxed font-bold">
-        When refreshing any other posts here, we see all fallbacks from the top
-        down.
+        For all other posts, we always see the fallback for the post content.
+        Upon refreshing, we see all fallbacks from the top down.
       </p>
     </Container>
   );
