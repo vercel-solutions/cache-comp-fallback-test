@@ -39,13 +39,13 @@ These demos illustrate the behavior of suspense fallbacks in multiple scenarios 
 
 ## Summary
 
-| Exhibit | Demo | Post Type | Behavior | Notes |
-|---------|------|-----------|--------|-------|
-| A | 1 | Fast Posts | **expected** | |
-| A | 1 | Slow Posts | **expected** | with blocked nav :/ |
-| A | 2 | Fast Posts | **unexpected** | |
-| A | 2 | Slow Posts | **unexpected** | |
-| B | 1 | Fast Posts | **expected** | |
-| B | 1 | Slow Posts | **expected** | with blocked nav :/ |
-| B | 2 | Fast Posts | **expected** | |
-| B | 2 | Slow Posts | **expected** | with blocked nav :/ |
+| Exhibit | Demo | Post Type | Suspense Areas | Behavior | Notes |
+|---------|------|-----------|---------------|----------|-------|
+| A | 1 | Fast Posts | root nav, post content | **expected** | |
+| A | 1 | Slow Posts | root nav, post content | **expected** | with blocked nav :/ |
+| A | 2 | Fast Posts | root nav, left nav, post content | **unexpected** | |
+| A | 2 | Slow Posts | root nav, left nav, post content | **unexpected** | |
+| B | 1 | Fast Posts | post content | **expected** | |
+| B | 1 | Slow Posts | post content | **expected** | with blocked nav :/ |
+| B | 2 | Fast Posts | left nav, post content | **expected** | |
+| B | 2 | Slow Posts | left nav, post content | **expected** | with blocked nav :/ |
