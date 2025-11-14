@@ -21,7 +21,6 @@ export default function Page({
         suspense boundaries (both of which are siblings to the page content) in
         each of the parent layouts.
       </p>
-      <Timestamp />
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />} key="demo2-static-post">
           <Post params={params} />
@@ -38,14 +37,5 @@ export default function Page({
         always renders a new timestamp. This is not what we would expect.
       </p>
     </Container>
-  );
-}
-
-async function Timestamp() {
-  "use cache";
-  return (
-    <p>
-      Time: <Code>{Date.now()}</Code>
-    </p>
   );
 }
