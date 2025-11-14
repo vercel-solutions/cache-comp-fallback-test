@@ -15,12 +15,12 @@ export function NavLink({
   // For home route, only exact match. For other routes, match exact or child routes
   const isHomeRoute = href.split("/").length === 2; // e.g., "/en"
   const isActive =
-    pathname === href || (!isHomeRoute && pathname.startsWith(href + "/"));
+    pathname === href || (!isHomeRoute && pathname.startsWith(`${href}/`));
 
   return (
     <Link
       href={href}
-      className={cn("block", {
+      className={cn("text-xs block", {
         "text-yellow-500": isActive,
       })}
     >
