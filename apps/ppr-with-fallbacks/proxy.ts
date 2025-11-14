@@ -10,7 +10,7 @@ export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   if (pathname === "/") {
-    return NextResponse.redirect(new URL(`/exhibit-a/en`, req.url));
+    return NextResponse.redirect(new URL(`/exhibit-a/en/demo1/fast`, req.url));
   }
 
   const response = NextResponse.next();

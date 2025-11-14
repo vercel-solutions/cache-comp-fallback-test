@@ -11,7 +11,7 @@ export function ExhibitNav({ exhibit }: { exhibit: "a" | "b" }) {
   return (
     <nav className="fixed top-0 left-0 right-0 flex justify-center items-center gap-4 py-4 z-50">
       <Link
-        href="/exhibit-a/en"
+        href="/exhibit-a/en/demo1/fast"
         className={cn("text-xs", {
           "text-yellow-500": isExhibitAActive,
         })}
@@ -19,7 +19,7 @@ export function ExhibitNav({ exhibit }: { exhibit: "a" | "b" }) {
         exhibit a
       </Link>
       <Link
-        href="/exhibit-b/en"
+        href="/exhibit-b/en/demo1/fast"
         className={cn("text-xs", {
           "text-yellow-500": isExhibitBActive,
         })}
