@@ -6,12 +6,14 @@ export async function Post({
 }: {
   params: Promise<{ lang: string; postId: string }>;
 }) {
+  "use cache";
   const { lang, postId } = await params;
   const post = await getPost(postId, lang);
+  const timestamp = Date.now();
 
   return (
     <p className="text-xs">
-      {post.title} [{post.lang}] content loaded.
+      {post.title} [{post.lang}] content loaded {timestamp}.
     </p>
   );
 }

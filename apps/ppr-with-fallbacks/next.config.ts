@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // cacheComponents: true,
-  reactCompiler: true,
+  cacheComponents: true,
+  // reactCompiler: true,
   transpilePackages: ["@repo/components", "@repo/lib"],
 
   experimental: {
