@@ -13,6 +13,7 @@ export async function generateStaticParams() {
 }
 
 export async function RootHeader({ lang }: { lang: Promise<string> }) {
+  "use cache";
   const l = await lang;
   return (
     <header className="flex flex-col gap-4">

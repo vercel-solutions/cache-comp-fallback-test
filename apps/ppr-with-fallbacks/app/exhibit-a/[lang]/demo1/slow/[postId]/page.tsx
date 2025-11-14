@@ -5,15 +5,15 @@ import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
 import { Post, PostShortCacheLife } from "@/components/posts";
 
-export async function generateStaticParams() {
-  return [{ postId: "1" }];
-}
+// export async function generateStaticParams() {
+//   return [{ postId: "1" }];
+// }
 
 export default function Page({
   params,
 }: PageProps<"/exhibit-a/[lang]/demo1/slow/[postId]">) {
   return (
-    <Container className="flex flex-col gap-6">
+    <Container className="flex flex-col gap-6" key="demo1-slow">
       <p className="text-xs leading-relaxed">
         This text is static, but we waited 2.5 seconds before you could navigate
         here (if it wasn't prefetched or already prerendered) since the content
@@ -28,11 +28,6 @@ export default function Page({
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
           <PostShortCacheLife params={params} />
-        </Suspense>
-      </VisualSuspenseBoundary>
-      <VisualSuspenseBoundary>
-        <Suspense fallback={<TextFallback />}>
-          <CookieValue />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">

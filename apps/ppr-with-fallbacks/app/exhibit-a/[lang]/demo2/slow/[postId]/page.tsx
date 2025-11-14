@@ -6,15 +6,15 @@ import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
 import { Post, PostShortCacheLife } from "@/components/posts";
 
-export async function generateStaticParams() {
-  return [{ postId: "1" }];
-}
+// export async function generateStaticParams() {
+//   return [{ postId: "1" }];
+// }
 
 export default function Page({
   params,
 }: PageProps<"/exhibit-a/[lang]/demo2/slow/[postId]">) {
   return (
-    <Container className="flex flex-col gap-6">
+    <Container className="flex flex-col gap-6" key="demo2-slow">
       <p className="text-xs leading-relaxed">
         This text is static, and we saw it immediately upon navigating while the
         content below was still loading. The only difference between this demo 1
