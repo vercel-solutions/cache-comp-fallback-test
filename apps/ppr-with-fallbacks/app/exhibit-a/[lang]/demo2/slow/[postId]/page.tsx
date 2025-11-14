@@ -29,7 +29,7 @@ export default function Page({
           fallback={<TextFallback />}
           key="demo2-slow-post-short-cache-life"
         > */}
-      <PostShortCacheLife params={params} />
+      {/* <PostShortCacheLife params={params} /> */}
       {/* </Suspense> */}
       {/* </VisualSuspenseBoundary> */}
       <p className="text-xs leading-relaxed">

@@ -16,9 +16,9 @@ export async function getPost(
 ): Promise<Post> {
   "use cache: remote";
   cacheLife({
-    stale: 86400, // 1 day
-    revalidate: 86400, // 1 day
-    expire: 604800, // 1 week
+    stale: 86400,
+    revalidate: 86400,
+    expire: 604800,
   });
 
   return new Promise((resolve) => {
@@ -40,9 +40,9 @@ export async function getPostShortCacheLife(
 ): Promise<Post> {
   "use cache: remote";
   cacheLife({
-    stale: 30,
-    revalidate: 30,
-    expire: 30,
+    stale: 120,
+    revalidate: 120,
+    expire: 120,
   });
 
   return new Promise((resolve) => {
