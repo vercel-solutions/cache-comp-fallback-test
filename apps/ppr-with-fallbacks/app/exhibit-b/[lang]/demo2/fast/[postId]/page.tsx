@@ -14,6 +14,7 @@ export default function Page({
 }: PageProps<"/exhibit-b/[lang]/demo2/fast/[postId]">) {
   return (
     <Container className="flex flex-col gap-6">
+      <p className="text-green-500">expected behavior</p>
       <p className="text-xs leading-relaxed">
         Navigation here is instant. We're forcing the post content area to be
         dynamic with <Code>await connection()</Code>.

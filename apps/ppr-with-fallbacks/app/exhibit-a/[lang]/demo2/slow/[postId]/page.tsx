@@ -14,6 +14,7 @@ export default function Page({
 }: PageProps<"/exhibit-a/[lang]/demo2/slow/[postId]">) {
   return (
     <Container className="flex flex-col gap-6">
+      <p className="text-orange-500">unexpected behavior</p>
       <p className="text-xs leading-relaxed">
         Here we always see instant navigation from the post list. This is
         different than demo 1 slow posts, seemingly due to the presence of
