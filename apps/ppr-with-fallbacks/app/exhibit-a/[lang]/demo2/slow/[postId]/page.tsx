@@ -17,8 +17,8 @@ export default function Page({
       <p className="text-xs leading-relaxed">
         Here we always see instant navigation from the post list. This is
         different than demo 1 slow posts, seemingly due to the presence of
-        suspense boundaries in each of the layouts (both of which are siblings
-        to the page content).
+        suspense boundaries (both of which are siblings to the page content) in
+        each of the parent layouts. .
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />} key="demo2-slow-post">
