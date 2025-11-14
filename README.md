@@ -21,7 +21,7 @@
 
 - left nav is **not** wrapped w/ suspense
 
-### /demo2
+### /demo2 <-- unexpected behavior
 
  - left nav is wrapped w/ suspense
 
