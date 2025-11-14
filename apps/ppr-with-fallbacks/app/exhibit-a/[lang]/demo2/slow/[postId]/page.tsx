@@ -35,8 +35,11 @@ export default function Page({
       <p className="text-xs leading-relaxed">
         If this is post <Code>1</Code> (given in <Code>gSP</Code>), when
         refreshing, we will only see the suspense fallback for the 2nd post with
-        a short cache life. When refreshing any other posts here, we see all
-        fallbacks from the top down.
+        a short cache life.
+      </p>
+      <p className="text-xs leading-relaxed font-bold">
+        When refreshing any other posts here, we see all fallbacks from the top
+        down.
       </p>
     </Container>
   );
