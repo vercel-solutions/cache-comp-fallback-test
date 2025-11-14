@@ -20,7 +20,7 @@ export default function Page({
         is that the left nav uses suspense.
       </p>
       <VisualSuspenseBoundary>
-        <Suspense fallback={<TextFallback />} key="demo2-slow-post">
+        <Suspense fallback={null} key="demo2-slow-post">
           <Post params={params} />
         </Suspense>
       </VisualSuspenseBoundary>

@@ -6,6 +6,7 @@ export async function Post({
 }: {
   params: Promise<{ lang: string; postId: string }>;
 }) {
+  "use cache";
   const { lang, postId } = await params;
   const post = await getPost(postId, lang);
 
