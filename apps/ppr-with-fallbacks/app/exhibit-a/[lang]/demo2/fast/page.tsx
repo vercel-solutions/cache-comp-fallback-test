@@ -1,5 +1,6 @@
-import Link from "next/link";
+import { Code } from "@components/code";
 import { Container } from "@components/container";
+import Link from "next/link";
 
 export default async function Page({
   params,
@@ -16,7 +17,12 @@ export default async function Page({
           href={`/exhibit-a/${lang}/demo2/fast/${num}`}
           className="aspect-square flex items-center justify-center border border-neutral-700 hover:border-yellow-500 hover:bg-yellow-500/10"
         >
-          {num}
+          <p className="text-xs">{num}</p>
+          {num === 1 && (
+            <p className="text-xs">
+              <Code>gSP</Code>
+            </p>
+          )}
         </Link>
       ))}
     </Container>
