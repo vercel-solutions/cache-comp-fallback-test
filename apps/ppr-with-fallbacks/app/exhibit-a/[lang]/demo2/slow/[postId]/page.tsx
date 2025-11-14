@@ -3,7 +3,7 @@ import { Code } from "@components/code";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
-import { Post, PostShortCacheLife } from "@/components/posts";
+import { Post } from "@/components/posts";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -24,18 +24,9 @@ export default function Page({
           <Post params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
-      <VisualSuspenseBoundary>
-        <Suspense
-          fallback={<TextFallback />}
-          key="demo2-slow-post-short-cache-life"
-        >
-          <PostShortCacheLife params={params} />
-        </Suspense>
-      </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        If this is post <Code>1</Code> (given in <Code>gSP</Code>), when
-        refreshing, we will only see the suspense fallback for the 2nd post with
-        a short cache life.
+        If this is post <Code>1</Code> (given in <Code>gSP</Code>), when we
+        won't see any suspense fallbacks.
       </p>
       <p className="text-xs leading-relaxed font-bold">
         When refreshing any other posts here, we see all fallbacks from the top
