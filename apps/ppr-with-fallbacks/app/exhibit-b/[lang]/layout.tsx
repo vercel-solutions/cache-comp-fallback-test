@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import { VisualComponentBoundary } from "@components/boundary";
 import { RootNav } from "@components/root-nav";
+import { cacheLife } from "next/cache";
 import Link from "next/link";
 
 export async function generateStaticParams() {
@@ -8,6 +9,9 @@ export async function generateStaticParams() {
 }
 
 export async function RootHeader({ lang }: { lang: Promise<string> }) {
+  "use cache";
+  cacheLife("weeks");
+
   const l = await lang;
   return (
     <header className="flex flex-col gap-4">

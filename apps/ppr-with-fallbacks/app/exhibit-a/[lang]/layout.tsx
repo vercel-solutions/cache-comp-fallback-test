@@ -5,6 +5,7 @@ import {
 } from "@components/boundary";
 import { TextFallback } from "@components/fallbacks";
 import { RootNav } from "@components/root-nav";
+import { cacheLife } from "next/cache";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -13,6 +14,9 @@ export async function generateStaticParams() {
 }
 
 export async function RootHeader({ lang }: { lang: Promise<string> }) {
+  "use cache";
+  cacheLife("weeks");
+
   const l = await lang;
   return (
     <header className="flex flex-col gap-4">
