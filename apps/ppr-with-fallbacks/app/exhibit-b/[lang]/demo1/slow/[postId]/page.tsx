@@ -28,7 +28,8 @@ export default function Page({
       <p className="text-xs leading-relaxed">
         When refreshing, we don't see any fallbacks. This is the expected ISR
         behavior. However, we would expect instant navigation from the post list
-        while the post content is loading with a fallback.
+        while the post content is loading with a fallback (when it's not
+        prefetched or already prerendered).
       </p>
     </Container>
   );

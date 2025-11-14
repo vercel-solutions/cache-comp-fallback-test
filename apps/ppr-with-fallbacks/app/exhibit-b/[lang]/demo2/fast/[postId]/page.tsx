@@ -15,9 +15,8 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6">
       <p className="text-xs leading-relaxed">
-        This text is static, and we saw it immediately upon navigating here,
-        while the content below was still loading. We are forcing the post
-        content area to be dynamic with <Code>await connection()</Code>.
+        Navigation here is instant. We're forcing the post content area to be
+        dynamic with <Code>await connection()</Code>.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
@@ -25,7 +24,15 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, only this post content's fallback is shown.
+        If this is post <Code>1</Code> (given in <Code>gSP</Code>), when we
+        navigate here we see the post content fallback. Refreshing post{" "}
+        <Code>1</Code> behaves the same, only showing the dynamic post
+        component's fallback as expected.
+      </p>
+      <p className="text-xs leading-relaxed font-bold">
+        For all other posts, upon refresh, we see the fallback for the post
+        content as expected, but we also see fallbacks for all suspense
+        boundaries from the top down.
       </p>
     </Container>
   );
