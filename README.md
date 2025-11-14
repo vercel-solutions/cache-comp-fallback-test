@@ -1,6 +1,14 @@
 # ISR + Suspense Fallback Scenarios
 
-[These demos](https://cache-comp-fallback-test-ppr-with-f.vercel.app) illustrate the behavior of suspense fallbacks in multiple scenarios with some unexpected outcomes. The general set up is as follows:
+[These demos](https://cache-comp-fallback-test-ppr-with-f.vercel.app) illustrate the behavior of suspense fallbacks in multiple scenarios with some unexpected outcomes. 
+
+## tl:dr
+Compare the behavior of these posts. After loading each page, refresh and observe the behavior fo the suspense fallbacks:
+- [post 1 with `gSP`, 2 suspense boundaries above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/slow/1)
+- [post 2 w/o explicit `gSP`, 2 suspense boundaries above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/slow/2)
+- [post 2 w/o explicit `gSP`, 1 suspense boundary above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo1/slow/2)
+
+The general set up is as follows:
 
 ## Exhibit A & B
 
