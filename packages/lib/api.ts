@@ -39,11 +39,7 @@ export async function getPostShortCacheLife(
   delay?: number,
 ): Promise<Post> {
   "use cache: remote";
-  cacheLife({
-    stale: 120,
-    revalidate: 120,
-    expire: 120,
-  });
+  cacheLife("seconds");
 
   return new Promise((resolve) => {
     setTimeout(() => {

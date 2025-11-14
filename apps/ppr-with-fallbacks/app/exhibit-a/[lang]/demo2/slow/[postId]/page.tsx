@@ -5,9 +5,9 @@ import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
 import { Post, PostShortCacheLife } from "@/components/posts";
 
-export async function generateStaticParams() {
-  return [{ postId: "1" }];
-}
+// export async function generateStaticParams() {
+//   return [{ postId: "1" }];
+// }
 
 export default function Page({
   params,
@@ -19,19 +19,19 @@ export default function Page({
         content below was still loading. The only difference between this demo 1
         is that the left nav uses suspense.
       </p>
-      {/* <VisualSuspenseBoundary>
-        <Suspense fallback={<TextFallback />} key="demo2-slow-post"> */}
-      <Post params={params} />
-      {/* </Suspense>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextFallback />} key="demo2-slow-post">
+          <Post params={params} />
+        </Suspense>
       </VisualSuspenseBoundary>
       <VisualSuspenseBoundary>
         <Suspense
           fallback={<TextFallback />}
           key="demo2-slow-post-short-cache-life"
-        > */}
-      {/* <PostShortCacheLife params={params} /> */}
-      {/* </Suspense> */}
-      {/* </VisualSuspenseBoundary> */}
+        >
+          <PostShortCacheLife params={params} />
+        </Suspense>
+      </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         If this is post "1" (given in <Code>generateStaticParams</Code>), when
         refreshing, we will only see the suspense fallback for the 2nd post with
