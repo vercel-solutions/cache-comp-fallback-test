@@ -31,10 +31,9 @@ export default function Page({
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         If this is post "1" (given in <Code>generateStaticParams</Code>), when
-        refreshing, we will only see the suspense fallbacks for the 2 areas
-        below. For all other posts, when refreshing, we will see all suspense
-        fallbacks from the top down. In this scenario, there is no UX difference
-        between static and dynamic approaches.
+        refreshing, we will only see the suspense fallback for the 2nd post with
+        short cache life. When refreshing any other posts here, we see all
+        fallbacks from the top down.
       </p>
     </Container>
   );

@@ -21,15 +21,11 @@ export default function Page({
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <PostDynamic
-            params={params.then((p) => ({ ...p, postId: `fast-${p.postId}` }))}
-          />
+          <PostDynamic params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we see all suspense fallbacks from the top down. In
-        this scenario, there is no UX difference between static and dynamic
-        approaches.
+        When refreshing, we see only this post content's fallback.
       </p>
     </Container>
   );

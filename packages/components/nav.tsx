@@ -1,4 +1,3 @@
-import { cacheLife } from "next/cache";
 import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
@@ -62,7 +61,7 @@ export async function Nav({
 export function NavFallback() {
   return (
     <nav className="flex flex-col h-full">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3">
         <TextFallback className="w-24" />
         <TextFallback className="w-24" />
       </div>
