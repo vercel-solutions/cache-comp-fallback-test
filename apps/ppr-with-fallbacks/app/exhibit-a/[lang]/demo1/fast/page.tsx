@@ -15,7 +15,7 @@ export default async function Page({
         <Link
           key={num}
           href={`/exhibit-a/${lang}/demo1/fast/${num}`}
-          className="aspect-square flex items-center justify-center border border-neutral-700 hover:border-yellow-500 hover:bg-yellow-500/10"
+          className="aspect-square flex gap-2 items-center justify-center border text-xs border-neutral-700 hover:border-yellow-500 hover:bg-yellow-500/10"
         >
           <p className="text-xs">{num}</p>
           {num === 1 && (
