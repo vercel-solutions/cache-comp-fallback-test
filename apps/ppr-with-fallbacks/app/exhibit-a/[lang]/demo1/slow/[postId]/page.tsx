@@ -27,7 +27,8 @@ export default function Page({
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         When refreshing, we don't see any fallbacks. This is the expected ISR
-        behavior.
+        behavior. However, we would expect instant navigation from the post list
+        while the post content is loading with a fallback.
       </p>
     </Container>
   );
