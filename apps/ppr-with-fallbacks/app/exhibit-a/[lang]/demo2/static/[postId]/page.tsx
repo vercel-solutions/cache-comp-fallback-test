@@ -34,8 +34,8 @@ export default function Page({
       </p>
       <p className="text-xs leading-relaxed font-bold">
         For all other posts, we always see the fallback for the post content and
-        all other suspense boundaries from the top down. This is not what we
-        would expect.
+        all other suspense boundaries from the top down and the post component
+        always renders a new timestamp. This is not what we would expect.
       </p>
     </Container>
   );

@@ -48,7 +48,7 @@ export default function Layout({
           label={
             <div className="text-red-500/60">/exhibit-a/[lang]/layout.tsx</div>
           }
-          className="w-full max-w-4xl h-full max-h-[760px] p-8 px-16 pt-12 border-red-500/30 border-solid"
+          className="w-full max-w-4xl h-full max-h-[786px] p-8 px-16 pt-12 border-red-500/30 border-solid"
         >
           <div className="flex flex-col gap-6 w-full h-full">
             <RootHeader lang={params.then((p) => p.lang)} />
