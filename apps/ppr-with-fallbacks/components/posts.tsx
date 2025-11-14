@@ -37,7 +37,6 @@ export async function PostDynamic({
   params: Promise<{ lang: string; postId: string }>;
 }) {
   const [{ postId, lang }] = await Promise.all([params, connection()]);
-
   const post = await getPostDynamic(`${postId}-dynamic`, lang, 3500);
 
   return (
