@@ -1,3 +1,4 @@
+import { Code } from "@components/code";
 import { getPost, getPostDynamic, getPostShortCacheLife } from "@lib/api";
 import { connection } from "next/server";
 
@@ -13,7 +14,7 @@ export async function Post({
 
   return (
     <p className="text-xs">
-      {post.title} [{post.lang}] content loaded {timestamp}.
+      {post.title} content loaded at <Code>{timestamp}</Code>.
     </p>
   );
 }
@@ -26,11 +27,7 @@ export async function PostShortCacheLife({
   const { lang, postId } = await params;
   const post = await getPostShortCacheLife(`${postId}-short-cache-life`, lang);
 
-  return (
-    <p className="text-xs">
-      {post.title} [{post.lang}] content loaded.
-    </p>
-  );
+  return <p className="text-xs">{post.title} content loaded.</p>;
 }
 
 export async function PostDynamic({
@@ -39,11 +36,12 @@ export async function PostDynamic({
   params: Promise<{ lang: string; postId: string }>;
 }) {
   const [{ postId, lang }] = await Promise.all([params, connection()]);
-  const post = await getPostDynamic(`${postId}-dynamic`, lang, 3500);
+  const post = await getPostDynamic(`${postId}-dynamic`, lang);
+  const timestamp = Date.now();
 
   return (
     <p className="text-xs">
-      {post.title} [{post.lang}] content loaded.
+      {post.title} content loaded at <Code>{timestamp}</Code>.
     </p>
   );
 }
