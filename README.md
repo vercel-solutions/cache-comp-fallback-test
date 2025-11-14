@@ -10,7 +10,7 @@ These demos illustrate the behavior of suspense fallbacks in multiple scenarios 
 - 2 child routes `/demo1` and `/demo2`, each with their own `layout.tsx`
   - layouts have left-nav for child routes
   - each has a post listing page
-  - each has two child routes for post detail `/fast[postId]` and `slow[postId]`
+  - each has two child routes for post detail `/fast[postId]` and `/slow[postId]`
     - each uses `generateStaticParams` with `[{postId: "1"}]`
 
 ## Exhibit A
