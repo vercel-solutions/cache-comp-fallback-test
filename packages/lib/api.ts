@@ -58,6 +58,7 @@ export async function getPostDynamic(
   lang?: string,
   delay?: number,
 ): Promise<Post> {
+  "use cache: private";
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
