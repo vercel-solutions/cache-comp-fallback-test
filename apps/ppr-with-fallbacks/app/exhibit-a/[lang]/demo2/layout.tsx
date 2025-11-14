@@ -6,13 +6,10 @@ import { Corners } from "@components/corners";
 import { Nav, NavFallback } from "@components/nav";
 import { Suspense } from "react";
 
-export default async function Layout({
+export default function Layout({
   children,
   params,
 }: LayoutProps<"/exhibit-a/[lang]/demo2">) {
-  "use cache";
-  const { lang } = await params;
-
   return (
     <VisualComponentBoundary
       label={
@@ -25,7 +22,7 @@ export default async function Layout({
       <aside className="flex flex-col gap-4 w-40 shrink-0">
         <VisualSuspenseBoundary>
           <Suspense fallback={<NavFallback />}>
-            <Nav lang={lang} demo="demo2" exhibit="a" />
+            <Nav lang={params.then((p) => p.lang)} demo="demo2" exhibit="a" />
           </Suspense>
         </VisualSuspenseBoundary>
       </aside>

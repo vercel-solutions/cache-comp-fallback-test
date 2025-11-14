@@ -4,9 +4,9 @@ import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
 import { Post, PostShortCacheLife } from "@/components/posts";
 
-// export async function generateStaticParams() {
-//   return [{ postId: "1" }];
-// }
+export async function generateStaticParams() {
+  return [{ postId: "1" }];
+}
 
 export default function Page({
   params,
@@ -30,10 +30,9 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we only see the post content suspense fallback, and
-        subsequent visits behave the same as the fast (dynamic) posts. However,
-        on long tail posts, before prefetch can finish, users experience a
-        noticeable delay.
+        When refreshing, we dont see a fallback on the 1st post as it has a long
+        cache life. We always see the fallback on the 2nd post which uses a 30s
+        cache life. What's the threshold?
       </p>
     </Container>
   );

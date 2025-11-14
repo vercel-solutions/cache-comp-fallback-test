@@ -5,9 +5,9 @@ import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
 import { PostDynamic } from "@/components/posts";
 
-// export async function generateStaticParams() {
-//   return [{ postId: "1" }];
-// }
+export async function generateStaticParams() {
+  return [{ postId: "1" }];
+}
 
 export default function Page({
   params,
@@ -27,8 +27,7 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we only see the post content suspense fallback, and
-        subseqent visits behave the same as the slow (static) posts.
+        When refreshing, we only see the post content suspense fallback.
       </p>
     </Container>
   );

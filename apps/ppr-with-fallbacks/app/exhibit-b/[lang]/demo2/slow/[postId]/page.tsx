@@ -1,8 +1,8 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
-import { getPost } from "@lib/api";
 import { Suspense } from "react";
+import { Post } from "@/components/posts";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -20,7 +20,7 @@ export default function Page({
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <Post id={params.then((p) => `slow-${p.postId}`)} />
+          <Post params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
@@ -28,11 +28,4 @@ export default function Page({
       </p>
     </Container>
   );
-}
-
-async function Post({ id }: { id: Promise<string> }) {
-  const postId = await id;
-  const post = await getPost(postId);
-
-  return <p className="text-xs">{post.title} content loaded.</p>;
 }

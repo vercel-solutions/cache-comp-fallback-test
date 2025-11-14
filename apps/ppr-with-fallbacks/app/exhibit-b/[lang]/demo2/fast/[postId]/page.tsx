@@ -1,8 +1,8 @@
-import { Suspense } from "react";
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Code } from "@components/code";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
+import { Suspense } from "react";
 import { PostDynamic } from "@/components/posts";
 
 export async function generateStaticParams() {
@@ -21,7 +21,7 @@ export default function Page({
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <PostDynamic params={params.then((p) => ({ ...p, postId: `fast-${p.postId}` }))} />
+          <PostDynamic params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">

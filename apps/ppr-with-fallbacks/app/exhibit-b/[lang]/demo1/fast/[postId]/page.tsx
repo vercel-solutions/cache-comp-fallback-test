@@ -21,9 +21,7 @@ export default function Page({
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
-          <PostDynamic
-            params={params.then((p) => ({ ...p, postId: `fast-${p.postId}` }))}
-          />
+          <PostDynamic params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
