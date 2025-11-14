@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { TextFallback } from "./fallbacks";
 import { NavLink } from "./nav-link";
 
@@ -10,6 +11,9 @@ export async function Nav({
   demo?: "demo1" | "demo2";
   exhibit?: "a" | "b";
 }) {
+  "use cache";
+  cacheLife("weeks");
+
   const lang = await langPromise;
 
   const prefix = exhibit ? `/exhibit-${exhibit}` : "";
