@@ -24,12 +24,12 @@ export default function Page({
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         If this is post <Code>1</Code> (given in <Code>gSP</Code>), when we
-        navigate here see no suspense fallbacks. Refreshing post <Code>1</Code>{" "}
-        also shows no fallbacks.
+        navigate here we see no suspense fallbacks. Refreshing post{" "}
+        <Code>1</Code> also shows no fallbacks.
       </p>
       <p className="text-xs leading-relaxed font-bold">
-        For all other posts, we always see the fallback for the post content.
-        Upon refreshing, we see all fallbacks from the top down.
+        For all other posts, we always see the fallback for the post content and
+        all other suspense boundaries from the top down.
       </p>
     </Container>
   );
