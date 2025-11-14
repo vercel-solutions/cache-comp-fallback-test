@@ -21,7 +21,7 @@ export default function Layout({
     >
       <aside className="flex flex-col gap-4 w-40 shrink-0">
         <VisualSuspenseBoundary>
-          <Suspense fallback={<NavFallback />}>
+          <Suspense fallback={<NavFallback />} key="demo2-nav">
             <Nav lang={params.then((p) => p.lang)} demo="demo2" exhibit="a" />
           </Suspense>
         </VisualSuspenseBoundary>
