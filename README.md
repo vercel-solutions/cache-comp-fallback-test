@@ -1,6 +1,6 @@
 # ISR + Suspense Fallback Scenarios
 
-These demos illustrate the behavior of suspense fallbacks in multiple scenarios with some unexpected outcomes. The general set up is as follows:
+[These demos](https://cache-comp-fallback-test-ppr-with-f.vercel.app) illustrate the behavior of suspense fallbacks in multiple scenarios with some unexpected outcomes. The general set up is as follows:
 
 ## Exhibit A & B
 
