@@ -8,6 +8,8 @@ Compare the behavior of these posts. After loading each page, refresh and observ
 - [post 2 w/o explicit `gSP`, 2 suspense boundaries above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/slow/2)
 - [post 2 w/o explicit `gSP`, 1 suspense boundary above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo1/slow/2)
 
+Also note that the presence of 2 suspense boundaries [allows instant navigation to the posts](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/slow), where we'd have expected typical blocking ISR behavior for non-prerendered routes.
+
 The general set up is as follows:
 
 ## Exhibit A & B
