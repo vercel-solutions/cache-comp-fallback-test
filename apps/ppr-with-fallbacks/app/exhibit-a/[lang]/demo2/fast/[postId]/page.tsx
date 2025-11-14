@@ -25,7 +25,7 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we see only this post content's fallback.
+        When refreshing, we see all fallbacks from the top down.
       </p>
     </Container>
   );

@@ -31,8 +31,8 @@ export default function Page({
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
         When refreshing, we dont see a fallback on the 1st post as it has a long
-        cache life. We always see the fallback on the 2nd post which uses a 30s
-        cache life. What's the threshold?
+        cache life. We always see the fallback on the 2nd post which uses short
+        cache life.
       </p>
     </Container>
   );

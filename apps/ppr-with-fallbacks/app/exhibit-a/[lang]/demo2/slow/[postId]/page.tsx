@@ -33,9 +33,9 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        If this is post "1" (given in <Code>generateStaticParams</Code>), when
+        If this is post <Code>1</Code> (given in <Code>gSP</Code>), when
         refreshing, we will only see the suspense fallback for the 2nd post with
-        short cache life. When refreshing any other posts here, we see all
+        a short cache life. When refreshing any other posts here, we see all
         fallbacks from the top down.
       </p>
     </Container>
