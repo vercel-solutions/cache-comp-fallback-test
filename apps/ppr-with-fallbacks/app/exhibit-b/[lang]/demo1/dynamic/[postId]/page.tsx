@@ -1,0 +1,29 @@
+import { VisualSuspenseBoundary } from "@components/boundary";
+import { Code } from "@components/code";
+import { Container } from "@components/container";
+import { TextFallback } from "@components/fallbacks";
+import { Suspense } from "react";
+import { PostDynamic } from "@/components/posts";
+
+export async function generateStaticParams() {
+  return [{ postId: "1" }];
+}
+
+export default function Page({
+  params,
+}: PageProps<"/exhibit-b/[lang]/demo1/dynamic/[postId]">) {
+  return (
+    <Container className="flex flex-col gap-6">
+      <p className="text-green-500">expected behavior</p>
+      <VisualSuspenseBoundary>
+        <Suspense fallback={<TextFallback />}>
+          <PostDynamic params={params} />
+        </Suspense>
+      </VisualSuspenseBoundary>
+      <p className="text-xs leading-relaxed">
+        When refreshing, we only see the post content suspense fallback as
+        expected.
+      </p>
+    </Container>
+  );
+}

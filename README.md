@@ -4,11 +4,11 @@
 
 ## tl:dr
 Compare the behavior of these posts. After loading each page, refresh and observe the suspense fallbacks:
-- [post 1 with `gSP`, 2 suspense boundaries above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/slow/1)
-- [post 2 w/o explicit `gSP`, 2 suspense boundaries above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/slow/2)
-- [post 2 w/o explicit `gSP`, 1 suspense boundary above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo1/slow/2)
+- [post 1 with `gSP`, 2 suspense boundaries above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/static/1)
+- [post 2 w/o explicit `gSP`, 2 suspense boundaries above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/static/2)
+- [post 2 w/o explicit `gSP`, 1 suspense boundary above](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo1/static/2)
 
-Also note that the presence of 2 suspense boundaries [allows instant navigation to the posts](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/slow), where we'd have expected typical blocking ISR behavior for non-prerendered routes.
+Also note that the presence of 2 suspense boundaries [allows instant navigation to the posts](https://cache-comp-fallback-test-ppr-with-f.vercel.app/exhibit-a/en/demo2/static), where we'd have expected typical blocking ISR behavior for non-prerendered routes.
 
 The general set up is as follows:
 
@@ -20,7 +20,7 @@ The general set up is as follows:
 - 2 child routes `/demo1` and `/demo2`, each with their own `layout.tsx`
   - layouts have left-nav for child routes
   - each has a post listing page
-  - each has two child routes for post detail `/fast[postId]` and `/slow[postId]`
+  - each has two child routes for post detail `/dynamic[postId]` and `/static[postId]`
     - each uses `generateStaticParams` with `[{postId: "1"}]`
 
 ## Exhibit A
@@ -51,11 +51,11 @@ The general set up is as follows:
 
 | Exhibit | Demo | Post Type | Suspense Areas | Behavior | Notes |
 |---------|------|-----------|---------------|----------|-------|
-| A | 1 | Fast Posts | root nav, post content | expected | |
-| A | 1 | Slow Posts | root nav, post content | expected | with blocked nav :/ |
-| **A** | **2** | Fast Posts | root nav, left nav, post content | **unexpected** | |
-| **A** | **2** | Slow Posts | root nav, left nav, post content | **unexpected** | |
-| B | 1 | Fast Posts | post content | expected | |
-| B | 1 | Slow Posts | post content | expected | with blocked nav :/ |
-| B | 2 | Fast Posts | left nav, post content | expected | |
-| B | 2 | Slow Posts | left nav, post content | expected | with blocked nav :/ |
+| A | 1 | Dynamic Posts | root nav, post content | expected | |
+| A | 1 | Static Posts | root nav, post content | expected | with blocked nav :/ |
+| **A** | **2** | Dynamic Posts | root nav, left nav, post content | **unexpected** | |
+| **A** | **2** | Static Posts | root nav, left nav, post content | **unexpected** | |
+| B | 1 | Dynamic Posts | post content | expected | |
+| B | 1 | Static Posts | post content | expected | with blocked nav :/ |
+| B | 2 | Dynamic Posts | left nav, post content | expected | |
+| B | 2 | Static Posts | left nav, post content | expected | with blocked nav :/ |

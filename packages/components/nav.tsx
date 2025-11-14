@@ -19,29 +19,29 @@ export async function Nav({
       ? [
           {
             href: prefix
-              ? `${prefix}/${lang}/demo1/fast`
-              : `/${lang}/demo1/fast`,
-            label: "fast posts",
+              ? `${prefix}/${lang}/demo1/dynamic`
+              : `/${lang}/demo1/dynamic`,
+            label: "dynamic posts",
           },
           {
             href: prefix
-              ? `${prefix}/${lang}/demo1/slow`
-              : `/${lang}/demo1/slow`,
-            label: "slow posts",
+              ? `${prefix}/${lang}/demo1/static`
+              : `/${lang}/demo1/static`,
+            label: "static posts",
           },
         ]
       : [
           {
             href: prefix
-              ? `${prefix}/${lang}/demo2/fast`
-              : `/${lang}/demo2/fast`,
-            label: "fast posts",
+              ? `${prefix}/${lang}/demo2/dynamic`
+              : `/${lang}/demo2/dynamic`,
+            label: "dynamic posts",
           },
           {
             href: prefix
-              ? `${prefix}/${lang}/demo2/slow`
-              : `/${lang}/demo2/slow`,
-            label: "slow posts",
+              ? `${prefix}/${lang}/demo2/static`
+              : `/${lang}/demo2/static`,
+            label: "static posts",
           },
         ];
 

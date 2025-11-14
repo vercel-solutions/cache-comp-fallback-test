@@ -15,8 +15,8 @@ export function RootNav({
 
   const prefix = exhibit ? `/exhibit-${exhibit}` : "";
 
-  const demo1Href = prefix ? `${prefix}/${lang}/demo1/fast` : `/${lang}/demo1/fast`;
-  const demo2Href = prefix ? `${prefix}/${lang}/demo2/fast` : `/${lang}/demo2/fast`;
+  const demo1Href = prefix ? `${prefix}/${lang}/demo1/dynamic` : `/${lang}/demo1/dynamic`;
+  const demo2Href = prefix ? `${prefix}/${lang}/demo2/dynamic` : `/${lang}/demo2/dynamic`;
 
   const isDemo1Active = pathname.startsWith(prefix ? `${prefix}/${lang}/demo1` : `/${lang}/demo1`);
   const isDemo2Active = pathname.startsWith(prefix ? `${prefix}/${lang}/demo2` : `/${lang}/demo2`);
