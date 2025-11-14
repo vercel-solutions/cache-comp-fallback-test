@@ -15,7 +15,10 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6" key="demo2-slow">
       <p className="text-xs leading-relaxed">
-        Here we see instant navigation from the post list.
+        Here we always see instant navigation from the post list. This is
+        different than demo 1 slow posts, seemingly due to the presence of
+        suspense boundaries in each of the layouts (both of which are siblings
+        to the page content).
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />} key="demo2-slow-post">
