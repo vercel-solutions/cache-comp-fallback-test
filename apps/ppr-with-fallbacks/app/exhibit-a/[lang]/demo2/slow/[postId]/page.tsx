@@ -5,9 +5,9 @@ import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
 import { Post, PostShortCacheLife } from "@/components/posts";
 
-// export async function generateStaticParams() {
-//   return [{ postId: "1" }];
-// }
+export async function generateStaticParams() {
+  return [{ postId: "1" }];
+}
 
 export default function Page({
   params,
@@ -20,7 +20,7 @@ export default function Page({
         is that the left nav uses suspense.
       </p>
       <VisualSuspenseBoundary>
-        <Suspense fallback={null} key="demo2-slow-post">
+        <Suspense fallback={<TextFallback />} key="demo2-slow-post">
           <Post params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
