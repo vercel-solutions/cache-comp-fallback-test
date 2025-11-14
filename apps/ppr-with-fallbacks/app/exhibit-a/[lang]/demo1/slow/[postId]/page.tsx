@@ -1,6 +1,5 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
 import { Container } from "@components/container";
-import { CookieValue } from "@components/cookie-value";
 import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
 import { Post, PostShortCacheLife } from "@/components/posts";
