@@ -25,7 +25,7 @@ export default function Page({
       <p className="text-xs leading-relaxed">
         If this is post <Code>1</Code> (given in <Code>gSP</Code>), when we
         navigate here see no suspense fallbacks. Refreshing post <Code>1</Code>{" "}
-        also shos no fallbacks.
+        also shows no fallbacks.
       </p>
       <p className="text-xs leading-relaxed font-bold">
         For all other posts, we always see the fallback for the post content.
