@@ -15,9 +15,8 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6" key="demo1-fast">
       <p className="text-xs leading-relaxed">
-        This text is static, and we saw it immediately upon navigating while the
-        content below was still loading. We are forcing the post content area to
-        be dynamic with <Code>await connection()</Code>.
+        Navigation here is instant. We're forcing the post content area to be
+        dynamic with <Code>await connection()</Code>.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
@@ -25,7 +24,8 @@ export default function Page({
         </Suspense>
       </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we only see the post content suspense fallback.
+        When refreshing, we only see the post content suspense fallback as
+        expected.
       </p>
     </Container>
   );

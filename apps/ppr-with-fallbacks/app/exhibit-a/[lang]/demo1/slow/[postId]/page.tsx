@@ -1,8 +1,9 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
+import { Code } from "@components/code";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
-import { Post, PostShortCacheLife } from "@/components/posts";
+import { Post } from "@/components/posts";
 
 export async function generateStaticParams() {
   return [{ postId: "1" }];
@@ -14,25 +15,19 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6" key="demo1-slow">
       <p className="text-xs leading-relaxed">
-        This text is static, but we waited 2.5 seconds before you could navigate
-        here (if it wasn't prefetched or already prerendered) since the content
-        below blocked the entire page. The only difference between this demo 2
-        is that the left nav does not use suspense.
+        For post <Code>1</Code> (given in <Code>gSP</Code>), navigation here is
+        always instant. For all other posts, navigation is blocked for 2.5s
+        while waiting for the post content (if previously unvisited and not yet
+        prefetched).
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>
           <Post params={params} />
         </Suspense>
       </VisualSuspenseBoundary>
-      <VisualSuspenseBoundary>
-        <Suspense fallback={<TextFallback />}>
-          <PostShortCacheLife params={params} />
-        </Suspense>
-      </VisualSuspenseBoundary>
       <p className="text-xs leading-relaxed">
-        When refreshing, we dont see a fallback on the 1st post as it has a long
-        cache life. We always see the fallback on the 2nd post which uses short
-        cache life.
+        When refreshing, we don't see any fallbacks. This is the expected ISR
+        behavior.
       </p>
     </Container>
   );
