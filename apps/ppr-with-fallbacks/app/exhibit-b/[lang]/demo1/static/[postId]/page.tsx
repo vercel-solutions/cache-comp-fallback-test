@@ -1,4 +1,5 @@
 import { VisualSuspenseBoundary } from "@components/boundary";
+import { Code } from "@components/code";
 import { Container } from "@components/container";
 import { TextFallback } from "@components/fallbacks";
 import { Suspense } from "react";
@@ -14,7 +15,13 @@ export default function Page({
   return (
     <Container className="flex flex-col gap-6">
       <p className="text-green-500">
-        expected behavior <span>(but potentially blocks nav)</span>
+        expected behavior (but potentially blocks nav)
+      </p>
+      <p className="text-xs leading-relaxed">
+        For post <Code>1</Code> (given in <Code>gSP</Code>), navigation here is
+        always instant. For all other posts, navigation is blocked for 2.5s
+        while waiting for the post content (if previously unvisited and not yet
+        prefetched).
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />}>

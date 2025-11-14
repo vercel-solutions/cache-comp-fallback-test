@@ -19,7 +19,7 @@ export default function Page({
         Here we always see instant navigation from the post list. This is
         different than demo 1 static posts, seemingly due to the presence of
         suspense boundaries (both of which are siblings to the page content) in
-        each of the parent layouts. .
+        each of the parent layouts.
       </p>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />} key="demo2-static-post">
