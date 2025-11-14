@@ -31,8 +31,8 @@ export default function Page({
       </p>
       <p className="text-xs leading-relaxed font-bold">
         For all other posts, upon refresh, we see the fallback for the post
-        content as expected, but we also fallbacks for all suspense voundaries
-        from the top down.
+        content as expected, but we also see fallbacks for all suspense
+        boundaries from the top down.
       </p>
     </Container>
   );
