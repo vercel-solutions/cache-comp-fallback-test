@@ -4,16 +4,14 @@ import { RootNav } from "@components/root-nav";
 import Link from "next/link";
 
 export async function generateStaticParams() {
-  return [{ lang: "_" }];
+  return [{ lang: "en" }];
 }
 
 export async function RootHeader({ lang }: { lang: Promise<string> }) {
   const l = await lang;
   return (
     <header className="flex flex-col gap-4">
-      <h1>
-        Cache Components and Suspense UX Demos (No Suspense in Root Layout)
-      </h1>
+      <h1>Exhibit B: No Suspense in Root Layout</h1>
       <RootNav lang={l} exhibit="b" />
     </header>
   );

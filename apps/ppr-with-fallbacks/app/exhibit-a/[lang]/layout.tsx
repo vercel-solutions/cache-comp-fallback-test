@@ -13,11 +13,10 @@ export async function generateStaticParams() {
 }
 
 export async function RootHeader({ lang }: { lang: Promise<string> }) {
-  "use cache";
   const l = await lang;
   return (
     <header className="flex flex-col gap-4">
-      <h1>Cache Components and Suspense UX Demos (Suspense in Root Layout)</h1>
+      <h1>Exhibit A: Suspense in Root Layout</h1>
       <VisualSuspenseBoundary>
         <Suspense fallback={<TextFallback />} key="root-nav">
           <RootNav lang={l} exhibit="a" />
