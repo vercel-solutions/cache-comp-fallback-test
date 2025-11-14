@@ -15,11 +15,11 @@ export function RootNav({
 
   const prefix = exhibit ? `/exhibit-${exhibit}` : "";
 
-  const demo1Href = prefix ? `${prefix}/${lang}/demo1` : `/${lang}/demo1`;
-  const demo2Href = prefix ? `${prefix}/${lang}/demo2` : `/${lang}/demo2`;
+  const demo1Href = prefix ? `${prefix}/${lang}/demo1/fast` : `/${lang}/demo1/fast`;
+  const demo2Href = prefix ? `${prefix}/${lang}/demo2/fast` : `/${lang}/demo2/fast`;
 
-  const isDemo1Active = pathname.startsWith(demo1Href);
-  const isDemo2Active = pathname.startsWith(demo2Href);
+  const isDemo1Active = pathname.startsWith(prefix ? `${prefix}/${lang}/demo1` : `/${lang}/demo1`);
+  const isDemo2Active = pathname.startsWith(prefix ? `${prefix}/${lang}/demo2` : `/${lang}/demo2`);
 
   return (
     <nav className="flex gap-4">
